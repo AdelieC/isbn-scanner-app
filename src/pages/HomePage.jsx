@@ -1,20 +1,13 @@
 //libraries
-import PropTypes from 'prop-types';
 
 //services
 
-
 //components
 
-
 function HomePage(props) {
-	return (
-		<div></div>
-	);
+    return <main></main>;
 }
 
-HomePage.propTypes = {
-
-};
+HomePage.propTypes = {};
 
 export default HomePage;

@@ -1,19 +1,13 @@
 //libraries
-import PropTypes from 'prop-types';
 
 //services
 
-
 //components
 
-NavBar.propTypes = {
-	
-};
+NavBar.propTypes = {};
 
 function NavBar(props) {
-	return (
-		<div></div>
-	);
+    return <nav></nav>;
 }
 
 export default NavBar;

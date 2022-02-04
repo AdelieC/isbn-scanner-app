@@ -1,0 +1,40 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "prettier",
+        "plugin:react/recommended",
+        "plugin:jest/recommended",
+        "plugin:jest/style"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "no-unused-vars": ["error", { "ignoreRestSiblings": true, "args": "none" }],
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+        "jest": {
+            "version": 26
+        },
+        "react": {
+            "version": "detect"
+        }
+    }
+}
