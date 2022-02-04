@@ -4,18 +4,20 @@ import PropTypes from 'prop-types';
 
 //components
 import BaseModal from './BaseModal';
+import { useThemeContext } from '../../../services/providers/ThemeProvider';
 
 function SuccessModal({ text, buttonText, icon, link, callback }) {
+    const { theme } = useThemeContext();
     const navigate = useNavigate();
     const goToLink = () => {
-        navigate(link);
+        navigate(link || -1);
     };
     return (
         <BaseModal>
-            <h3>Success!</h3>
+            <h3 className={'text-' + theme.primaryTextColor}>Success!</h3>
             {icon}
-            <p>{text}</p>
-            <button onClick={callback || goToLink}>{buttonText}</button>
+            <p>{text || 'Action was accomplished successfully!'}</p>
+            <button onClick={callback || goToLink}>{buttonText || 'Go back'}</button>
         </BaseModal>
     );
 }

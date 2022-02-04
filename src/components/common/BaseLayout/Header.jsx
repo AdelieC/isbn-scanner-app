@@ -8,13 +8,15 @@ function Header(props) {
     return (
         <header
             className={
-                'fixed top-0 right-0 p-4 bg-' +
+                'fixed top-0 w-full shadow-xl p-4 bg-' +
                 theme.secondaryBgColor +
                 ' text-' +
                 theme.secondaryTextColor
             }
         >
-            <h1 id="title">Isbn Scanner</h1>
+            <h1 id="title" className="text-2xl">
+                Isbn Scanner
+            </h1>
             <NavBar />
         </header>
     );

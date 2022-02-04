@@ -9,14 +9,17 @@ import BaseModal from './BaseModal';
 function ErrorModal({ text, buttonText, icon, link, callback }) {
     const navigate = useNavigate();
     const goToLink = () => {
-        navigate(link);
+        navigate(link || -1);
     };
     return (
         <BaseModal>
-            <h3>Uh oh...</h3>
+            <h3 className="text-alert text-2xl">Uh oh...</h3>
             {icon}
-            <p>{text}</p>
-            <button onClick={callback || goToLink}>{buttonText}</button>
+            <p>
+                {text ||
+                    "An error occurred. Try refreshing the page if you don't want to click on the button below."}
+            </p>
+            <button onClick={callback || goToLink}>{buttonText || 'Go back'}</button>
         </BaseModal>
     );
 }

@@ -9,11 +9,11 @@ import Footer from './Footer';
 
 function BaseLayout(props) {
     return (
-        <>
+        <div className={'min-h-screen'}>
             <Header />
             <Outlet />
             <Footer />
-        </>
+        </div>
     );
 }
 

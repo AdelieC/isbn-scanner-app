@@ -1,5 +1,3 @@
-import './App.css';
-
 //libraries
 import { Route, Routes } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -25,18 +23,18 @@ const queryClient = new QueryClient({
 function App() {
     return (
         <TitleProvider>
-            <QueryClientProvider client={queryClient}>
-                <StatusProvider>
-                    <ThemeProvider>
+            <ThemeProvider>
+                <QueryClientProvider client={queryClient}>
+                    <StatusProvider>
                         <Routes>
                             <Route path="/" element={<BaseLayout />}>
                                 <Route path="home" element={<HomePage />} />
                             </Route>
                         </Routes>
-                    </ThemeProvider>
-                </StatusProvider>
-                <ReactQueryDevtools initialisOpen />
-            </QueryClientProvider>
+                    </StatusProvider>
+                    <ReactQueryDevtools initialisOpen />
+                </QueryClientProvider>
+            </ThemeProvider>
         </TitleProvider>
     );
 }

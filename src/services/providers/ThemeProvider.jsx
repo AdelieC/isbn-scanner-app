@@ -6,16 +6,16 @@ const ThemeContext = createContext();
 
 function ThemeProvider({ children }) {
     const dark = {
-        primaryBgColor: 'grey-800',
-        secondaryBgColor: 'grey-600',
+        primaryBgColor: 'gray-800',
+        secondaryBgColor: 'gray-600',
         primaryTextColor: 'white',
         secondaryTextColor: 'white',
     };
 
     const light = {
         primaryBgColor: 'white',
-        secondaryBgColor: 'grey-400',
-        primaryTextColor: 'grey-800',
+        secondaryBgColor: 'gray-400',
+        primaryTextColor: 'gray-800',
         secondaryTextColor: 'white',
     };
 

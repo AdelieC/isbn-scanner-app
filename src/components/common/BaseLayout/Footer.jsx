@@ -1,7 +1,14 @@
 //libraries
 
+import { useThemeContext } from '../../../services/providers/ThemeProvider';
+
 function Footer(props) {
-    return <footer></footer>;
+    const { theme } = useThemeContext();
+    return (
+        <footer className={'w-full text-center text-' + theme.primaryTextColor}>
+            Isbn Scanner 2022
+        </footer>
+    );
 }
 
 Footer.propTypes = {};
