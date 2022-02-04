@@ -5,8 +5,14 @@
 /.pnp
 .pnp.js
 
+# package managers
+/yarn.lock
+
 # testing
 /coverage
+
+# ide
+/.idea
 
 # production
 /build

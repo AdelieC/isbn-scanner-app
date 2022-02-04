@@ -3,19 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
+    "@tailwindcss/typography": "^0.5.0",
     "@testing-library/user-event": "^13.2.1",
+    "classnames": "^2.3.1",
+    "date-fns": "^2.28.0",
+    "prop-types": "^15.8.1",
+    "quagga": "^0.12.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.26.0",
+    "react-icons": "^4.3.1",
+    "react-query": "^3.34.12",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-webcam-barcode-scanner": "^0.0.2-rc2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"yarn start-app\" \"yarn start-db\"",
+    "start-npm": "concurrently \"npm run start-app\" \"npm run start-db\"",
+    "start-app": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-db": "json-server --watch db.json --port 3001"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +45,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-testing-library": "^5.0.1",
+    "json-server": "^0.17.0",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.11"
   }
 }
