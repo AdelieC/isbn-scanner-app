@@ -4,7 +4,6 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 //services
-import ThemeProvider from './services/providers/ThemeProvider';
 import StatusProvider from './services/providers/StatusProvider';
 
 //components
@@ -20,21 +19,33 @@ const queryClient = new QueryClient({
     },
 });
 
+document
+    .querySelector('#root')
+    .classList.add(
+        'min-h-screen',
+        'w-screen',
+        'flex',
+        'flex-col',
+        'items-center',
+        'justify-between',
+        'font-serif',
+        'text-xl',
+        'bg-primaryLight'
+    );
+
 function App() {
     return (
         <TitleProvider>
-            <ThemeProvider>
-                <QueryClientProvider client={queryClient}>
-                    <StatusProvider>
-                        <Routes>
-                            <Route path="/" element={<BaseLayout />}>
-                                <Route path="home" element={<HomePage />} />
-                            </Route>
-                        </Routes>
-                    </StatusProvider>
-                    <ReactQueryDevtools initialisOpen />
-                </QueryClientProvider>
-            </ThemeProvider>
+            <QueryClientProvider client={queryClient}>
+                <StatusProvider>
+                    <Routes>
+                        <Route path="/" element={<BaseLayout />}>
+                            <Route path="home" element={<HomePage />} />
+                        </Route>
+                    </Routes>
+                </StatusProvider>
+                <ReactQueryDevtools initialisOpen />
+            </QueryClientProvider>
         </TitleProvider>
     );
 }

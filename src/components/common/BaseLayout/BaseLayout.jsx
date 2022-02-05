@@ -9,11 +9,13 @@ import Footer from './Footer';
 
 function BaseLayout(props) {
     return (
-        <div className={'min-h-screen'}>
+        <>
             <Header />
-            <Outlet />
+            <main className="flex flex-col items-center mt-28">
+                <Outlet />
+            </main>
             <Footer />
-        </div>
+        </>
     );
 }
 

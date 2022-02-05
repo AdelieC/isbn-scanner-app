@@ -1,7 +1,6 @@
 //libraries
 import { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ErrorBoundary } from 'react-error-boundary';
 import { useIsFetching, useIsMutating } from 'react-query';
 import ErrorModal from '../../components/common/modals/ErrorModal';
 import SuccessModal from '../../components/common/modals/SuccessModal';
@@ -26,8 +25,8 @@ function StatusProvider({ children }) {
             <ErrorBoundary onError={(error) => setError(error)}>
                 {children}
                 {isLoading && <FullLoader />}
-                {error && <ErrorModal text={error.text} />}
-                {success && <SuccessModal text={success.text} />}
+                {error && <ErrorModal text={error?.text} />}
+                {success && <SuccessModal text={success?.text} />}
             </ErrorBoundary>
         </StatusContext.Provider>
     );

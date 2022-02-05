@@ -1,3 +1,20 @@
+@font-face {
+    font-family: "UnicaOne";
+    src: url('./fonts/UnicaOne-Regular.ttf');
+}
+
+@font-face {
+    font-family: "CrimsonText";
+    src: url('./fonts/CrimsonText-Roman.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "CrimsonText";
+    src: url('./fonts/CrimsonText-Bold.ttf');
+    font-weight: bold;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
