@@ -1,25 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ErrorModal from '../../components/common/modals/ErrorModal';
 
-class ErrorBoundary extends React.Component {
+export default class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
         this.state = { hasError: false, error: null };
     }
 
-    static getDerivedStateFromError(error) {
-        return { hasError: true, error: error };
-    }
-
     componentDidCatch(error, errorInfo) {
-        //TODO : maybe transform the error so it's usable in erromodal or/and log it
+        this.setState({
+            hasError: error !== null,
+            error: error,
+        });
+        console.error(errorInfo);
     }
 
     render() {
-        return this.state.hasError ? (
-            <ErrorModal error={this.error} />
-        ) : (
-            this.props.children
-        );
+        if (this.state.hasError) {
+            return <ErrorModal error={this.error} />;
+        } else {
+            return this.props.children;
+        }
     }
 }
+
+ErrorBoundary.propTypes = {
+    children: PropTypes.node,
+};

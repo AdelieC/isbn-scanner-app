@@ -5,6 +5,7 @@ import { useIsFetching, useIsMutating } from 'react-query';
 import ErrorModal from '../../components/common/modals/ErrorModal';
 import SuccessModal from '../../components/common/modals/SuccessModal';
 import FullLoader from '../../components/common/loaders/FullLoader';
+import ErrorBoundary from '../errors/ErrorBoundary';
 
 //TODO : add error boundary, loader and error/success modal
 const StatusContext = createContext();
@@ -22,11 +23,11 @@ function StatusProvider({ children }) {
                 setError: setError,
             }}
         >
-            <ErrorBoundary onError={(error) => setError(error)}>
+            <ErrorBoundary>
                 {children}
                 {isLoading && <FullLoader />}
-                {error && <ErrorModal text={error?.text} />}
-                {success && <SuccessModal text={success?.text} />}
+                {error && <ErrorModal error={error} />}
+                {success && <SuccessModal success={success} />}
             </ErrorBoundary>
         </StatusContext.Provider>
     );

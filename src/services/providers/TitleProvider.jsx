@@ -17,7 +17,8 @@ function TitleProvider({ children }) {
     useEffect(() => {
         if (title) {
             document.title = title;
-            document.getElementById('title').innerText = title;
+            const titleEl = document.getElementById('title');
+            if (titleEl) titleEl.innerText = title;
         }
     }, [title]);
 

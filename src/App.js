@@ -20,17 +20,20 @@ const queryClient = new QueryClient({
 });
 
 document
-    .querySelector('#root')
+    .querySelector('body')
     .classList.add(
         'min-h-screen',
         'w-screen',
+        'overflow-hidden',
         'flex',
         'flex-col',
         'items-center',
         'justify-between',
         'font-serif',
         'text-xl',
-        'bg-primaryLight'
+        'bg-primaryLight',
+        'dark:bg-primaryDark',
+        'dark:text-primaryLight'
     );
 
 function App() {
