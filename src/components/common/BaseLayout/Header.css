@@ -6,12 +6,12 @@
 
 @keyframes slide-right {
     100% {
-        right: -100%;
+        right: -105%;
     }
 }
 
 ._animate-slide-left {
-    left: 100%;
+    left: 105%;
     animation: 0.3s forwards ease-out slide-left;
 }
 

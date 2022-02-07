@@ -6,22 +6,27 @@
 
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-function SectionCard({ text, background, buttonColor, link, buttonText }) {
+function SectionCard({ text, icon, background, link, buttonText }) {
+    const sectionClasses = classNames(
+        'flex',
+        'flex-col',
+        'justify-between',
+        'items-center',
+        'gap-4',
+        'rounded-xl',
+        'p-8',
+        'text-secondaryLight',
+        'shadow-xl'
+    );
     return (
-        <section
-            className={
-                'w-80 flex flex-col justify-between gap-4 rounded-xl bg-' +
-                background +
-                ' p-4 text-secondaryLight shadow'
-            }
-        >
-            {text}
+        <section className={sectionClasses + ' ' + background}>
+            {icon}
+            <p className="text-xl max-w-xs">{text}</p>
             <Link
                 className={
-                    'px-3 py-2 font-heading bg-' +
-                    buttonColor +
-                    ' text-primaryDark rounded-lg shadow-lg'
+                    'px-3 py-2 font-heading text-primaryDark rounded-lg shadow-lg bg-secondaryLight'
                 }
                 to={link}
             >
@@ -33,10 +38,11 @@ function SectionCard({ text, background, buttonColor, link, buttonText }) {
 
 SectionCard.propTypes = {
     text: PropTypes.string.isRequired,
-    background: PropTypes.string,
+    background: PropTypes.string.isRequired,
     buttonColor: PropTypes.string,
     link: PropTypes.string.isRequired,
     buttonText: PropTypes.string.isRequired,
+    icon: PropTypes.element.isRequired,
 };
 
 export default SectionCard;

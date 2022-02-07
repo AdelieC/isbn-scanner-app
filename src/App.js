@@ -22,9 +22,8 @@ const queryClient = new QueryClient({
 document
     .querySelector('body')
     .classList.add(
-        'min-h-screen',
         'w-screen',
-        'overflow-hidden',
+        'overflow-x-hidden',
         'flex',
         'flex-col',
         'items-center',

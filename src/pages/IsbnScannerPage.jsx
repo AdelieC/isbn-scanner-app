@@ -1,7 +1,7 @@
 //libraries
 
 function IsbnScannerPage(props) {
-    return <main></main>;
+    return <></>;
 }
 
 IsbnScannerPage.propTypes = {};
