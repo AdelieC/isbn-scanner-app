@@ -39,7 +39,7 @@ const NAVLINKS = [
     },
 ];
 
-function NavBar(props) {
+function NavBar() {
     const [isToggled, setIsToggled] = useState(false);
     return (
         <>
@@ -75,7 +75,5 @@ function NavBar(props) {
         </>
     );
 }
-
-NavBar.propTypes = {};
 
 export default NavBar;
