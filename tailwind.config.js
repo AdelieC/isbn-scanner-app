@@ -8,7 +8,9 @@ module.exports = {
         },
         extend: {
             width: {},
-            height: {},
+            height: {
+                '50vh': '50vh',
+            },
             spacing: {
                 '100vh': '100vh',
                 '100vw': '100vw',
@@ -18,16 +20,19 @@ module.exports = {
                 88: '22rem',
             },
             colors: {
-                primaryLight: '#E3CAA6',
+                primaryLight: '#F8EADD',
                 primaryDark: 'rgb(40 44 52)',
-                secondaryDark: '#935FA7',
-                secondaryLight: '#ffffff',
+                secondaryDark: '#DF9A57',
+                secondaryLight: '#FFFFFC',
                 tertiaryDark: '#AC7B84',
-                tertiaryLight: '#ffffff',
+                tertiaryLight: '#FFFFFC',
                 successDark: '#048BA8',
-                successLight: '#ffffff',
+                successLight: '#FFFFFC',
                 alertDark: '#B84A62',
-                alertLight: '#ffffff',
+                alertLight: '#FFFFFC',
+            },
+            opacity: {
+                40: '.40',
             },
             backgroundImage: {
                 hero: "url('/public/open-book-background.webp')",

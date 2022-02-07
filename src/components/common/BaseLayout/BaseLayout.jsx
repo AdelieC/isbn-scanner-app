@@ -11,7 +11,7 @@ function BaseLayout(props) {
     return (
         <>
             <Header />
-            <main className="flex flex-col items-center p-16">
+            <main className="flex flex-col items-center">
                 <Outlet />
             </main>
             <Footer />

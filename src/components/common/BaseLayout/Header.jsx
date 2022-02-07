@@ -6,7 +6,7 @@ import './Header.css';
 
 function Header() {
     return (
-        <header className="fixed z-50 top-0 left-0 w-full flex items-center justify-between gap-4 shadow-xl p-6 bg-primaryLight text-primaryDark dark:bg-primaryDark dark:text-primaryLight">
+        <header className="fixed z-50 top-0 left-0 w-full flex items-center justify-between gap-4 shadow-xl p-6 bg-secondaryLight text-primaryDark dark:bg-tertiaryDark dark:text-primaryLight">
             <div id="logo" className="h-16">
                 <svg
                     className="fill-current"
@@ -56,7 +56,7 @@ function Header() {
             </div>
             <h1
                 id="title"
-                className="text-3xl font-heading self-center text-secondaryDark dark:text-secondaryLight"
+                className="text-4xl font-heading self-center text-tertiaryDark dark:text-secondaryLight"
             />
             <NavBar />
         </header>

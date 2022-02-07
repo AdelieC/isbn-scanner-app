@@ -10,17 +10,21 @@ import { GiArchiveResearch, GiKeyboard } from 'react-icons/gi';
 function HomePage() {
     return (
         <>
-            <div className="bg-hero bg-cover fixed top-0 left-0 text-secondaryLight w-full">
-                <div className="bg-black bg-opacity-25 w-full p-16 pt-40 flex flex-col items-center justify-between gap-8 shadow-innerXl">
-                    <h1 className="font-heading text-6xl">Welcome to Isbn-Scanner!</h1>
-                    <h3 className="text-3xl text-center">
+            <div className="bg-hero bg-cover bg-fixed dark:text-secondaryLight text-primaryDark w-full h-50vh">
+                <div className="dark:bg-black bg-primaryLight bg-opacity-30 w-full flex items-stretch justify-between gap-8 shadow-innerXl h-full">
+                    <div className="p-16 pt-44 flex flex-col justify-center text-right w-1/2">
+                        <h2 className="font-heading text-8xl">WELCOME TO</h2>
+                        <h1 className="font-heading text-6xl">isbn-SCANNER!</h1>
+                    </div>
+                    <h3 className="text-3xl w-1/2 bg-secondaryDark text-secondaryLight p-16 pt-44 flex flex-col justify-center">
                         A progressive web-app designed to get a book&apos;s data from its
-                        barcode or its ISBN/EAN number (data available in pdf or csv
-                        format).
+                        barcode or its ISBN/EAN number.
+                        <br />
+                        (Data available in pdf or csv format)
                     </h3>
                 </div>
             </div>
-            <div className="flex flex-wrap gap-12 justify-center text-center w-full p-8 mt-88">
+            <div className="flex flex-wrap gap-12 justify-center text-center w-full p-16">
                 <SectionCard
                     text={'Get instant data on a book by scanning its barcode!'}
                     buttonText={'Scan a barcode'}
@@ -42,7 +46,7 @@ function HomePage() {
                     }
                     buttonText={'Search for a book'}
                     link={'/search/form'}
-                    background={'bg-alertDark'}
+                    background={'bg-tertiaryDark'}
                     icon={<GiArchiveResearch className="h-20 w-20" />}
                 />
             </div>
