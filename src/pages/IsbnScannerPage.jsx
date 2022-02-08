@@ -1,6 +1,7 @@
 //libraries
 
 function IsbnScannerPage(props) {
+    const { isbn, bookFound, hasNoResult } = useScan();
     return <></>;
 }
 
