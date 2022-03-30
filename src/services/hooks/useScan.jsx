@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useIsbn from './useIsbn';
 
 function useScan(props) {
     const [isbn, setIsbn] = useState(null);
     const { bookFound, hasNoResult } = useIsbn(isbn);
-    return { hasNoResult, bookFound };
+    const scan = () => {
+        console.log('in scan');
+        setIsbn('2820507544');
+    };
+    const stopScan = () => {};
+    return { hasNoResult, bookFound, scan, stopScan };
 }
 
 useScan.propTypes = {};

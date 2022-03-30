@@ -1,7 +1,14 @@
 //libraries
 
+import useScan from '../services/hooks/useScan';
+import { useEffect } from 'react';
+
 function IsbnScannerPage(props) {
-    const { isbn, bookFound, hasNoResult } = useScan();
+    const { scan, bookFound, hasNoResult } = useScan();
+    useEffect(() => {
+        console.log(bookFound, hasNoResult);
+        scan();
+    }, [bookFound, hasNoResult]);
     return <></>;
 }
 
