@@ -8,11 +8,18 @@ export default class Book {
         this._isbn = '';
         this._publishedAt = '';
         this._rating = 0;
+        this._nbRatings = 0;
         this._dimensions = new Dimensions();
         this._nbPages = 0;
         this._language = '';
         this._image = '';
-        this._publishers = [];
+        this._publisher = '';
+        this._synopsis = '';
+        this._priceRetail = '';
+        this._priceNew = '';
+        this._googlePlayLink = '';
+        this._genre = '';
+        this._categories = [];
     }
 
     get title() {
@@ -63,6 +70,14 @@ export default class Book {
         this._rating = value;
     }
 
+    get nbRatings() {
+        return this._nbRatings;
+    }
+
+    set nbRatings(value) {
+        this._nbRatings = value;
+    }
+
     get dimensions() {
         return this._dimensions;
     }
@@ -95,11 +110,59 @@ export default class Book {
         this._image = value;
     }
 
-    get publishers() {
-        return this._publishers;
+    get publisher() {
+        return this._publisher;
     }
 
-    set publishers(value) {
-        this._publishers = value;
+    set publisher(value) {
+        this._publisher = value;
+    }
+
+    get synopsis() {
+        return this._synopsis;
+    }
+
+    set synopsis(value) {
+        this._synopsis = value;
+    }
+
+    get priceRetail() {
+        return this._priceRetail;
+    }
+
+    set priceRetail(value) {
+        this._priceRetail = value;
+    }
+
+    get priceNew() {
+        return this._priceNew;
+    }
+
+    set priceNew(value) {
+        this._priceNew = value;
+    }
+
+    get googlePlayLink() {
+        return this._googlePlayLink;
+    }
+
+    set googlePlayLink(value) {
+        this._googlePlayLink = value;
+    }
+
+    get genre() {
+        return this._genre;
+    }
+
+    set genre(value) {
+        this._genre = value;
+    }
+
+    get categories() {
+        return this._categories;
+    }
+
+    set categories(value) {
+        this._categories = value;
     }
 }
