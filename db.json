@@ -1,1 +1,27 @@
-{}
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Adorable Sophy",
+      "authors": [
+        "Georgette Heyer"
+      ],
+      "publisher": "Milady",
+      "publishedDate": "2012-10-24",
+      "synopsis": "Cette adorable tornade va réveiller la bonne société anglaise. Lorsque la respectable famille anglaise Ombersley recueille Sophy, une cousine éloignée, elle ne s’attend pas à une telle révolution. Indépendante, sûre d’elle, n’hésitant pas à monter à cheval comme un homme, Sophy n’a rien d’une jeune fille fragile et effacée, en d’autres termes de ce que le sombre et taciturne Charles d’Ombersley attend des femmes. D’ailleurs, ne devrait-il pas dompter l’impudente, avant que ses manières scandaleuses ne commencent à lui plaire un peu trop ? « Des personnages attachants, une plume élégante, un romantisme ébouriffant. Georgette Heyer nous donne à tous une magnifique leçon. » Katie Fforde",
+      "ean": "9782820507341",
+      "isbn": "2820507344",
+      "nbPages": 456,
+      "categories": [
+        "Fiction"
+      ],
+      "rating": 5,
+      "nbRatings": 1,
+      "image": "http://books.google.com/books/content?id=rcCHAQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "language": "fr",
+      "googlePlayLink": "https://play.google.com/store/books/details?id=rcCHAQAAQBAJ&rdid=book-rcCHAQAAQBAJ&rdot=1&source=gbs_api",
+      "priceNew": 5.99,
+      "priceRetail": 5.99
+    }
+  ]
+}
