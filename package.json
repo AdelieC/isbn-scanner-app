@@ -17,7 +17,8 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-webcam-barcode-scanner": "^0.0.2-rc2",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "webrtc-adapter": "^8.1.1"
   },
   "scripts": {
     "start": "concurrently \"yarn start-app\" \"yarn start-db\"",

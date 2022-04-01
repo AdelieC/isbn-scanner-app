@@ -1,15 +1,15 @@
 //libraries
 
 //services
+import useToggle from '../../../services/hooks/useToggle';
 
 //components
-import ToggleIconButton from '../../reused/ToggleIconButton';
-import { useState } from 'react';
 import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
 import AnimatedLink from '../../reused/AnimatedLink';
 import { MdHome, MdInfo } from 'react-icons/md';
 import { BiBarcodeReader, BiSearchAlt2 } from 'react-icons/bi';
 import { BsInputCursorText } from 'react-icons/bs';
+import IconButton from '../../reused/IconButton';
 
 const NAVLINKS = [
     {
@@ -40,13 +40,13 @@ const NAVLINKS = [
 ];
 
 function NavBar() {
-    const [isToggled, setIsToggled] = useState(false);
+    const { isOn, toggle } = useToggle();
     return (
         <>
             <nav
                 className={
                     'fixed h-screen w-screen top-0 bg-primaryLight text-tertiaryDark py-12' +
-                    (isToggled ? ' _animate-slide-left' : ' _animate-slide-right')
+                    (isOn ? ' _animate-slide-left' : ' _animate-slide-right')
                 }
             >
                 <ul className="w-full h-full font-heading text-3xl flex flex-col text-center justify-between items-stretch">
@@ -64,14 +64,18 @@ function NavBar() {
                     })}
                 </ul>
             </nav>
-            <ToggleIconButton
-                isToggled={isToggled}
-                setIsToggled={setIsToggled}
-                icon1={<CgMenuRight className="w-12 h-12" />}
-                icon2={<CgMenuRightAlt className="w-12 h-12 z-50" />}
-                color1={'primaryDark'}
-                color2={'tertiaryDark'}
+            <IconButton
+                callback={toggle}
+                color={isOn ? 'text-primaryDark' : 'text-tertiaryDark'}
+                icon={
+                    isOn ? (
+                        <CgMenuRight className="w-12 h-12" />
+                    ) : (
+                        <CgMenuRightAlt className="w-12 h-12 z-50" />
+                    )
+                }
             />
+            ;
         </>
     );
 }
