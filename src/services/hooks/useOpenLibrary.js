@@ -5,6 +5,10 @@ import { fetchBookDetails } from '../queries/other-apis/OpenLibraryApi';
 import { useEffect, useState } from 'react';
 import Author from '../../objects/Author';
 
+const getThumbnailUrl = (coverId) => {
+    return process.env.REACT_APP_OPEN_LIBRARY_COVERS_URL + '/' + coverId + '-M.jpg';
+};
+
 function useOpenLibrary({ isbn, book }) {
     const [noResult, setNoResult] = useState(false);
     const { data: bookData } = useQuery(
@@ -31,6 +35,7 @@ function useOpenLibrary({ isbn, book }) {
         }
 
         addOpenLibAuthorsData(book, details?.authors);
+        addImageUrl(book, details?.covers);
         book.categories = details?.subjects
             ? [...book.categories, ...details.subjects]
             : [...book.categories];
@@ -38,8 +43,13 @@ function useOpenLibrary({ isbn, book }) {
         book.publisher = book.publisher || details?.publishers[0];
         book.publishedAt = book.publishedAt || details?.publish_date;
         book.nbPages = book.nbPages || details?.number_of_pages;
-        book.image = book.image || bookData?.thumbnail_url;
         book.language = book.language || details?.languages?.key?.split('/').pop();
+    };
+
+    const addImageUrl = (book, covers) => {
+        if (!book.image && covers.length) {
+            book.image = getThumbnailUrl(covers[0]);
+        }
     };
 
     const addAuthor = (book, name, id = '') => {

@@ -43,6 +43,17 @@ function NavBar() {
     const { isOn, toggle } = useToggle();
     return (
         <>
+            <IconButton
+                callback={toggle}
+                color={isOn ? 'text-tertiaryDark' : 'text-primaryLight'}
+                icon={
+                    isOn ? (
+                        <CgMenuRight className="w-12 h-12" />
+                    ) : (
+                        <CgMenuRightAlt className="w-12 h-12 z-50" />
+                    )
+                }
+            />
             <nav
                 className={
                     'fixed h-screen w-screen top-0 bg-primaryLight text-tertiaryDark py-12' +
@@ -64,18 +75,6 @@ function NavBar() {
                     })}
                 </ul>
             </nav>
-            <IconButton
-                callback={toggle}
-                color={isOn ? 'text-primaryDark' : 'text-tertiaryDark'}
-                icon={
-                    isOn ? (
-                        <CgMenuRight className="w-12 h-12" />
-                    ) : (
-                        <CgMenuRightAlt className="w-12 h-12 z-50" />
-                    )
-                }
-            />
-            ;
         </>
     );
 }

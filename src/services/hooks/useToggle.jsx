@@ -5,7 +5,7 @@ function useToggle() {
     const toggle = () => {
         setIsOn(!isOn);
     };
-    return { isOn, toggle };
+    return { isOn, toggle, setIsOn };
 }
 
 useToggle.propTypes = {};
