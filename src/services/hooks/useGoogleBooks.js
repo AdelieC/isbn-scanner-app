@@ -1,9 +1,14 @@
-import PropTypes from 'prop-types';
-import Book from '../../objects/Book';
-import { useQuery } from 'react-query';
-import { fetchBookDetails, fetchBookId } from '../queries/other-apis/GoogleBooksApi';
-import Author from '../../objects/Author';
+//libraries
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useQuery } from 'react-query';
+
+//services
+import Author from '../../objects/Author';
+import Book from '../../objects/Book';
+import { fetchBookDetails, fetchBookId } from '../queries/other-apis/GoogleBooksApi';
+
+//components
 
 function useGoogleBooks({ isbn, book }) {
     const [noResult, setNoResult] = useState(false);
@@ -62,8 +67,6 @@ function useGoogleBooks({ isbn, book }) {
             book.priceRetail || saleInfo?.retailPrice
                 ? saleInfo.retailPrice?.amount + saleInfo.retailPrice?.currencyCode
                 : '';
-
-        console.log(book);
     };
 
     const addDimensions = (book, initialArray) => {
