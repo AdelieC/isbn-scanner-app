@@ -40,7 +40,7 @@ module.exports = {
                 40: '.40',
             },
             backgroundImage: {
-                hero: "url('/public/open-book-background.webp')",
+                hero: "url('./assets/img/open-book-background.webp')",
             },
             boxShadow: {
                 innerXl: 'inset 0px -20px 25px -5px rgba(0, 0, 0, 0.1)',
