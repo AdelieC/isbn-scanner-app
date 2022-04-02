@@ -2,7 +2,13 @@
 import PropTypes from 'prop-types';
 
 function BaseModal({ children }) {
-    return <div className="absolute h-screen w-screen bg-black p-12">{children}</div>;
+    return (
+        <div className="z-50 fixed top-0 left-0 h-screen w-screen bg-tertiaryDark bg-opacity-30 p-40">
+            <div className="bg-alertLight text-alertDark w-full h-full p-8 sm:p-16 rounded-xl shadow-xl flex flex-col justify-between items-center gap-4">
+                {children}
+            </div>
+        </div>
+    );
 }
 
 BaseModal.propTypes = {

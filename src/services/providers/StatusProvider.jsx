@@ -14,7 +14,7 @@ import FullLoader from '../../components/common/loaders/FullLoader';
 const StatusContext = createContext();
 
 function StatusProvider({ children }) {
-    const [success, setSuccess] = useState(null);
+    const [success, setSuccess] = useState(true);
     const [error, setError] = useState(null);
     const isFetching = useIsFetching();
     const isMutating = useIsMutating();
