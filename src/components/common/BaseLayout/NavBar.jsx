@@ -64,7 +64,7 @@ function NavBar() {
                     <h2 className="text-7xl text-secondaryDark">MENU</h2>
                     {NAVLINKS.map((link) => {
                         return (
-                            <li key={link.name}>
+                            <li key={link.name} onClick={toggle}>
                                 <AnimatedLink
                                     to={link.link}
                                     name={link.name}
