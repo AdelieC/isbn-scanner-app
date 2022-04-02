@@ -9,9 +9,7 @@ function IconButton({ callback, icon, color }) {
     return (
         <button
             onClick={callback}
-            className={
-                'h-10 w-10 dropShadow' + (color ? 'text-' + color : 'text-secondaryDark')
-            }
+            className={'h-10 w-10 z-50 dropShadow ' + (color || 'text-secondaryDark')}
         >
             {icon}
         </button>

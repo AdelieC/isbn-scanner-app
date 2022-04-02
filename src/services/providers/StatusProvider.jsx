@@ -5,7 +5,7 @@ import { useIsFetching, useIsMutating } from 'react-query';
 import ErrorModal from '../../components/common/modals/ErrorModal';
 import SuccessModal from '../../components/common/modals/SuccessModal';
 import FullLoader from '../../components/common/loaders/FullLoader';
-import ErrorBoundary from '../errors/ErrorBoundary';
+import ErrorBoundary from '../status/ErrorBoundary';
 
 //TODO : add error boundary, loader and error/success modal
 const StatusContext = createContext();
