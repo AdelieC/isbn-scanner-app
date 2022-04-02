@@ -15,7 +15,6 @@ function StatusProvider({ children }) {
     const [error, setError] = useState(null);
     const isFetching = useIsFetching();
     const isMutating = useIsMutating();
-    const isLoading = isFetching || isMutating;
     return (
         <StatusContext.Provider
             value={{
@@ -25,7 +24,7 @@ function StatusProvider({ children }) {
         >
             <ErrorBoundary>
                 {children}
-                {isLoading && <FullLoader />}
+                {isFetching + isMutating > 0 && <FullLoader />}
                 {error && <ErrorModal error={error} />}
                 {success && <SuccessModal success={success} />}
             </ErrorBoundary>

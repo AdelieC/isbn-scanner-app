@@ -7,7 +7,7 @@ import Footer from './Footer';
 
 //components
 
-function BaseLayout(props) {
+function BaseLayout() {
     return (
         <>
             <Header />
