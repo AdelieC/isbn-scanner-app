@@ -169,7 +169,7 @@ function useScan() {
         Quagga.stop();
     };
 
-    //switching light
+    //switching light on and off OR hiding button cause it's not supported
     const switchLight = () => {
         activeVideoTrack
             .applyConstraints({
