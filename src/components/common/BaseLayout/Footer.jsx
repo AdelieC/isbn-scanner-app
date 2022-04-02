@@ -8,7 +8,7 @@ import {
 
 function Footer(props) {
     return (
-        <footer className="bg-secondaryLight flex gap-4 p-8 justify-between w-full text-center text-primaryDark dark:text-primaryLight dark:bg-tertiaryDark font-heading text-xl">
+        <footer className="bg-secondaryLight flex gap-4 px-8 py-4 justify-center items-center w-full text-center text-primaryDark dark:text-primaryLight dark:bg-tertiaryDark font-heading text-xl">
             <h4>Isbn Scanner 2022</h4>
             <a
                 className="flex gap-2"
