@@ -1,5 +1,10 @@
 module.exports = {
-    content: ['./src/**/*.{js,jsx,ts,tsx}'],
+    content: [
+        './src/**/*.{js,jsx,ts,tsx,svg}',
+        './src/*.{js,jsx,ts,tsx,svg}',
+        './src/**/**/*.{js,jsx,ts,tsx,svg}',
+        './src/**/**/**/*.{js,jsx,ts,tsx,svg}',
+    ],
     darkMode: 'media',
     theme: {
         fontFamily: {
@@ -21,11 +26,11 @@ module.exports = {
             },
             colors: {
                 primaryLight: '#F8EADD',
-                primaryDark: 'rgb(40 44 52)',
+                primaryDark: '#AC7B84',
                 secondaryDark: '#DF9A57',
                 secondaryLight: '#FFFFFC',
-                tertiaryDark: '#AC7B84',
-                tertiaryLight: '#FFFFFC',
+                tertiaryDark: 'rgb(40 44 52)',
+                tertiaryLight: '#EFCDAA',
                 successDark: '#048BA8',
                 successLight: '#FFFFFC',
                 alertDark: '#B84A62',

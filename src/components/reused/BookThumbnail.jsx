@@ -1,7 +1,7 @@
 //libraries
 import PropTypes from 'prop-types';
 import Book from '../../objects/Book';
-import coverPlaceholder from '../../assets/cover.svg';
+import coverPlaceholder from '../../assets/img/cover.svg';
 import DetailsRow from './DetailsRow';
 
 //services
