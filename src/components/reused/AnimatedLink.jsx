@@ -8,11 +8,12 @@ const AnimatedLink = ({ to, name, icon }) => {
     const linkClasses = classNames(
         'w-full',
         'block',
-        'p-5',
+        'p-4',
         'flex',
         'items-center',
         'justify-center',
-        'gap-8',
+        'gap-4',
+        'sm:gap-8',
         {
             'bg-secondaryLight': match,
             'text-secondaryDark': match,

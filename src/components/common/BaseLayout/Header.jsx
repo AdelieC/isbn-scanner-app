@@ -6,8 +6,8 @@ import './Header.css';
 
 function Header() {
     return (
-        <header className="fixed z-50 top-0 left-0 w-full flex items-center justify-between gap-4 shadow-xl p-6 bg-secondaryLight text-primaryDark dark:bg-tertiaryDark dark:text-primaryLight">
-            <div id="logo" className="h-16">
+        <header className="fixed z-50 top-0 left-0 w-full flex items-center justify-between gap-4 shadow-xl py-4 px-4 sm:py-8 sm:px-10 bg-primaryDark text-primaryLight">
+            <div id="logo" className="h-12 sm:h-16">
                 <svg
                     className="fill-current"
                     height="100%"

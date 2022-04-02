@@ -5,7 +5,7 @@ module.exports = {
         './src/**/**/*.{js,jsx,ts,tsx,svg}',
         './src/**/**/**/*.{js,jsx,ts,tsx,svg}',
     ],
-    darkMode: 'media',
+    darkMode: 'class',
     theme: {
         fontFamily: {
             serif: ['CrimsonText', 'serif'],
