@@ -93,7 +93,7 @@ function useScan() {
     const [activeVideoTrack, setActiveVideoTrack] = useState(null);
     const [isScanning, setIsScanning] = useState(false);
     const [result, setResult] = useState(null);
-    const [hasLight, setHasLight] = useState(true);
+    const [hasLight, setHasLight] = useState(false);
     const { isOn: lightIsOn, toggle, setIsOn } = useToggle();
 
     const scan = async () => {
@@ -132,6 +132,7 @@ function useScan() {
         });
     };
 
+    //set active track and determine if it has a light
     const handleCurrentVideoTrackSpecificities = () => {
         const currentTrack = Quagga.CameraAccess.getActiveTrack();
         const capabilities =

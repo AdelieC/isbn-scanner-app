@@ -1,9 +1,14 @@
+//libraries
 import PropTypes from 'prop-types';
-import Book from '../../objects/Book';
 import { useQuery } from 'react-query';
 import { fetchBookDetails } from '../queries/other-apis/OpenLibraryApi';
 import { useEffect, useState } from 'react';
+
+//services
+import Book from '../../objects/Book';
 import Author from '../../objects/Author';
+
+//components
 
 const getThumbnailUrl = (coverId) => {
     return process.env.REACT_APP_OPEN_LIBRARY_COVERS_URL + '/' + coverId + '-M.jpg';
