@@ -4,6 +4,7 @@ module.exports = {
         './src/*.{js,jsx,ts,tsx,svg}',
         './src/**/**/*.{js,jsx,ts,tsx,svg}',
         './src/**/**/**/*.{js,jsx,ts,tsx,svg}',
+        './public/**.{js,jsx,ts,tsx,svg,html}',
     ],
     darkMode: 'class',
     theme: {
@@ -29,7 +30,7 @@ module.exports = {
                 primaryDark: '#AC7B84',
                 secondaryDark: '#DF9A57',
                 secondaryLight: '#FFFFFC',
-                tertiaryDark: 'rgb(40 44 52)',
+                tertiaryDark: '#23272F',
                 tertiaryLight: '#EFCDAA',
                 successDark: '#048BA8',
                 successLight: '#FFFFFC',
@@ -41,6 +42,7 @@ module.exports = {
             },
             backgroundImage: {
                 hero: "url('./assets/img/open-book-background.webp')",
+                frame: "url('./assets/img/frame.svg')",
             },
             boxShadow: {
                 innerXl: 'inset 0px -20px 25px -5px rgba(0, 0, 0, 0.1)',

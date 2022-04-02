@@ -26,7 +26,7 @@ function useOpenLibrary({ isbn, book }) {
 
     useEffect(() => {
         if (bookData?.details) fillBookWithData();
-        else setNoResult(true);
+        else if (bookData) setNoResult(true);
     }, [bookData]);
 
     const fillBookWithData = () => {

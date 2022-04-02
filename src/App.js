@@ -24,6 +24,7 @@ document
     .querySelector('body')
     .classList.add(
         'w-screen',
+        'h-screen',
         'overflow-x-hidden',
         'flex',
         'flex-col',
@@ -31,7 +32,7 @@ document
         'justify-between',
         'font-serif',
         'text-xl',
-        'bg-primaryLight',
+        'bg-secondaryLight',
         'dark:bg-primaryDark',
         'dark:text-primaryLight'
     );

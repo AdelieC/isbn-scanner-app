@@ -196,6 +196,7 @@ function useScan() {
     }, []);
 
     return {
+        stopScan,
         isScanning,
         lightIsOn,
         switchLight,

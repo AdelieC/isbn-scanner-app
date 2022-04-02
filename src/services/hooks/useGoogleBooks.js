@@ -27,7 +27,7 @@ function useGoogleBooks({ isbn, book }) {
 
     useEffect(() => {
         if (bookData?.volumeInfo) fillBookWithData();
-        else setNoResult(true);
+        else if (bookData) setNoResult(true);
     }, [bookData]);
 
     const fillBookWithData = () => {

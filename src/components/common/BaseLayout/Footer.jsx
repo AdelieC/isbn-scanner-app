@@ -13,7 +13,7 @@ const YEAR = new Date().getFullYear();
 
 function Footer() {
     return (
-        <footer className="bg-primaryDark flex gap-4 px-8 py-4 justify-center text-sm sm:text-md items-center w-full text-center text-primaryLight font-heading text-xl">
+        <footer className="bg-primaryDark w-screen flex gap-4 px-8 py-4 justify-center text-sm sm:text-md items-center text-center text-primaryLight font-heading text-xl">
             <h4 className="">
                 Isbn Scanner {YEAR} v-{VERSION}
             </h4>

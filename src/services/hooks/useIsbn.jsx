@@ -18,7 +18,12 @@ function useIsbn() {
     const { noResult: noGoogleResult } = useGoogleBooks({ isbn, book });
     const { noResult: noOpenLibResult } = useOpenLibrary({ isbn, book });
 
-    return { book, setIsbn, reset, noResult: noGoogleResult && noOpenLibResult };
+    return {
+        book,
+        setIsbn,
+        reset,
+        noResult: noGoogleResult && noOpenLibResult,
+    };
 }
 
 useIsbn.propTypes = {};
