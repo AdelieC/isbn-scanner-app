@@ -3,11 +3,12 @@ import NavBar from './NavBar';
 
 //stylesheets
 import './Header.css';
+import PropTypes from 'prop-types';
 
-function Header() {
+function Header({ title }) {
     return (
-        <header className="fixed z-50 top-0 left-0 w-full flex items-center justify-between gap-4 shadow-xl p-6 bg-secondaryLight text-primaryDark dark:bg-tertiaryDark dark:text-primaryLight">
-            <div id="logo" className="h-16">
+        <header className="fixed z-50 top-0 left-0 w-full flex items-center justify-between gap-4 shadow-xl py-4 px-4 sm:py-8 sm:px-10 bg-primaryDark text-primaryLight">
+            <div id="logo" className="h-12 sm:h-16">
                 <svg
                     className="fill-current"
                     height="100%"
@@ -54,13 +55,15 @@ function Header() {
                     </g>
                 </svg>
             </div>
-            <h1
-                id="title"
-                className="text-4xl font-heading self-center text-tertiaryDark dark:text-secondaryLight"
-            />
+            <h1 id="title" className="text-xl sm:text-4xl font-heading self-center">
+                {title || 'ISBN Scanner'}
+            </h1>
             <NavBar />
         </header>
     );
 }
 
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+};
 export default Header;

@@ -2,12 +2,15 @@
 import { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIsFetching, useIsMutating } from 'react-query';
+
+//services
+import ErrorBoundary from '../status/ErrorBoundary';
+
+//components
 import ErrorModal from '../../components/common/modals/ErrorModal';
 import SuccessModal from '../../components/common/modals/SuccessModal';
 import FullLoader from '../../components/common/loaders/FullLoader';
-import ErrorBoundary from '../status/ErrorBoundary';
 
-//TODO : add error boundary, loader and error/success modal
 const StatusContext = createContext();
 
 function StatusProvider({ children }) {
@@ -15,7 +18,6 @@ function StatusProvider({ children }) {
     const [error, setError] = useState(null);
     const isFetching = useIsFetching();
     const isMutating = useIsMutating();
-    const isLoading = isFetching || isMutating;
     return (
         <StatusContext.Provider
             value={{
@@ -25,7 +27,7 @@ function StatusProvider({ children }) {
         >
             <ErrorBoundary>
                 {children}
-                {isLoading && <FullLoader />}
+                {isFetching + isMutating > 0 && <FullLoader />}
                 {error && <ErrorModal error={error} />}
                 {success && <SuccessModal success={success} />}
             </ErrorBoundary>

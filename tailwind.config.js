@@ -1,6 +1,12 @@
 module.exports = {
-    content: ['./src/**/*.{js,jsx,ts,tsx}'],
-    darkMode: 'media',
+    content: [
+        './src/**/*.{js,jsx,ts,tsx,svg}',
+        './src/*.{js,jsx,ts,tsx,svg}',
+        './src/**/**/*.{js,jsx,ts,tsx,svg}',
+        './src/**/**/**/*.{js,jsx,ts,tsx,svg}',
+        './public/**.{js,jsx,ts,tsx,svg,html}',
+    ],
+    darkMode: 'class',
     theme: {
         fontFamily: {
             serif: ['CrimsonText', 'serif'],
@@ -21,11 +27,11 @@ module.exports = {
             },
             colors: {
                 primaryLight: '#F8EADD',
-                primaryDark: 'rgb(40 44 52)',
+                primaryDark: '#AC7B84',
                 secondaryDark: '#DF9A57',
                 secondaryLight: '#FFFFFC',
-                tertiaryDark: '#AC7B84',
-                tertiaryLight: '#FFFFFC',
+                tertiaryDark: '#23272F',
+                tertiaryLight: '#EFCDAA',
                 successDark: '#048BA8',
                 successLight: '#FFFFFC',
                 alertDark: '#B84A62',
@@ -35,7 +41,8 @@ module.exports = {
                 40: '.40',
             },
             backgroundImage: {
-                hero: "url('/public/open-book-background.webp')",
+                hero: "url('./assets/img/open-book-background.webp')",
+                frame: "url('./assets/img/frame.svg')",
             },
             boxShadow: {
                 innerXl: 'inset 0px -20px 25px -5px rgba(0, 0, 0, 0.1)',

@@ -11,31 +11,33 @@ import { BiBarcodeReader, BiSearchAlt2 } from 'react-icons/bi';
 import { BsInputCursorText } from 'react-icons/bs';
 import IconButton from '../../reused/IconButton';
 
+const ICONS_CLASSLIST = 'h-8 w-8 sm:w-12 sm:h-12';
+
 const NAVLINKS = [
     {
         link: '/home',
         name: 'Home',
-        icon: <MdHome className="w-10 h-10" />,
+        icon: <MdHome className={ICONS_CLASSLIST} />,
     },
     {
         link: '/input',
         name: 'Enter an ISBN',
-        icon: <BsInputCursorText className="w-10 h-10" />,
+        icon: <BsInputCursorText className={ICONS_CLASSLIST} />,
     },
     {
         link: '/scan',
         name: 'Scan a barcode',
-        icon: <BiBarcodeReader className="w-10 h-10" />,
+        icon: <BiBarcodeReader className={ICONS_CLASSLIST} />,
     },
     {
         link: '/search/form',
         name: 'Search in books',
-        icon: <BiSearchAlt2 className="w-10 h-10" />,
+        icon: <BiSearchAlt2 className={ICONS_CLASSLIST} />,
     },
     {
         link: '/about',
         name: 'About us',
-        icon: <MdInfo className="w-10 h-10" />,
+        icon: <MdInfo className={ICONS_CLASSLIST} />,
     },
 ];
 
@@ -45,26 +47,26 @@ function NavBar() {
         <>
             <IconButton
                 callback={toggle}
-                color={isOn ? 'text-tertiaryDark' : 'text-primaryLight'}
+                color={isOn ? 'text-primaryDark' : 'text-primaryLight'}
                 icon={
                     isOn ? (
-                        <CgMenuRight className="w-12 h-12" />
+                        <CgMenuRight className={ICONS_CLASSLIST} />
                     ) : (
-                        <CgMenuRightAlt className="w-12 h-12 z-50" />
+                        <CgMenuRightAlt className={ICONS_CLASSLIST + ' z-50'} />
                     )
                 }
             />
             <nav
                 className={
-                    'fixed h-screen w-screen top-0 bg-primaryLight text-tertiaryDark py-12' +
+                    'fixed h-screen w-screen top-0 bg-primaryLight text-primaryDark py-12' +
                     (isOn ? ' _animate-slide-left' : ' _animate-slide-right')
                 }
             >
-                <ul className="w-full h-full font-heading text-3xl flex flex-col text-center justify-between items-stretch">
-                    <h2 className="text-7xl text-secondaryDark">MENU</h2>
+                <ul className="w-full h-full font-heading text-2xl sm:text-3xl flex flex-col text-center justify-between items-stretch">
+                    <h2 className="text-6xl sm:text-7xl text-secondaryDark">MENU</h2>
                     {NAVLINKS.map((link) => {
                         return (
-                            <li key={link.name}>
+                            <li key={link.name} onClick={toggle}>
                                 <AnimatedLink
                                     to={link.link}
                                     name={link.name}

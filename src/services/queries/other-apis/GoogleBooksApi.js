@@ -24,7 +24,7 @@ const fetchBookId = async (isbn) => {
 
 const fetchBookDetails = async (id) => {
     const data = await fetch(bookDetailsUrl(id), googleApiConfig);
-    return data.ok ? data.json().then((res) => res) : '';
+    return data.ok ? data.json().then((res) => res) : [];
 };
 
 export { fetchBookDetails, fetchBookId };

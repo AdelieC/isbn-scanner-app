@@ -1,29 +1,46 @@
-import PropTypes from 'prop-types';
-import Book from '../../objects/Book';
-import { useQuery } from 'react-query';
-import { fetchBookDetails, fetchBookId } from '../queries/other-apis/GoogleBooksApi';
-import Author from '../../objects/Author';
+//libraries
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useQuery } from 'react-query';
+
+//services
+import Author from '../../objects/Author';
+import Book from '../../objects/Book';
+import { fetchBookDetails, fetchBookId } from '../queries/other-apis/GoogleBooksApi';
+
+//components
 
 function useGoogleBooks({ isbn, book }) {
     const [noResult, setNoResult] = useState(false);
 
-    const { data: bookId } = useQuery(['googleBookId', isbn], () => fetchBookId(isbn), {
-        enabled: !!isbn,
-    });
+    const { refetch: refetchId, data: bookId } = useQuery(
+        ['googleBookId', isbn],
+        () => fetchBookId(isbn),
+        {
+            enabled: false,
+        }
+    );
 
-    const { data: bookData } = useQuery(
+    const { refetch: refetchBook, data: bookData } = useQuery(
         ['googleBookDetails', bookId],
         () => fetchBookDetails(bookId),
         {
-            enabled: !!bookId,
+            enabled: false,
         }
     );
 
     useEffect(() => {
         if (bookData?.volumeInfo) fillBookWithData();
-        else setNoResult(true);
+        else if (bookData?.length === 0) setNoResult(true);
     }, [bookData]);
+
+    useEffect(() => {
+        if (isbn) refetchId().then(() => refetchBook());
+    }, [isbn]);
+
+    useEffect(() => {
+        if (bookId) refetchBook();
+    }, [bookId]);
 
     const fillBookWithData = () => {
         const volumeInfo = bookData?.volumeInfo;
@@ -62,8 +79,6 @@ function useGoogleBooks({ isbn, book }) {
             book.priceRetail || saleInfo?.retailPrice
                 ? saleInfo.retailPrice?.amount + saleInfo.retailPrice?.currencyCode
                 : '';
-
-        console.log(book);
     };
 
     const addDimensions = (book, initialArray) => {
