@@ -9,9 +9,9 @@ import StatusProvider from './services/providers/StatusProvider';
 //components
 import BaseLayout from './components/common/BaseLayout/BaseLayout';
 import HomePage from './pages/HomePage';
-import TitleProvider from './services/providers/TitleProvider';
 import IsbnScannerPage from './pages/IsbnScannerPage';
 import IsbnInputPage from './pages/IsbnInputPage';
+import BookDetailsPage from './pages/BookDetailsPage';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -40,20 +40,19 @@ document
 
 function App() {
     return (
-        <TitleProvider>
-            <QueryClientProvider client={queryClient}>
-                <StatusProvider>
-                    <Routes>
-                        <Route path="/" element={<BaseLayout />}>
-                            <Route path="home" element={<HomePage />} />
-                            <Route path="scan" element={<IsbnScannerPage />} />
-                            <Route path="input" element={<IsbnInputPage />} />
-                        </Route>
-                    </Routes>
-                </StatusProvider>
-                <ReactQueryDevtools initialisOpen />
-            </QueryClientProvider>
-        </TitleProvider>
+        <QueryClientProvider client={queryClient}>
+            <StatusProvider>
+                <Routes>
+                    <Route path="/" element={<BaseLayout />}>
+                        <Route path="home" element={<HomePage />} />
+                        <Route path="scan" element={<IsbnScannerPage />} />
+                        <Route path="input" element={<IsbnInputPage />} />
+                        <Route path="book/:isbn" element={<BookDetailsPage />} />
+                    </Route>
+                </Routes>
+            </StatusProvider>
+            <ReactQueryDevtools initialisOpen />
+        </QueryClientProvider>
     );
 }
 

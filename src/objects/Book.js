@@ -1,25 +1,28 @@
 import Dimensions from './Dimensions';
 
 export default class Book {
-    constructor() {
-        this._title = '';
-        this._authors = [];
-        this._ean = '';
-        this._isbn = '';
-        this._publishedAt = '';
-        this._rating = 0;
-        this._nbRatings = 0;
-        this._dimensions = new Dimensions();
-        this._nbPages = 0;
-        this._language = '';
-        this._image = '';
-        this._publisher = '';
-        this._synopsis = '';
-        this._priceRetail = '';
-        this._priceNew = '';
-        this._googlePlayLink = '';
-        this._genre = '';
-        this._categories = [];
+    constructor(object = null) {
+        if (object) Object.assign(this, object);
+        else {
+            this._title = '';
+            this._authors = [];
+            this._ean = '';
+            this._isbn = '';
+            this._publishedAt = '';
+            this._rating = 0;
+            this._nbRatings = 0;
+            this._dimensions = new Dimensions();
+            this._nbPages = 0;
+            this._language = '';
+            this._image = '';
+            this._publisher = '';
+            this._synopsis = '';
+            this._priceRetail = '';
+            this._priceNew = '';
+            this._googlePlayLink = '';
+            this._genre = '';
+            this._categories = [];
+        }
     }
 
     get title() {
