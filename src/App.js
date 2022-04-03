@@ -11,6 +11,7 @@ import BaseLayout from './components/common/BaseLayout/BaseLayout';
 import HomePage from './pages/HomePage';
 import TitleProvider from './services/providers/TitleProvider';
 import IsbnScannerPage from './pages/IsbnScannerPage';
+import IsbnInputPage from './pages/IsbnInputPage';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -46,6 +47,7 @@ function App() {
                         <Route path="/" element={<BaseLayout />}>
                             <Route path="home" element={<HomePage />} />
                             <Route path="scan" element={<IsbnScannerPage />} />
+                            <Route path="input" element={<IsbnInputPage />} />
                         </Route>
                     </Routes>
                 </StatusProvider>

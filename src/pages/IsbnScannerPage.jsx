@@ -12,11 +12,13 @@ import BookThumbnail from '../components/reused/BookThumbnail';
 import IconButton from '../components/reused/IconButton';
 import { HiLightBulb, HiOutlineLightBulb } from 'react-icons/hi';
 import { MdOutlineCameraswitch, MdOutlineKeyboardBackspace } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 
 const ICONS_CLASSLIST = 'w-8 h-8 md:w-12 md:h-12';
+const TITLE = 'Scan an ISBN';
 
 function IsbnScannerPage() {
+    const { setTitle } = useOutletContext();
     const {
         stopScan,
         isScanning,
@@ -32,6 +34,10 @@ function IsbnScannerPage() {
     useEffect(() => {
         if (result) setIsbn(result);
     }, [result]);
+
+    useEffect(() => {
+        setTitle(TITLE);
+    }, []);
 
     return (
         <div className="h-full w-full overflow-hidden relative">

@@ -16,17 +16,25 @@ const getThumbnailUrl = (coverId) => {
 
 function useOpenLibrary({ isbn, book }) {
     const [noResult, setNoResult] = useState(false);
-    const { data: bookData } = useQuery(
+    const { data: bookData, refetch } = useQuery(
         ['openLibraryDetails', isbn],
         () => fetchBookDetails(isbn),
         {
-            enabled: !!isbn,
+            enabled: false,
         }
     );
+    useEffect(() => {
+        if (isbn) refetch();
+    }, [isbn]);
 
     useEffect(() => {
-        if (bookData?.details) fillBookWithData();
-        else if (bookData) setNoResult(true);
+        console.log('in openlib', bookData);
+        if (bookData?.details) {
+            fillBookWithData();
+        } else if (isbn && bookData?.length === 0) {
+            console.log('no res');
+            setNoResult(true);
+        }
     }, [bookData]);
 
     const fillBookWithData = () => {
@@ -52,7 +60,7 @@ function useOpenLibrary({ isbn, book }) {
     };
 
     const addImageUrl = (book, covers) => {
-        if (!book.image && covers.length) {
+        if (!book.image && covers?.length) {
             book.image = getThumbnailUrl(covers[0]);
         }
     };
