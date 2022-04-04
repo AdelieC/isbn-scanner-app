@@ -35,7 +35,7 @@ function useGoogleBooks({ isbn, book }) {
     }, [bookData]);
 
     useEffect(() => {
-        if (isbn) refetchId().then(() => refetchBook());
+        if (isbn) refetchId();
     }, [isbn]);
 
     useEffect(() => {
@@ -45,7 +45,6 @@ function useGoogleBooks({ isbn, book }) {
     const fillBookWithData = () => {
         const volumeInfo = bookData?.volumeInfo;
         const saleInfo = bookData?.saleInfo;
-
         if (volumeInfo?.industryIdentifiers?.length) {
             for (let entry of bookData.volumeInfo.industryIdentifiers) {
                 if (entry.type === 'ISBN_10') {
@@ -88,11 +87,19 @@ function useGoogleBooks({ isbn, book }) {
     };
 
     const addAuthor = (book, name) => {
-        const author = new Author();
-        const nameArray = name.split(' ');
-        author.firstName = nameArray.shift();
-        author.lastName = nameArray.join(' ');
-        book.authors.push(author);
+        if (!authorExists(book?.authors, name?.toUpperCase())) {
+            const author = new Author();
+            const nameArray = name.toUpperCase().split(' ');
+            author.firstName = nameArray.shift();
+            author.lastName = nameArray.join(' ');
+            book.authors.push(author);
+        }
+    };
+
+    const authorExists = (authors, author) => {
+        return authors?.some((existingAuthor) =>
+            author?.includes(existingAuthor.firstName)
+        );
     };
 
     return { noResult };

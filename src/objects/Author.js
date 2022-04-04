@@ -7,8 +7,4 @@ export default class Author {
         this.image = '';
         this.openLibraryId = '';
     }
-
-    toString() {
-        return this.firstName + ' ' + this.lastName;
-    }
 }

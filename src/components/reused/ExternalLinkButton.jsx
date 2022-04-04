@@ -1,47 +1,42 @@
 //libraries
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
 //services
 
 //components
 
-function LinkButton({
+function ExternalLinkButton({
     link,
     icon = '',
     background = 'bg-successDark',
     textColor = 'text-successLight',
     buttonText,
-    linkState,
+    target = '_BLANK',
 }) {
-    useEffect(() => {
-        console.log(link);
-    }, []);
     return (
-        <Link
+        <a
             className={
                 'flex items-center justify-center gap-2 px-4 py-2 font-heading rounded-lg shadow-lg ' +
                 background +
                 ' ' +
                 textColor
             }
-            to={link}
-            state={linkState}
+            href={link}
+            target={target}
         >
             {icon}
             {buttonText}
-        </Link>
+        </a>
     );
 }
 
-LinkButton.propTypes = {
+ExternalLinkButton.propTypes = {
     link: PropTypes.string.isRequired,
     icon: PropTypes.element,
     background: PropTypes.string,
     textColor: PropTypes.string,
     buttonText: PropTypes.string.isRequired,
-    linkState: PropTypes.object,
+    target: PropTypes.string,
 };
 
-export default LinkButton;
+export default ExternalLinkButton;

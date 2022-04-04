@@ -28,19 +28,17 @@ function useOpenLibrary({ isbn, book }) {
     }, [isbn]);
 
     useEffect(() => {
-        console.log('in openlib', bookData);
         if (bookData?.details) {
             fillBookWithData();
         } else if (isbn && bookData?.length === 0) {
-            console.log('no res');
             setNoResult(true);
         }
     }, [bookData]);
 
     const fillBookWithData = () => {
         const details = bookData?.details;
-        book.isbn = book.isbn || details?.isbn_10[0];
-        book.ean = book.ean || details?.isbn_13[0];
+        book.isbn = book.isbn || (details?.isbn_10 ? details.isbn_10[0] : '');
+        book.ean = book.ean || (details?.isbn_13 ? details.isbn_13[0] : '');
 
         const description = details?.description;
         if (description) {
@@ -66,18 +64,26 @@ function useOpenLibrary({ isbn, book }) {
     };
 
     const addAuthor = (book, name, id = '') => {
-        const author = new Author();
-        const nameArray = name.split(' ');
-        author.firstName = nameArray.shift();
-        author.lastName = nameArray.join(' ');
-        author.openLibraryId = id;
-        book.authors.push(author);
+        if (!authorExists(book?.authors, name?.toUpperCase())) {
+            const author = new Author();
+            const nameArray = name.toUpperCase().split(' ');
+            author.firstName = nameArray.shift();
+            author.lastName = nameArray.join(' ');
+            author.openLibraryId = id;
+            book.authors.push(author);
+        }
+    };
+
+    const authorExists = (authors, author) => {
+        return authors?.some((existingAuthor) =>
+            author?.includes(existingAuthor.lastName)
+        );
     };
 
     const addOpenLibAuthorsData = (book, authorsData) => {
-        authorsData.forEach((entry) => {
+        authorsData?.forEach((entry) => {
             const matchingAuthors = book.authors?.filter((author) =>
-                entry.name.toLowerCase().includes(author.lastName.toLowerCase())
+                entry.name.toUpperCase().includes(author.lastName.toUpperCase())
             );
             const authorId = entry.key.split('/').pop();
             if (matchingAuthors.length) matchingAuthors[0].openLibraryId = authorId;

@@ -18,13 +18,13 @@ const bookIdUrl = (isbn) => {
 const fetchBookId = async (isbn) => {
     const data = await fetch(bookIdUrl(isbn), googleApiConfig);
     return data.ok
-        ? data.json().then((res) => (res?.items?.length ? res?.items[0]?.id : ''))
-        : '';
+        ? data.json().then((res) => (res?.items?.length ? res?.items[0]?.id : null))
+        : null;
 };
 
 const fetchBookDetails = async (id) => {
     const data = await fetch(bookDetailsUrl(id), googleApiConfig);
-    return data.ok ? data.json().then((res) => res) : [];
+    return data.ok ? data.json().then((res) => (res?.volumeInfo ? res : [])) : [];
 };
 
 export { fetchBookDetails, fetchBookId };

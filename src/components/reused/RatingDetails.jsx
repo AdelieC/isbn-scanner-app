@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 
-function RatingDetails({ rating, nbRatings, scale }) {
+function RatingDetails({ rating, nbRatings, scale = 5 }) {
     return (
         <div className="text-tertiaryDark font-heading text-md flex gap-1 items-center">
             {rating + '/' + scale}
@@ -10,8 +10,8 @@ function RatingDetails({ rating, nbRatings, scale }) {
 }
 
 RatingDetails.propTypes = {
-    rating: PropTypes.func,
-    nbRatings: PropTypes.func,
+    rating: PropTypes.number.isRequired,
+    nbRatings: PropTypes.number.isRequired,
     scale: PropTypes.number,
 };
 

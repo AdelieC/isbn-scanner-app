@@ -6,6 +6,9 @@ import DetailsRow from './DetailsRow';
 import LinkButton from './LinkButton';
 import RatingStars from './RatingStars';
 import RatingDetails from './RatingDetails';
+import { BsEyeglasses } from 'react-icons/bs';
+import { getSnippet } from '../../services/utils/StringFunctions';
+import { getAuthorFullName } from '../../services/utils/BookDataFunctions';
 
 //services
 
@@ -23,11 +26,11 @@ function BookThumbnail({ book }) {
                         nbRatings={book?.nbRatings}
                     />
                 </div>
-
                 <LinkButton
                     buttonText={'Details'}
                     link={'/book/' + (book?.isbn || book?.ean)}
                     linkState={{ book: book }}
+                    icon={<BsEyeglasses className="w-8 h-8" />}
                 />
             </div>
             <div className="flex gap-4 justify-between">
@@ -38,32 +41,27 @@ function BookThumbnail({ book }) {
                 />
                 <div className="grow flex flex-col justify-between gap-2 self-stretch">
                     <p className="font-heading text-secondaryDark text-xl">
-                        Written by{' '}
-                        {book?.authors.map((author, i) => {
-                            return author + (i < book.authors.length - 1 ? ', ' : '');
+                        <span className="text-sm">Written by</span>{' '}
+                        {book?.authors?.map((author, i) => {
+                            return (
+                                <span key={author.fullName}>
+                                    {getAuthorFullName(author) +
+                                        (i < book.authors.length - 1 ? ', ' : '')}
+                                </span>
+                            );
                         })}
                     </p>
                     <DetailsRow description={'Published'} value={book?.publishedAt} />
                     <DetailsRow description={'Publisher'} value={book?.publisher} />
                     <DetailsRow description={'EAN'} value={book?.ean} />
                     <DetailsRow description={'ISBN'} value={book?.isbn} />
-                    <div className="flex gap-4 justify-between">
-                        <div className="flex flex-col gap-2">
-                            <p className="flex items-center gap-2 font-heading text-secondaryDark text-xl">
-                                <span className="text-tertiaryDark text-xs">
-                                    Price new :{' '}
-                                </span>
-                                {book?.priceNew || 'unknown'}
-                            </p>
-                            <p className="flex items-center gap-2 font-heading text-secondaryDark text-xl">
-                                <span className="text-tertiaryDark text-xs">
-                                    Price retail :{' '}
-                                </span>
-                                {book?.priceRetail || 'unknown'}
-                            </p>
-                        </div>
-                        <DetailsRow value={book?.synopsis} />
-                    </div>
+                    <DetailsRow description={'Price new'} value={book?.priceRetail} />
+                    <DetailsRow description={'Price retail'} value={book?.priceNew} />
+                    {book?.synopsis?.length > 0 ? (
+                        <DetailsRow value={'“' + getSnippet(book.synopsis) + '”'} />
+                    ) : (
+                        <p className="font-heading text-sm">No synopsis, sorry!</p>
+                    )}
                 </div>
             </div>
         </div>
