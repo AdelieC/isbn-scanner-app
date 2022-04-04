@@ -5,7 +5,9 @@ import { useEffect } from 'react';
 import Book from '../objects/Book';
 import useIsbn from '../services/hooks/useIsbn';
 import coverPlaceholder from '../assets/img/cover.svg';
+import RatingStars from '../components/reused/RatingStars';
 import DetailsRow from '../components/reused/DetailsRow';
+import RatingDetails from '../components/reused/RatingDetails';
 
 function BookDetailsPage() {
     const { state } = useLocation();
@@ -23,13 +25,13 @@ function BookDetailsPage() {
             <h1 className="text-4xl font-heading text-center text-secondaryDark">
                 {book?.title}
             </h1>
-            <section className="flex justify-between items-center gap-4 w-10/12 max-w-4xl ">
+            <section className="flex gap-8 w-10/12 max-w-4xl">
                 <img
                     className="shadow-xl w-32 sm:w-44 h-52 sm:h-72 object-cover object-center"
                     src={book?.image || coverPlaceholder}
                     alt={book?.title}
                 />
-                <div className="flex flex-col gap-2">
+                <div className="grow flex flex-col justify-between gap-2 self-stretch">
                     <p className="font-heading text-secondaryDark text-xl">
                         Written by{' '}
                         {book?.authors.map((author, i) => {
@@ -42,6 +44,30 @@ function BookDetailsPage() {
                     <p className="font-heading text-primaryDark text-sm">
                         Editions {book?.publisher}
                     </p>
+                    <div className="flex gap-4 justify-between">
+                        <div className="flex flex-col gap-2">
+                            <p className="flex items-center gap-2 font-heading text-secondaryDark text-xl">
+                                <span className="text-tertiaryDark text-xs">
+                                    Price new :{' '}
+                                </span>
+                                {book?.priceNew || 'unknown'}
+                            </p>
+                            <p className="flex items-center gap-2 font-heading text-secondaryDark text-xl">
+                                <span className="text-tertiaryDark text-xs">
+                                    Price retail :{' '}
+                                </span>
+                                {book?.priceRetail || 'unknown'}
+                            </p>
+                        </div>
+                        <div className="flex flex-col justify-center items-center">
+                            <RatingStars rating={book?.rating} scale={5} />
+                            <RatingDetails
+                                rating={book?.rating}
+                                scale={5}
+                                nbRatings={book?.nbRatings}
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className="flex flex-col justify-around items-center gap-4 w-10/12 max-w-4xl bg-primaryLight shadow-xl rounded-xl p-8">
