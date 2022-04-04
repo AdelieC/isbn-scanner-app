@@ -32,31 +32,36 @@ function IsbnInputPage(props) {
     }, [book]);
 
     return (
-        <div className="my-12 flex flex-col justify-around items-center grow gap-8 w-10/12 max-w-4xl bg-primaryLight shadow-xl rounded-xl p-12">
+        <div className="my-12 flex flex-col items-center grow gap-8 w-10/12 max-w-4xl bg-primaryLight shadow-xl rounded-xl p-12">
             <h2 className="text-secondaryDark text-4xl text-center font-heading">
                 Search by ISBN/EAN
             </h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="flex gap-2 items-center" onSubmit={handleSubmit(onSubmit)}>
                 <input
-                    className="rounded-md shadow-md bg-secondaryLight w-max-4xl px-3 py-2"
+                    className="font-heading rounded-md shadow-md bg-secondaryLight w-96 w-max-5xl px-4 py-2"
                     type="text"
                     placeholder={PLACEHOLDER}
                     name="isbn"
                     {...register('isbn', {})}
                 />
                 <button
-                    className="flex gap-2 justify-center items-center px-3 py-2 font-heading rounded-lg shadow-lg text-successLight bg-successDark"
+                    className="flex gap-2 justify-center items-center px-4 py-2 font-heading rounded-lg shadow-lg text-successLight bg-secondaryDark"
                     type="submit"
                 >
                     <BiSearchAlt2 className="w-8 h-8" />
                     Search
                 </button>
             </form>
-            {book?.title && <BookThumbnail book={book} />}
-            {noResult && (
+            {noResult ? (
                 <BaseModal>
                     <p>Le livre n&apos;a pas été trouvé</p>
                 </BaseModal>
+            ) : book?.title ? (
+                <BookThumbnail book={book} />
+            ) : (
+                <div className="text-primaryDark font-heading my-auto">
+                    Search results will appear here...
+                </div>
             )}
         </div>
     );

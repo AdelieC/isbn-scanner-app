@@ -15,8 +15,18 @@ function useIsbn() {
         setBook(new Book());
         setIsbn(null);
     };
-    const { noResult: noGoogleResult } = useGoogleBooks({ isbn, book });
-    const { noResult: noOpenLibResult } = useOpenLibrary({ isbn, book });
+    const { noResult: noGoogleResult } = useGoogleBooks({
+        isbn,
+        book,
+    });
+    const { noResult: noOpenLibResult } = useOpenLibrary({
+        isbn,
+        book,
+    });
+
+    useEffect(() => {
+        console.log(book);
+    }, [book]);
 
     useEffect(() => {
         console.log(noOpenLibResult, noGoogleResult);

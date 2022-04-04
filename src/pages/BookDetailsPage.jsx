@@ -1,24 +1,36 @@
 //libraries
 
 import { useLocation, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import Book from '../objects/Book';
+import { useEffect, useState } from 'react';
 import useIsbn from '../services/hooks/useIsbn';
 import coverPlaceholder from '../assets/img/cover.svg';
 import RatingStars from '../components/reused/RatingStars';
 import DetailsRow from '../components/reused/DetailsRow';
 import RatingDetails from '../components/reused/RatingDetails';
+import { GoQuestion } from 'react-icons/go';
+import { RiShoppingCart2Line } from 'react-icons/ri';
+import { getAuthorFullName } from '../services/utils/BookDataFunctions';
+import Tag from '../components/reused/Tag';
+import ExternalLinkButton from '../components/reused/ExternalLinkButton';
 
 function BookDetailsPage() {
     const { state } = useLocation();
     const { isbn } = useParams();
-    const { book: bookFetched, setIsbn } = useIsbn();
-    const initialBook = new Book(state?.book);
-    const book = initialBook || bookFetched;
+    const { book: bookFetched, setIsbn, reset } = useIsbn();
+    const initialBook = state?.book;
+    const [book, setBook] = useState(initialBook || bookFetched);
 
     useEffect(() => {
-        if (!initialBook.title && isbn) setIsbn(isbn);
+        if (!initialBook?.title && isbn) {
+            console.log('isbn', isbn);
+            reset();
+            setIsbn(isbn);
+        }
     }, [initialBook]);
+
+    useEffect(() => {
+        if (bookFetched?.title) setBook(bookFetched);
+    }, [bookFetched]);
 
     return (
         <div className="my-12 flex flex-col justify-around items-center grow gap-12 w-full max-w-4xl">
@@ -32,10 +44,15 @@ function BookDetailsPage() {
                     alt={book?.title}
                 />
                 <div className="grow flex flex-col justify-between gap-2 self-stretch">
-                    <p className="font-heading text-secondaryDark text-xl">
-                        Written by{' '}
-                        {book?.authors.map((author, i) => {
-                            return author + (i < book.authors.length - 1 ? ', ' : '');
+                    <p className="font-heading text-secondaryDark text-2xl">
+                        <span className="text-lg">Written by</span>{' '}
+                        {book?.authors?.map((author, i) => {
+                            return (
+                                <span key={author.lastName}>
+                                    {getAuthorFullName(author) +
+                                        (i < book.authors.length - 1 ? ', ' : '')}
+                                </span>
+                            );
                         })}
                     </p>
                     <p className="font-heading text-primaryDark text-sm">
@@ -50,14 +67,21 @@ function BookDetailsPage() {
                                 <span className="text-tertiaryDark text-xs">
                                     Price new :{' '}
                                 </span>
-                                {book?.priceNew || 'unknown'}
+                                {book?.priceNew || <GoQuestion className="" />}
                             </p>
                             <p className="flex items-center gap-2 font-heading text-secondaryDark text-xl">
                                 <span className="text-tertiaryDark text-xs">
                                     Price retail :{' '}
                                 </span>
-                                {book?.priceRetail || 'unknown'}
+                                {book?.priceRetail || <GoQuestion className="" />}
                             </p>
+                            {book?.googlePlayLink && (
+                                <ExternalLinkButton
+                                    link={book?.googlePlayLink}
+                                    buttonText={'Buy'}
+                                    icon={<RiShoppingCart2Line />}
+                                />
+                            )}
                         </div>
                         <div className="flex flex-col justify-center items-center">
                             <RatingStars rating={book?.rating} scale={5} />
@@ -70,11 +94,22 @@ function BookDetailsPage() {
                     </div>
                 </div>
             </section>
+            <section className="flex flex-col justify-around items-center gap-4 w-10/12 max-w-4xl">
+                <ul className="flex justify-center items-center gap-4 flex-wrap">
+                    {book?.categories?.map((category) => {
+                        return (
+                            <li key={category}>
+                                <Tag link={''} text={category} />
+                            </li>
+                        );
+                    })}
+                </ul>
+            </section>
             <section className="flex flex-col justify-around items-center gap-4 w-10/12 max-w-4xl bg-primaryLight shadow-xl rounded-xl p-8">
                 <h3 className="text-2xl font-heading text-center text-primaryDark">
                     Synopsis
                 </h3>
-                <DetailsRow value={book?.synopsis} />
+                <DetailsRow value={'“' + book?.synopsis + '”'} />
             </section>
             <section className="flex flex-col justify-around items-center gap-4 w-10/12 max-w-4xl bg-primaryLight shadow-xl rounded-xl p-8">
                 <h3 className="text-2xl font-heading text-center text-primaryDark">
@@ -92,6 +127,9 @@ function BookDetailsPage() {
                 />
                 <DetailsRow description={'EAN'} value={book?.ean} />
                 <DetailsRow description={'ISBN'} value={book?.isbn} />
+                <DetailsRow description={'Genre'} value={book?.genre} />
+                <DetailsRow description={'Language'} value={book?.language} />
+                <DetailsRow description={'Number of pages'} value={book?.nbPages} />
             </section>
         </div>
     );
