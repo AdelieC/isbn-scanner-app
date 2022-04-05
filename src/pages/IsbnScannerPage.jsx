@@ -80,11 +80,11 @@ function IsbnScannerPage() {
                 </>
             )}
 
-            {noResult && (
+            {/*noResult && (
                 <BaseModal>
                     <p>Le livre n&apos;a pas été trouvé</p>
                 </BaseModal>
-            )}
+            )*/}
 
             {book?.title && (
                 <BaseModal>

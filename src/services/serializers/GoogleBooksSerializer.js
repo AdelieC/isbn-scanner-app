@@ -1,39 +1,41 @@
 import Author from '../../objects/Author';
+import Book from '../../objects/Book';
 
-const serializeGoogleBook = (book, bookData) => {
+const serializeGoogleBook = (bookData) => {
     try {
+        const book = new Book();
         const volumeInfo = bookData?.volumeInfo;
         const saleInfo = bookData?.saleInfo;
         if (volumeInfo?.industryIdentifiers?.length) {
             for (let entry of bookData.volumeInfo.industryIdentifiers) {
                 if (entry.type === 'ISBN_10') {
-                    book.isbn = book.isbn || entry.identifier;
+                    book.isbn = entry.identifier;
                 } else if (entry.type === 'ISBN_13') {
-                    book.ean = book.ean || entry.identifier;
+                    book.ean = entry.identifier;
                 }
             }
         }
         volumeInfo?.authors?.forEach((author) => addAuthor(book, author));
         addDimensions(book, volumeInfo?.dimensions);
         addCategories(book, volumeInfo?.categories);
-        book.title = book.title || volumeInfo?.title;
-        book.publisher = book.publisher || volumeInfo?.publisher;
-        book.publishedAt = book.publishedAt || volumeInfo?.publishedDate;
-        book.synopsis = book.synopsis || volumeInfo?.description;
-        book.nbPages = book.nbPages || volumeInfo?.pageCount;
-        book.rating = book.rating || volumeInfo?.averageRating;
-        book.nbRatings = book.nbRatings || volumeInfo?.ratingsCount;
-        book.image = book.image || volumeInfo?.imageLinks?.thumbnail;
-        book.language = book.language || volumeInfo?.language;
-        book.googlePlayLink = book.googlePlayLink || saleInfo?.buyLink || '';
-        book.priceNew =
-            book.priceNew || saleInfo?.listPrice
-                ? saleInfo.listPrice?.amount + saleInfo.listPrice?.currencyCode
-                : '';
-        book.priceRetail =
-            book.priceRetail || saleInfo?.retailPrice
-                ? saleInfo.retailPrice?.amount + saleInfo.retailPrice?.currencyCode
-                : '';
+        book.title = volumeInfo?.title;
+        book.publisher = volumeInfo?.publisher;
+        book.publishedAt = volumeInfo?.publishedDate;
+        book.synopsis = volumeInfo?.description;
+        book.nbPages = volumeInfo?.pageCount;
+        book.rating = volumeInfo?.averageRating;
+        book.nbRatings = volumeInfo?.ratingsCount;
+        book.image = volumeInfo?.imageLinks?.thumbnail;
+        book.language = volumeInfo?.language;
+        book.googlePlayLink = saleInfo?.buyLink || '';
+        book.priceNew = saleInfo?.listPrice
+            ? saleInfo.listPrice?.amount + saleInfo.listPrice?.currencyCode
+            : '';
+        book.priceRetail = saleInfo?.retailPrice
+            ? saleInfo.retailPrice?.amount + saleInfo.retailPrice?.currencyCode
+            : '';
+
+        return book;
     } catch (e) {
         console.error(e);
     }

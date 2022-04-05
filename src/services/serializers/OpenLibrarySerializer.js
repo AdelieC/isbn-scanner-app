@@ -1,34 +1,41 @@
+//services
 import Author from '../../objects/Author';
+import Book from '../../objects/Book';
 
 const getThumbnailUrl = (coverId) => {
     return process.env.REACT_APP_OPEN_LIBRARY_COVERS_URL + '/' + coverId + '-L.jpg';
 };
 
-const serializeOpenLibraryBook = (book, bookData) => {
-    const details = bookData?.details;
-    book.isbn = book.isbn || (details?.isbn_10 ? details.isbn_10[0] : '');
-    book.ean = book.ean || (details?.isbn_13 ? details.isbn_13[0] : '');
+const serializeOpenLibraryBook = (bookData) => {
+    try {
+        const book = new Book();
+        const details = bookData?.details;
 
-    const description = details?.description;
-    if (description) {
-        book.synopsis = book.synopsis || description?.value;
+        book.isbn = details?.isbn_10 ? details.isbn_10[0] : '';
+        book.ean = details?.isbn_13 ? details.isbn_13[0] : '';
+
+        const description = details?.description;
+        if (description) {
+            book.synopsis = description?.value;
+        }
+
+        addOpenLibAuthorsData(book, details?.authors);
+        addImageUrl(book, details?.covers);
+        addCategories(book, details?.subjects);
+        book.title = details?.title;
+        book.publisher = details?.publishers[0];
+        book.publishedAt = details?.publish_date;
+        book.nbPages = details?.number_of_pages;
+        book.language = details?.languages?.key?.split('/').pop();
+        return book;
+    } catch (e) {
+        console.error(e);
     }
-
-    addOpenLibAuthorsData(book, details?.authors);
-    addImageUrl(book, details?.covers);
-    addCategories(book, details?.subjects);
-    book.title = book.title || details?.title;
-    book.publisher = book.publisher || details?.publishers[0];
-    book.publishedAt = book.publishedAt || details?.publish_date;
-    book.nbPages = book.nbPages || details?.number_of_pages;
-    book.language = book.language || details?.languages?.key?.split('/').pop();
 };
 
 const addCategories = (book, categories) => {
-    console.log(book.categories);
     if (categories?.length) {
         book.categories = [...book.categories, ...categories];
-        console.log(book.categories);
     }
 };
 

@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react';
 
 //services
-import useGoogleBooks from './useGoogleBooks';
-import useOpenLibrary from './useOpenLibrary';
+import useFetchGoogleBook from './useFetchGoogleBook';
+import useFetchOpenLibraryBook from './useFetchOpenLibraryBook';
 import Book from '../../objects/Book';
 
 //components
@@ -11,31 +11,47 @@ import Book from '../../objects/Book';
 function useIsbn() {
     const [isbn, setIsbn] = useState(null);
     const [book, setBook] = useState(new Book());
+    const [noResult, setNoResult] = useState(false);
     const reset = () => {
         setBook(new Book());
         setIsbn(null);
+        setNoResult(false);
     };
-    const { noResult: noGoogleResult } = useGoogleBooks({
+
+    const { noResult: noGoogleResult, book: googleBook } = useFetchGoogleBook({
         isbn,
-        book,
-    });
-    const { noResult: noOpenLibResult } = useOpenLibrary({
-        isbn,
-        book,
     });
 
-    useEffect(() => {
-        console.log(book);
-    }, [book]);
+    const { noResult: noOpenLibResult, book: openLibBook } = useFetchOpenLibraryBook({
+        isbn,
+    });
+
+    const getAggregatedBook = (book1, book2) => {
+        return book1 && book2 ? Object.assign(Book, ...book1, ...book2) : book1 || book2;
+    };
 
     useEffect(() => {
-        console.log(noOpenLibResult, noGoogleResult);
-    }, [noGoogleResult, noOpenLibResult]);
+        console.log(openLibBook, googleBook);
+        if (isSearchSuccessfull()) setBook(getAggregatedBook(openLibBook, googleBook));
+    }, [googleBook, openLibBook]);
+
+    const isSearchSuccessfull = () => {
+        return (
+            (openLibBook && googleBook) ||
+            (openLibBook && noGoogleResult) ||
+            (googleBook && noOpenLibResult)
+        );
+    };
+
+    useEffect(() => {
+        if (noOpenLibResult && noGoogleResult) setNoResult(true);
+    }, [noOpenLibResult, noGoogleResult]);
+
     return {
         book,
         setIsbn,
         reset,
-        noResult: noGoogleResult && noOpenLibResult,
+        noResult,
     };
 }
 
