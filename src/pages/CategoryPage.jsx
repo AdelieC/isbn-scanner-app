@@ -1,12 +1,18 @@
-import { useState } from 'react';
 import BookThumbnail from '../components/reused/BookThumbnail';
+import { useParams } from 'react-router-dom';
+import useCategory from '../services/hooks/useCategory';
 
 function CategoryPage() {
-    const [books, setBooks] = useState();
+    const { category } = useParams();
+    const { books, noResult } = useCategory({ category: category });
     return (
         <div>
             {books?.map((book, i) => {
-                return <BookThumbnail book={book} />;
+                return (
+                    <li key={book.title}>
+                        <BookThumbnail book={book} />
+                    </li>
+                );
             })}
         </div>
     );

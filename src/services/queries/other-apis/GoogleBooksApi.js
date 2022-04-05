@@ -15,6 +15,10 @@ const bookIdUrl = (isbn) => {
     );
 };
 
+const booksCategoryUrl = (category) => {
+    return process.env.REACT_APP_GOOGLE_BOOKS_BASE_URL + '?q=subject:' + category;
+};
+
 const fetchBookId = async (isbn) => {
     const data = await fetch(bookIdUrl(isbn), googleApiConfig);
     return data.ok
@@ -27,4 +31,9 @@ const fetchBookDetails = async (id) => {
     return data.ok ? data.json().then((res) => (res?.volumeInfo ? res : [])) : [];
 };
 
-export { fetchBookDetails, fetchBookId };
+const fetchBooksByCategory = async (category) => {
+    const data = await fetch(booksCategoryUrl(category), googleApiConfig);
+    return data.ok ? data.json().then((res) => res?.items || []) : [];
+};
+
+export { fetchBookDetails, fetchBookId, fetchBooksByCategory };

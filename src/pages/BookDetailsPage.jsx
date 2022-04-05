@@ -23,7 +23,6 @@ function BookDetailsPage() {
     useEffect(() => {
         if (!initialBook?.title && isbn) {
             console.log('isbn', isbn);
-            reset();
             setIsbn(isbn);
         }
     }, [initialBook]);
@@ -31,6 +30,10 @@ function BookDetailsPage() {
     useEffect(() => {
         if (bookFetched?.title) setBook(bookFetched);
     }, [bookFetched]);
+
+    useEffect(() => {
+        return () => reset();
+    }, []);
 
     return (
         <div className="my-12 flex flex-col justify-around items-center grow gap-12 w-full max-w-4xl">
@@ -96,10 +99,10 @@ function BookDetailsPage() {
             </section>
             <section className="flex flex-col justify-around items-center gap-4 w-10/12 max-w-4xl">
                 <ul className="flex justify-center items-center gap-4 flex-wrap">
-                    {book?.categories?.map((category) => {
+                    {book?.categories?.map((category, i) => {
                         return (
                             <li key={category}>
-                                <Tag link={''} text={category} />
+                                <Tag link={''} text={category} index={i} />
                             </li>
                         );
                     })}
