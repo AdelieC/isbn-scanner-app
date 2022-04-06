@@ -97,6 +97,7 @@ function useScan() {
     const { isOn: lightIsOn, toggle, setIsOn } = useToggle();
 
     const scan = async () => {
+        console.log('scan', cameraId, cameras, activeVideoTrack, hasLight);
         try {
             const resultSet = [];
             let config = null;
@@ -164,6 +165,9 @@ function useScan() {
     //Cutting quagga, camera flow and unregistering function (else scan won't start again)
     const stopScan = () => {
         if (lightIsOn) setIsOn(false);
+        setCameraId('');
+        setCameras([]);
+        setActiveVideoTrack(null);
         setIsScanning(false);
         Quagga.offDetected(handleResult);
         Quagga.stop();
@@ -196,6 +200,7 @@ function useScan() {
     }, []);
 
     return {
+        scan,
         stopScan,
         isScanning,
         lightIsOn,

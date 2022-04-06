@@ -27,12 +27,14 @@ function useIsbn() {
     });
 
     const getAggregatedBook = (book1, book2) => {
+        console.log('aggregating');
         return book1 && book2 ? Object.assign(Book, ...book1, ...book2) : book1 || book2;
     };
 
     useEffect(() => {
+        console.log(googleBook, openLibBook);
         if (isSearchSuccessfull()) setBook(getAggregatedBook(openLibBook, googleBook));
-    }, [googleBook, openLibBook]);
+    }, [googleBook, openLibBook, noOpenLibResult, noGoogleResult]);
 
     const isSearchSuccessfull = () => {
         return (
@@ -43,6 +45,7 @@ function useIsbn() {
     };
 
     useEffect(() => {
+        console.log(noOpenLibResult);
         if (noOpenLibResult && noGoogleResult) setNoResult(true);
     }, [noOpenLibResult, noGoogleResult]);
 

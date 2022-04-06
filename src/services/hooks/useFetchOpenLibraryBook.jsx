@@ -1,7 +1,7 @@
 //libraries
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //services
 import { serializeOpenLibraryBook } from '../serializers/OpenLibrarySerializer';
@@ -12,6 +12,11 @@ import { fetchBookDetails } from '../queries/other-apis/OpenLibraryApi';
 function useFetchOpenLibraryBook({ isbn }) {
     const [noResult, setNoResult] = useState(false);
     const [book, setBook] = useState(null);
+
+    const reset = () => {
+        setNoResult(false);
+        setBook(null);
+    };
 
     const handleOpenLibraryDetailsSuccess = (data) => {
         data.details ? setBook(serializeOpenLibraryBook(data)) : setNoResult(true);
@@ -25,6 +30,13 @@ function useFetchOpenLibraryBook({ isbn }) {
             onSuccess: handleOpenLibraryDetailsSuccess,
         }
     );
+
+    useEffect(() => {
+        if (isbn) {
+            reset();
+            refetch();
+        }
+    }, [isbn]);
 
     return { noResult, book };
 }

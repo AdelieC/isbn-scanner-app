@@ -10,6 +10,7 @@ const bookDetailsByIsbnUrl = (isbn) => {
         '&jscmd=details&format=json'
     );
 };
+
 const bookDetailsByIdUrl = (id) => {
     return (
         process.env.REACT_APP_OPEN_LIBRARY_BOOK_URL +

@@ -16,7 +16,7 @@ import { getAuthorFullName } from '../../services/utils/BookDataFunctions';
 
 function BookThumbnail({ book }) {
     return (
-        <div className="flex flex-col gap-4 justify-between bg-secondaryLight rounded-xl shadow-xl p-8 w-full max-w-4xl">
+        <div className="flex flex-col gap-4 justify-between items-center bg-secondaryLight rounded-xl shadow-xl p-4 sm:p-8 w-full max-w-4xl">
             <div
                 className={
                     (book?.rating ? 'justify-between' : 'justify-end') +
@@ -40,7 +40,7 @@ function BookThumbnail({ book }) {
                     icon={<BsEyeglasses className="w-8 h-8" />}
                 />
             </div>
-            <div className="flex gap-4 justify-between">
+            <div className="flex flex-col sm:flex-row gap-4 justify-between">
                 <img
                     className="shadow-lg w-20 sm:w-44 h-44 sm:h-72 object-cover object-center"
                     src={book?.image || coverPlaceholder}

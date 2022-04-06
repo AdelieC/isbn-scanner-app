@@ -13,6 +13,7 @@ import IconButton from '../components/reused/IconButton';
 import { HiLightBulb, HiOutlineLightBulb } from 'react-icons/hi';
 import { MdOutlineCameraswitch, MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { Link, useOutletContext } from 'react-router-dom';
+import NoResultModal from '../components/common/modals/NoResultModal';
 
 const ICONS_CLASSLIST = 'w-8 h-8 md:w-12 md:h-12';
 const TITLE = 'Scan an ISBN';
@@ -28,10 +29,17 @@ function IsbnScannerPage() {
         result,
         cameras,
         hasLight,
+        scan,
     } = useScan();
-    const { book, setIsbn, noResult } = useIsbn();
+    const { book, setIsbn, reset: resetIsbnResult, noResult } = useIsbn();
+
+    const retry = () => {
+        resetIsbnResult();
+        scan();
+    };
 
     useEffect(() => {
+        console.log(result);
         if (result) setIsbn(result);
     }, [result]);
 
@@ -80,11 +88,12 @@ function IsbnScannerPage() {
                 </>
             )}
 
-            {/*noResult && (
-                <BaseModal>
-                    <p>Le livre n&apos;a pas été trouvé</p>
-                </BaseModal>
-            )*/}
+            {noResult && (
+                <NoResultModal
+                    callback={retry}
+                    text={'There was no book with ' + result + ' ISBN in our sources.'}
+                />
+            )}
 
             {book?.title && (
                 <BaseModal>

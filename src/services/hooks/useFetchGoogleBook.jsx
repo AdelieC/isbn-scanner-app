@@ -15,6 +15,12 @@ function useFetchGoogleBook({ isbn, id = null }) {
     const [noResult, setNoResult] = useState(false);
     const [book, setBook] = useState(null);
 
+    const reset = () => {
+        setBookId(id);
+        setNoResult(false);
+        setBook(null);
+    };
+
     const handleGoogleBookDetailsSuccess = (data) => {
         data.volumeInfo ? setBook(serializeGoogleBook(data)) : setNoResult(true);
     };
@@ -42,7 +48,10 @@ function useFetchGoogleBook({ isbn, id = null }) {
     );
 
     useEffect(() => {
-        if (isbn) refetchId();
+        if (isbn) {
+            reset();
+            refetchId();
+        }
     }, [isbn]);
 
     useEffect(() => {
