@@ -1,7 +1,12 @@
+//libraries
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import BookThumbnail from '../components/reused/BookThumbnail';
+
+//services
 import useCategory from '../services/hooks/useCategory';
+
+//components
+import BookThumbnail from '../components/reused/BookThumbnail';
 import ActionButton from '../components/reused/ActionButton';
 import { BiAddToQueue } from 'react-icons/bi';
 
@@ -10,11 +15,13 @@ function CategoryPage() {
     const { category } = useParams();
     const { books, noResult, setCategory, getNextPage, hasNextPage, reset } =
         useCategory();
+
     useEffect(() => {
         setCategory(category);
         setTitle(category);
         return () => reset();
     }, []);
+
     return (
         <div className="flex flex-col items-center justify-center p-8 gap-8">
             <h1 className="text-4xl font-heading text-center text-secondaryDark">

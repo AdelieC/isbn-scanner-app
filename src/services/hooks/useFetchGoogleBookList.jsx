@@ -60,7 +60,6 @@ function useFetchGoogleBookList({ category }) {
         ['googleBooksByCategory', category, startIndex],
         () => fetchBooksByCategory(category, startIndex),
         {
-            keepPreviousData: false,
             enabled: false,
             onSuccess: handleGoogleBookByCategorySuccess,
         }

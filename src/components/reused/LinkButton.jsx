@@ -1,7 +1,6 @@
 //libraries
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
 //services
 
@@ -15,9 +14,6 @@ function LinkButton({
     buttonText,
     linkState,
 }) {
-    useEffect(() => {
-        console.log(link);
-    }, []);
     return (
         <Link
             className={

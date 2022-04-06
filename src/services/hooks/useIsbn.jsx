@@ -31,7 +31,6 @@ function useIsbn() {
     };
 
     useEffect(() => {
-        console.log(openLibBook, googleBook);
         if (isSearchSuccessfull()) setBook(getAggregatedBook(openLibBook, googleBook));
     }, [googleBook, openLibBook]);
 
