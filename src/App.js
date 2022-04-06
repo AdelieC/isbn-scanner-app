@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import IsbnScannerPage from './pages/IsbnScannerPage';
 import IsbnInputPage from './pages/IsbnInputPage';
 import BookDetailsPage from './pages/BookDetailsPage';
+import CategoryPage from './pages/CategoryPage';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -48,6 +49,7 @@ function App() {
                         <Route path="scan" element={<IsbnScannerPage />} />
                         <Route path="input" element={<IsbnInputPage />} />
                         <Route path="book/:isbn" element={<BookDetailsPage />} />
+                        <Route path="category/:category" element={<CategoryPage />} />
                     </Route>
                 </Routes>
             </StatusProvider>

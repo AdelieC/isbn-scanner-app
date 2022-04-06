@@ -1,18 +1,22 @@
 //libraries
 import PropTypes from 'prop-types';
-import { randomInteger } from '../../services/utils/NumberFunctions';
 
 //services
 
 //components
-const BACKGROUNDS = ['bg-primaryDark', 'bg-successDark', 'bg-secondaryDark'];
+const BACKGROUNDS = [
+    'bg-primaryDark',
+    'bg-successDark',
+    'bg-secondaryDark',
+    'bg-alertDark',
+];
 
-function Tag({ link, text }) {
-    const background = BACKGROUNDS[randomInteger(0, BACKGROUNDS.length - 1)];
+function Tag({ link, text, index = 0 }) {
+    const background = BACKGROUNDS[index % BACKGROUNDS.length];
     return (
         <a
             className={
-                'flex items-center justify-center gap-2 px-4 py-1 rounded-lg shadow-lg text-secondaryLight ' +
+                'flex items-center justify-center gap-2 px-4 py-1 rounded-full shadow-lg text-center text-sm text-secondaryLight ' +
                 background
             }
             href={link}
@@ -25,6 +29,7 @@ function Tag({ link, text }) {
 Tag.propTypes = {
     link: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    index: PropTypes.number,
 };
 
 export default Tag;

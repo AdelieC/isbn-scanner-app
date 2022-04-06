@@ -16,16 +16,23 @@ import { getAuthorFullName } from '../../services/utils/BookDataFunctions';
 
 function BookThumbnail({ book }) {
     return (
-        <div className="flex flex-col gap-4 justify-between bg-secondaryLight rounded-xl shadow-xl p-8">
-            <div className="flex gap-4 justify-between items-center">
-                <div className="flex items-center gap-2">
-                    <RatingStars rating={book?.rating} scale={5} />{' '}
-                    <RatingDetails
-                        rating={book?.rating}
-                        scale={5}
-                        nbRatings={book?.nbRatings}
-                    />
-                </div>
+        <div className="flex flex-col gap-4 justify-between bg-secondaryLight rounded-xl shadow-xl p-8 w-full max-w-4xl">
+            <div
+                className={
+                    (book?.rating ? 'justify-between' : 'justify-end') +
+                    ' flex gap-4 items-center'
+                }
+            >
+                {book?.rating && (
+                    <div className="flex items-center gap-2">
+                        <RatingStars rating={book?.rating} scale={5} />
+                        <RatingDetails
+                            rating={book?.rating}
+                            scale={5}
+                            nbRatings={book?.nbRatings}
+                        />
+                    </div>
+                )}
                 <LinkButton
                     buttonText={'Details'}
                     link={'/book/' + (book?.isbn || book?.ean)}
@@ -40,6 +47,9 @@ function BookThumbnail({ book }) {
                     alt={book?.title}
                 />
                 <div className="grow flex flex-col justify-between gap-2 self-stretch">
+                    <h3 className="text-2xl font-heading text-secondaryDark">
+                        {book?.title}
+                    </h3>
                     <p className="font-heading text-secondaryDark text-xl">
                         <span className="text-sm">Written by</span>{' '}
                         {book?.authors?.map((author, i) => {

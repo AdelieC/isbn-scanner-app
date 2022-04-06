@@ -26,7 +26,7 @@ function DetailsRow({ description = null, value = '' }) {
 
 DetailsRow.propTypes = {
     description: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default DetailsRow;
