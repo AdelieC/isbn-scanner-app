@@ -4,26 +4,47 @@
 
 //components
 
-function useCategory({ category }) {
-    /*const [noResult, setNoResult] = useState(false);
-	const { data: books, refetch } = useQuery(['fetchByCategory', category], () =>
-		fetchBooksByCategory(category)
-	);
+import { useEffect, useState } from 'react';
+import useFetchGoogleBookList from './useFetchGoogleBookList';
 
-	const reset = () => {
-		setNoResult(false);
-	};
+function useCategory() {
+    const [category, setCategory] = useState();
+    const [books, setBooks] = useState([]);
+    const [noResult, setNoResult] = useState(false);
 
-	useEffect(() => {
-		if (category && books?.length === 0) setNoResult(true);
-	}, [books]);
+    const {
+        noResult: noGoogleResult,
+        books: googleBooks,
+        getNextPage,
+        hasNextPage,
+        reset: resetFetch,
+    } = useFetchGoogleBookList({
+        category,
+    });
 
-	return {
-		books,
-		reset,
-		noResult,
-	};*/
-    return null;
+    const reset = () => {
+        setBooks([]);
+        setCategory(null);
+        setNoResult(false);
+        resetFetch();
+    };
+
+    useEffect(() => {
+        if (googleBooks?.length > 0) setBooks(googleBooks);
+    }, [googleBooks]);
+
+    useEffect(() => {
+        if (noGoogleResult) setNoResult(true);
+    }, [noResult]);
+
+    return {
+        books,
+        setCategory,
+        reset,
+        noResult,
+        hasNextPage,
+        getNextPage,
+    };
 }
 
 useCategory.propTypes = {};

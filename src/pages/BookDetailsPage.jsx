@@ -1,6 +1,6 @@
 //libraries
 
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useOutletContext, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import useIsbn from '../services/hooks/useIsbn';
 import coverPlaceholder from '../assets/img/cover.svg';
@@ -13,7 +13,14 @@ import { getAuthorFullName } from '../services/utils/BookDataFunctions';
 import Tag from '../components/reused/Tag';
 import ExternalLinkButton from '../components/reused/ExternalLinkButton';
 
+const getCategoryKeyword = (category) => {
+    return category.split('/')[1];
+};
+
+const TITLE = 'Book details';
+
 function BookDetailsPage() {
+    const { setTitle } = useOutletContext();
     const { state } = useLocation();
     const { isbn } = useParams();
     const { book: bookFetched, setIsbn, reset } = useIsbn();
@@ -22,16 +29,18 @@ function BookDetailsPage() {
 
     useEffect(() => {
         if (!initialBook?.title && isbn) {
-            console.log('isbn', isbn);
             setIsbn(isbn);
         }
     }, [initialBook]);
 
     useEffect(() => {
-        if (bookFetched?.title) setBook(bookFetched);
+        if (bookFetched?.title) {
+            setBook(bookFetched);
+        }
     }, [bookFetched]);
 
     useEffect(() => {
+        setTitle(TITLE);
         return () => reset();
     }, []);
 
@@ -100,9 +109,14 @@ function BookDetailsPage() {
             <section className="flex flex-col justify-around items-center gap-4 w-10/12 max-w-4xl">
                 <ul className="flex justify-center items-center gap-4 flex-wrap">
                     {book?.categories?.map((category, i) => {
+                        const keyword = getCategoryKeyword(category);
                         return (
                             <li key={category}>
-                                <Tag link={''} text={category} index={i} />
+                                <Tag
+                                    link={'/category/' + keyword}
+                                    text={category}
+                                    index={i}
+                                />
                             </li>
                         );
                     })}

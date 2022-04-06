@@ -3,7 +3,7 @@ import { IoHeartHalf, IoHeartOutline, IoHeartSharp } from 'react-icons/io5';
 
 const ICONS_CLASSLIST = 'w-6 h-6 text-secondaryDark';
 
-function RatingStars({ rating, scale = 5 }) {
+function RatingStars({ rating = 0, scale = 5 }) {
     return (
         <div className="flex">
             {[...Array(scale)].map((x, i) => {

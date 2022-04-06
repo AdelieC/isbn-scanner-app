@@ -42,13 +42,11 @@ const serializeGoogleBook = (bookData) => {
 };
 
 const addCategories = (book, categories) => {
-    console.log(book.categories);
     if (categories?.length) {
         categories.map((category) => {
             if (!book.categories.includes(category)) book.categories.push(category);
         });
     }
-    console.log(book.categories);
 };
 
 const addDimensions = (book, initialArray) => {
