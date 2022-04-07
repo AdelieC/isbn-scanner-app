@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 //components
 import BaseModal from './BaseModal';
 import ActionButton from '../../reused/ActionButton';
-import { BiReset } from 'react-icons/bi';
+import { ICON_RETRY } from '../../../services/globals/icons';
 
 function NoResultModal({ text, callback }) {
     return (
@@ -31,7 +31,7 @@ function NoResultModal({ text, callback }) {
                 </div>
                 <p>{text}</p>
                 <ActionButton
-                    icon={<BiReset className="w-4 h-4" />}
+                    icon={ICON_RETRY}
                     textColor={'text-successLight'}
                     text={'Try again'}
                     action={callback}
