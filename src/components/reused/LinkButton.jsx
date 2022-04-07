@@ -17,7 +17,7 @@ function LinkButton({
     return (
         <Link
             className={
-                'flex items-center justify-center gap-2 px-4 py-2 font-heading rounded-lg shadow-lg ' +
+                'flex items-center justify-center gap-2 px-4 py-2 font-heading text-base sm:text-xl rounded-lg shadow-lg ' +
                 background +
                 ' ' +
                 textColor

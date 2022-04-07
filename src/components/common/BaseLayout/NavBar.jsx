@@ -4,40 +4,43 @@
 import useToggle from '../../../services/hooks/useToggle';
 
 //components
-import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
 import AnimatedLink from '../../reused/AnimatedLink';
-import { MdHome, MdInfo } from 'react-icons/md';
-import { BiBarcodeReader, BiSearchAlt2 } from 'react-icons/bi';
-import { BsInputCursorText } from 'react-icons/bs';
 import IconButton from '../../reused/IconButton';
-
-const ICONS_CLASSLIST = 'h-8 w-8 sm:w-12 sm:h-12';
+import {
+    ICON_HOME,
+    ICON_INFO,
+    ICON_INPUT,
+    ICON_MENU_CLOSE,
+    ICON_MENU_OPEN,
+    ICON_SCANNER,
+    ICON_SEARCH,
+} from '../../../services/globals/icons';
 
 const NAVLINKS = [
     {
         link: '/home',
         name: 'Home',
-        icon: <MdHome className={ICONS_CLASSLIST} />,
+        icon: ICON_HOME,
     },
     {
         link: '/input',
         name: 'Enter an ISBN',
-        icon: <BsInputCursorText className={ICONS_CLASSLIST} />,
+        icon: ICON_INPUT,
     },
     {
         link: '/scan',
         name: 'Scan a barcode',
-        icon: <BiBarcodeReader className={ICONS_CLASSLIST} />,
+        icon: ICON_SCANNER,
     },
     {
         link: '/search/form',
         name: 'Search in books',
-        icon: <BiSearchAlt2 className={ICONS_CLASSLIST} />,
+        icon: ICON_SEARCH,
     },
     {
         link: '/about',
         name: 'About us',
-        icon: <MdInfo className={ICONS_CLASSLIST} />,
+        icon: ICON_INFO,
     },
 ];
 
@@ -48,13 +51,7 @@ function NavBar() {
             <IconButton
                 callback={toggle}
                 color={isOn ? 'text-primaryDark' : 'text-primaryLight'}
-                icon={
-                    isOn ? (
-                        <CgMenuRight className={ICONS_CLASSLIST} />
-                    ) : (
-                        <CgMenuRightAlt className={ICONS_CLASSLIST + ' z-50'} />
-                    )
-                }
+                icon={isOn ? ICON_MENU_OPEN : ICON_MENU_CLOSE}
             />
             <nav
                 className={
@@ -63,7 +60,9 @@ function NavBar() {
                 }
             >
                 <ul className="w-full h-full font-heading text-2xl sm:text-3xl flex flex-col text-center justify-between items-stretch">
-                    <h2 className="text-6xl sm:text-7xl text-secondaryDark">MENU</h2>
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl text-secondaryDark">
+                        MENU
+                    </h2>
                     {NAVLINKS.map((link) => {
                         return (
                             <li key={link.name} onClick={toggle}>

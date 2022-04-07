@@ -13,6 +13,8 @@ import IsbnScannerPage from './pages/IsbnScannerPage';
 import IsbnInputPage from './pages/IsbnInputPage';
 import BookDetailsPage from './pages/BookDetailsPage';
 import CategoryPage from './pages/CategoryPage';
+import SearchFormPage from './pages/SearchFormPage';
+import SearchResultsPage from './pages/SearchResultsPage';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -50,6 +52,8 @@ function App() {
                         <Route path="input" element={<IsbnInputPage />} />
                         <Route path="book/:isbn" element={<BookDetailsPage />} />
                         <Route path="category/:category" element={<CategoryPage />} />
+                        <Route path="search/form" element={<SearchFormPage />} />
+                        <Route path="search/results" element={<SearchResultsPage />} />
                     </Route>
                 </Routes>
             </StatusProvider>

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 //services
 import { serializeOpenLibraryBook } from '../serializers/OpenLibrarySerializer';
-import { fetchBookDetails } from '../queries/other-apis/OpenLibraryApi';
+import { fetchBookDetails } from '../queries/external-apis/OpenLibraryApi';
 
 //components
 

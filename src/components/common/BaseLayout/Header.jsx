@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 //stylesheets
 import './Header.css';
 import PropTypes from 'prop-types';
+import { CLASSLIST_H1 } from '../../../services/globals/classlists';
 
 function Header({ title }) {
     return (
@@ -55,7 +56,7 @@ function Header({ title }) {
                     </g>
                 </svg>
             </div>
-            <h1 id="title" className="text-xl sm:text-4xl font-heading self-center">
+            <h1 id="title" className={CLASSLIST_H1 + 'hidden sm:block'}>
                 {title || 'ISBN Scanner'}
             </h1>
             <NavBar />

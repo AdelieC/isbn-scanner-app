@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 
 //services
-import { fetchBookDetails, fetchBookId } from '../queries/other-apis/GoogleBooksApi';
+import { fetchBookDetails, fetchBookId } from '../queries/external-apis/GoogleBooksApi';
 import { serializeGoogleBook } from '../serializers/GoogleBooksSerializer';
 
 //components

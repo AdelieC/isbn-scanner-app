@@ -11,7 +11,7 @@ const bookDetailsByIsbnUrl = (isbn) => {
     );
 };
 
-const bookDetailsByIdUrl = (id) => {
+/*const bookDetailsByIdUrl = (id) => {
     return (
         process.env.REACT_APP_OPEN_LIBRARY_BOOK_URL +
         '?bibkeys=OLID:' +
@@ -22,7 +22,7 @@ const bookDetailsByIdUrl = (id) => {
 
 const authorDetailsUrl = (id) => {
     return process.env.REACT_APP_OPEN_LIBRARY_AUTHORS_URL + '/' + id + '.json';
-};
+};*/
 
 const fetchBookDetails = async (isbn) => {
     try {
@@ -35,7 +35,7 @@ const fetchBookDetails = async (isbn) => {
     }
 };
 
-const fetchBookDetailsById = async (id) => {
+/*const fetchBookDetailsById = async (id) => {
     try {
         const data = await fetch(bookDetailsByIdUrl(id), openLibraryConfig);
         return data.ok
@@ -44,11 +44,11 @@ const fetchBookDetailsById = async (id) => {
     } catch (e) {
         return [];
     }
-};
+};*/
 
-const fetchAuthorDetails = async (id) => {
+/*const fetchAuthorDetails = async (id) => {
     const data = await fetch(authorDetailsUrl(id), openLibraryConfig);
     return data.ok ? data.json().then((res) => res) : [];
-};
+};*/
 
-export { fetchBookDetails, fetchAuthorDetails };
+export { fetchBookDetails };

@@ -12,6 +12,7 @@ function useIsbn() {
     const [isbn, setIsbn] = useState(null);
     const [book, setBook] = useState(new Book());
     const [noResult, setNoResult] = useState(false);
+
     const reset = () => {
         setBook(new Book());
         setIsbn(null);
@@ -27,12 +28,10 @@ function useIsbn() {
     });
 
     const getAggregatedBook = (book1, book2) => {
-        console.log('aggregating');
         return book1 && book2 ? Object.assign(Book, ...book1, ...book2) : book1 || book2;
     };
 
     useEffect(() => {
-        console.log(googleBook, openLibBook);
         if (isSearchSuccessfull()) setBook(getAggregatedBook(openLibBook, googleBook));
     }, [googleBook, openLibBook, noOpenLibResult, noGoogleResult]);
 
@@ -45,7 +44,6 @@ function useIsbn() {
     };
 
     useEffect(() => {
-        console.log(noOpenLibResult);
         if (noOpenLibResult && noGoogleResult) setNoResult(true);
     }, [noOpenLibResult, noGoogleResult]);
 
@@ -56,7 +54,5 @@ function useIsbn() {
         noResult,
     };
 }
-
-useIsbn.propTypes = {};
 
 export default useIsbn;

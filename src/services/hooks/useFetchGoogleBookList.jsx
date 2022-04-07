@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 
 //services
-import { fetchBooksByCategory } from '../queries/other-apis/GoogleBooksApi';
+import { fetchBooksByCategory } from '../queries/external-apis/GoogleBooksApi';
 import { serializeGoogleBook } from '../serializers/GoogleBooksSerializer';
 
 //components
@@ -21,6 +21,19 @@ const bookHasIsbn = (book) => {
         i++;
     }
     return hasIsbn;
+};
+
+const bookIsInResults = (book, results) => {
+    const industryIds = book?.volumeInfo?.industryIdentifiers;
+    let bookIsInResults = false;
+    let i = 0;
+    while (i < industryIds.length && !bookIsInResults) {
+        results.forEach((result) => {
+            bookIsInResults = result.isbn === industryIds[i].identifier;
+        });
+        i++;
+    }
+    return bookIsInResults;
 };
 
 //hook to fetch a single book instance from google books api
@@ -40,7 +53,11 @@ function useFetchGoogleBookList({ category }) {
     const handleGoogleBookByCategorySuccess = (data) => {
         if (data.totalItems > 0) {
             data.items.forEach((bookData) => {
-                if (bookData && bookHasIsbn(bookData)) {
+                if (
+                    bookData &&
+                    bookHasIsbn(bookData) &&
+                    !bookIsInResults(bookData, books)
+                ) {
                     setBooks((prevState) => [
                         ...prevState,
                         serializeGoogleBook(bookData),
