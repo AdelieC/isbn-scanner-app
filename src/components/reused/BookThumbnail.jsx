@@ -14,12 +14,12 @@ import { getAuthorFullName } from '../../services/utils/BookDataFunctions';
 
 //components
 
-function BookThumbnail({ book }) {
+function BookThumbnail({ book, optionalButton = null }) {
     return (
-        <div className="flex flex-col gap-4 justify-between items-center bg-secondaryLight rounded-xl shadow-xl p-4 sm:p-8 w-full max-w-4xl">
+        <div className="flex flex-col gap-4 justify-between items-center bg-secondaryLight rounded-xl shadow-xl p-4 sm:p-8 w-full max-w-3xl">
             <div
                 className={
-                    (book?.rating ? 'justify-between' : 'justify-end') +
+                    (book?.rating || optionalButton ? 'justify-between' : 'justify-end') +
                     ' flex gap-4 items-center'
                 }
             >
@@ -39,6 +39,7 @@ function BookThumbnail({ book }) {
                     linkState={{ book: book }}
                     icon={<BsEyeglasses className="w-8 h-8" />}
                 />
+                {optionalButton && optionalButton}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-between">
                 <img
@@ -47,7 +48,7 @@ function BookThumbnail({ book }) {
                     alt={book?.title}
                 />
                 <div className="grow flex flex-col justify-between gap-2 self-stretch">
-                    <h3 className="text-2xl font-heading text-secondaryDark">
+                    <h3 className="text-xl sm:text-2xl font-heading text-secondaryDark">
                         {book?.title}
                     </h3>
                     <p className="font-heading text-secondaryDark text-xl">
@@ -80,6 +81,7 @@ function BookThumbnail({ book }) {
 
 BookThumbnail.propTypes = {
     book: PropTypes.instanceOf(Book).isRequired,
+    optionalButton: PropTypes.node,
 };
 
 export default BookThumbnail;

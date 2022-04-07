@@ -47,6 +47,9 @@ module.exports = {
             boxShadow: {
                 innerXl: 'inset 0px -20px 25px -5px rgba(0, 0, 0, 0.1)',
             },
+            maxWidth: {
+                '80vw': '80vw',
+            },
         },
     },
     plugins: [],

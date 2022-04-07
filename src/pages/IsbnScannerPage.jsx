@@ -14,6 +14,7 @@ import { HiLightBulb, HiOutlineLightBulb } from 'react-icons/hi';
 import { MdOutlineCameraswitch, MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { Link, useOutletContext } from 'react-router-dom';
 import NoResultModal from '../components/common/modals/NoResultModal';
+import ActionButton from '../components/reused/ActionButton';
 
 const ICONS_CLASSLIST = 'w-8 h-8 md:w-12 md:h-12';
 const TITLE = 'Scan an ISBN';
@@ -97,7 +98,17 @@ function IsbnScannerPage() {
 
             {book?.title && (
                 <BaseModal>
-                    <BookThumbnail book={book} />
+                    <BookThumbnail
+                        book={book}
+                        optionalButton={
+                            <ActionButton
+                                text={'Scan another'}
+                                action={retry}
+                                textColor={'text-secondaryLight'}
+                                background={'bg-primaryDark'}
+                            />
+                        }
+                    />
                 </BaseModal>
             )}
         </div>
