@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
+import { CLASSLIST_BASE_BUTTON } from '../../services/globals/classlists';
 
 function ActionButton({ action, text, icon, background, textColor }) {
     return (
         <button
             onClick={action}
             className={
+                CLASSLIST_BASE_BUTTON +
                 (background || 'bg-primaryDark') +
-                ' flex items-center text-center justify-center gap-2 px-4 py-2 font-heading rounded-lg shadow-lg ' +
+                ' ' +
                 (textColor || 'text-secondaryDark')
             }
         >

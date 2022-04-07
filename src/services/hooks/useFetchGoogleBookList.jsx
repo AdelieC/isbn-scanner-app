@@ -23,6 +23,19 @@ const bookHasIsbn = (book) => {
     return hasIsbn;
 };
 
+const bookIsInResults = (book, results) => {
+    const industryIds = book?.volumeInfo?.industryIdentifiers;
+    let bookIsInResults = false;
+    let i = 0;
+    while (i < industryIds.length && !bookIsInResults) {
+        results.forEach((result) => {
+            bookIsInResults = result.isbn === industryIds[i].identifier;
+        });
+        i++;
+    }
+    return bookIsInResults;
+};
+
 //hook to fetch a single book instance from google books api
 function useFetchGoogleBookList({ category }) {
     const [noResult, setNoResult] = useState(false);
@@ -40,7 +53,11 @@ function useFetchGoogleBookList({ category }) {
     const handleGoogleBookByCategorySuccess = (data) => {
         if (data.totalItems > 0) {
             data.items.forEach((bookData) => {
-                if (bookData && bookHasIsbn(bookData)) {
+                if (
+                    bookData &&
+                    bookHasIsbn(bookData) &&
+                    !bookIsInResults(bookData, books)
+                ) {
                     setBooks((prevState) => [
                         ...prevState,
                         serializeGoogleBook(bookData),

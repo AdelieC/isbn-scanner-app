@@ -14,6 +14,9 @@ const AnimatedLink = ({ to, name, icon }) => {
         'justify-center',
         'gap-4',
         'sm:gap-8',
+        'text-xl',
+        'sm:text-2xl',
+        'md:text-3xl',
         {
             'bg-secondaryLight': match,
             'text-secondaryDark': match,

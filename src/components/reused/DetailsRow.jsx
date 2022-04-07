@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 function DetailsRow({ description = null, value = '' }) {
     return (
-        <p className="text-sm flex flex-wrap justify-between items-center sm:justify-start gap-2 sm:gap-4">
+        <p className="text-sm flex flex-wrap items-center justify-start gap-2 sm:gap-4">
             {description && (
                 <span className="">
                     <u>{description}</u> :

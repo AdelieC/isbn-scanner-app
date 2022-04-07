@@ -1,5 +1,6 @@
 import Author from '../../objects/Author';
 import Book from '../../objects/Book';
+import { formatCategory, formatSynopsis } from '../utils/StringFunctions';
 
 const serializeGoogleBook = (bookData) => {
     try {
@@ -21,7 +22,7 @@ const serializeGoogleBook = (bookData) => {
         book.title = volumeInfo?.title;
         book.publisher = volumeInfo?.publisher;
         book.publishedAt = volumeInfo?.publishedDate;
-        book.synopsis = volumeInfo?.description;
+        book.synopsis = formatSynopsis(volumeInfo?.description);
         book.nbPages = volumeInfo?.pageCount;
         book.rating = volumeInfo?.averageRating;
         book.nbRatings = volumeInfo?.ratingsCount;
@@ -44,7 +45,8 @@ const serializeGoogleBook = (bookData) => {
 const addCategories = (book, categories) => {
     if (categories?.length) {
         categories.map((category) => {
-            if (!book.categories.includes(category)) book.categories.push(category);
+            if (!book.categories.includes(category))
+                book.categories.push(formatCategory(category));
         });
     }
 };

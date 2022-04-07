@@ -1,6 +1,7 @@
 //services
 import Author from '../../objects/Author';
 import Book from '../../objects/Book';
+import { formatCategory, formatSynopsis } from '../utils/StringFunctions';
 
 const getThumbnailUrl = (coverId) => {
     return process.env.REACT_APP_OPEN_LIBRARY_COVERS_URL + '/' + coverId + '-L.jpg';
@@ -16,7 +17,7 @@ const serializeOpenLibraryBook = (bookData) => {
 
         const description = details?.description;
         if (description) {
-            book.synopsis = description?.value;
+            book.synopsis = formatSynopsis(description?.value);
         }
 
         addOpenLibAuthorsData(book, details?.authors);
@@ -35,7 +36,11 @@ const serializeOpenLibraryBook = (bookData) => {
 
 const addCategories = (book, categories) => {
     if (categories?.length) {
-        book.categories = [...book.categories, ...categories];
+        const formattedCategories = categories.forEach((category) =>
+            formatCategory(category)
+        );
+        console.log(formattedCategories);
+        book.categories = [...book.categories, ...formattedCategories];
     }
 };
 

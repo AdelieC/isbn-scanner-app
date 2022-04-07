@@ -14,6 +14,7 @@ import IconButton from '../components/reused/IconButton';
 import NoResultModal from '../components/common/modals/NoResultModal';
 import ActionButton from '../components/reused/ActionButton';
 import {
+    ICON_INFORMATIVE_MESSAGE,
     ICON_LIGHT_OFF,
     ICON_LIGHT_ON,
     ICON_RETRY,
@@ -25,7 +26,7 @@ const TITLE = 'Scan an ISBN';
 const NO_CAMERA_TEXT =
     'ISBN-scanner has not yet been granted permission to access your\n' +
     "                    camera. Try going to your browser's settings and authorising\n" +
-    '                    ISBN-scanner to access your camera? <br />\n' +
+    '                    ISBN-scanner to access your camera? \n' +
     "                    If it doesn't change anything, try refreshing this page, or clearing\n" +
     "                    your browser's cache.";
 
@@ -77,10 +78,10 @@ function IsbnScannerPage() {
     }, []);
 
     return (
-        <div className="h-full w-full overflow-hidden relative bg-tertiaryDark">
+        <div className="h-full w-full flex flex-col justify-center items-center overflow-hidden relative bg-tertiaryDark text-tertiaryLight">
             {isScanning && (
                 <>
-                    <div className="z-20 px-8 py-4 absolute top-0 w-full flex gap-4 justify-between items-center md:gap-8 text-primaryLight">
+                    <div className="z-20 px-4 sm:px-8 py-4 absolute top-0 w-full flex gap-4 justify-between items-center md:gap-8 text-primaryLight">
                         <Link to={'/home'} className="" onClick={stopScan}>
                             {ICON_RETURN_BUTTON}
                         </Link>
@@ -117,9 +118,12 @@ function IsbnScannerPage() {
             )}
 
             {!noResult && !book.title && !isScanning && (
-                <p className="text-tertiaryLight font-heading text-xl text-center">
-                    {NO_CAMERA_TEXT}
-                </p>
+                <>
+                    {ICON_INFORMATIVE_MESSAGE}
+                    <p className="text-tertiaryLight font-heading text-base sm:text-xl text-center p-8 sm:p-28 max-w-3xl">
+                        {NO_CAMERA_TEXT}
+                    </p>
+                </>
             )}
         </div>
     );

@@ -5,13 +5,14 @@ import PropTypes from 'prop-types';
 import BaseModal from './BaseModal';
 import ActionButton from '../../reused/ActionButton';
 import { ICON_RETRY } from '../../../services/globals/icons';
+import { CLASSLIST_H3 } from '../../../services/globals/classlists';
 
 function NoResultModal({ text, callback }) {
     return (
         <BaseModal>
-            <div className="bg-alertLight text-alertDark w-full h-full p-8 sm:p-16 rounded-xl shadow-xl flex flex-col justify-between items-center gap-4">
-                <h3 className="text-alertDark text-4xl font-heading">Sorry...</h3>
-                <div className="w-28 text-alertDark">
+            <div className="bg-alertLight w-full h-max p-8 sm:p-16 rounded-xl shadow-xl flex flex-col justify-between items-center gap-4 xl:gap-8">
+                <h3 className={CLASSLIST_H3}>Sorry...</h3>
+                <div className="w-20 sm:w-28 text-secondaryDark">
                     <svg
                         className="fill-current"
                         width="100%"
@@ -29,13 +30,13 @@ function NoResultModal({ text, callback }) {
                         </g>
                     </svg>
                 </div>
-                <p>{text}</p>
+                <p className="text-base text-center">{text}</p>
                 <ActionButton
                     icon={ICON_RETRY}
-                    textColor={'text-successLight'}
+                    textColor={'text-secondaryLight'}
                     text={'Try again'}
                     action={callback}
-                    background={'bg-successDark'}
+                    background={'bg-primaryDark'}
                 />
             </div>
         </BaseModal>
