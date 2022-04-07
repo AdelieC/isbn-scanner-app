@@ -40,10 +40,7 @@ module.exports = {
             opacity: {
                 40: '.40',
             },
-            backgroundImage: {
-                hero: "url('./assets/img/open-book-background.webp')",
-                frame: "url('./assets/img/frame.svg')",
-            },
+            backgroundImage: {},
             boxShadow: {
                 innerXl: 'inset 0px -20px 25px -5px rgba(0, 0, 0, 0.1)',
             },

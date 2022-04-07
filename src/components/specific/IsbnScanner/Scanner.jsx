@@ -20,6 +20,4 @@ function Scanner() {
     );
 }
 
-Scanner.propTypes = {};
-
 export default Scanner;
