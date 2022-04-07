@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { CLASSLIST_H1 } from '../services/globals/classlists';
-import { ICON_WORK_IN_PROGRESS } from '../services/globals/icons';
+import WorkInProgress from '../components/reused/WorkInProgress';
 
 SearchResultsPage.propTypes = {};
 
@@ -18,12 +18,7 @@ function SearchResultsPage(props) {
                 <li>ISBN = {isbn || 'empty'}</li>
                 <li>Title = {title || 'empty'}</li>
             </ul>
-            <div className="flex grow flex-col justify-center items-center gap-4 text-secondaryDark">
-                {ICON_WORK_IN_PROGRESS}
-                <p className="font-heading text-base sm:text-xl text-primaryDark text-center">
-                    This page is not ready yet. Code in progress...
-                </p>
-            </div>
+            <WorkInProgress />
         </div>
     );
 }

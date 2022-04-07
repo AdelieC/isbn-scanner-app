@@ -18,6 +18,7 @@ import {
     STANDALONE_ICONS_CLASSLIST,
 } from './classlists';
 import { IoHeartHalf, IoHeartOutline, IoHeartSharp } from 'react-icons/io5';
+import { GiIsland } from 'react-icons/gi';
 
 /*************************
     STANDALONE ICONS
@@ -49,6 +50,7 @@ export const ICON_SEARCH_BUTTON = <BiSearchAlt2 className={CLASSLIST_ICONS_IN_TE
 export const ICON_HEART_HALF = <IoHeartHalf className={CLASSLIST_ICONS_IN_TEXT} />;
 export const ICON_HEART_FULL = <IoHeartSharp className={CLASSLIST_ICONS_IN_TEXT} />;
 export const ICON_HEART_EMPTY = <IoHeartOutline className={CLASSLIST_ICONS_IN_TEXT} />;
+export const ICON_HOME_BUTTON = <MdHome className={CLASSLIST_ICONS_IN_TEXT} />;
 
 /*************************
         MODAL ICONS
@@ -61,3 +63,4 @@ export const ICON_WORK_IN_PROGRESS = <HiOutlineCode className={CLASSLIST_ICONS_M
 export const ICON_CARD_BARCODE = <BiBarcodeReader className={CLASSLIST_ICONS_MODALS} />;
 export const ICON_CARD_INPUT = <BsInputCursorText className={CLASSLIST_ICONS_MODALS} />;
 export const ICON_CARD_SEARCH = <BiSearchAlt2 className={CLASSLIST_ICONS_MODALS} />;
+export const ICON_LOST = <GiIsland className={CLASSLIST_ICONS_MODALS} />;

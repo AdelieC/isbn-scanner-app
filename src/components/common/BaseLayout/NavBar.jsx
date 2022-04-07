@@ -18,7 +18,7 @@ import {
 
 const NAVLINKS = [
     {
-        link: '/home',
+        link: '/',
         name: 'Home',
         icon: ICON_HOME,
     },

@@ -82,7 +82,7 @@ function IsbnScannerPage() {
             {isScanning && (
                 <>
                     <div className="z-20 px-4 sm:px-8 py-4 absolute top-0 w-full flex gap-4 justify-between items-center md:gap-8 text-primaryLight">
-                        <Link to={'/home'} className="" onClick={stopScan}>
+                        <Link to={'/'} className="" onClick={stopScan}>
                             {ICON_RETURN_BUTTON}
                         </Link>
                         <div className="z-20 flex items-center justify-end gap-4 md:gap-8">

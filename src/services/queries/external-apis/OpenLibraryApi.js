@@ -44,7 +44,8 @@ const fetchBookDetails = async (isbn) => {
     } catch (e) {
         return [];
     }
-};*/
+};
+*/
 
 /*const fetchAuthorDetails = async (id) => {
     const data = await fetch(authorDetailsUrl(id), openLibraryConfig);
