@@ -4,10 +4,11 @@
 
 //components
 import SectionCard from '../components/reused/SectionCard';
-import { FaBarcode } from 'react-icons/fa';
-import { GiArchiveResearch, GiKeyboard } from 'react-icons/gi';
-
-const ICONS_CLASSLIST = 'h-12 w-12 md:h-16 md:w-16';
+import {
+    ICON_CARD_BARCODE,
+    ICON_CARD_INPUT,
+    ICON_CARD_SEARCH,
+} from '../services/globals/icons';
 
 function HomePage() {
     return (
@@ -18,14 +19,14 @@ function HomePage() {
                     buttonText={'Scan a barcode'}
                     link={'/scan'}
                     background={'bg-primaryLight'}
-                    icon={<FaBarcode className={ICONS_CLASSLIST} />}
+                    icon={ICON_CARD_BARCODE}
                 />
                 <SectionCard
                     text={"Your book doesn't have a readable barcode?"}
                     buttonText={'Enter an ISBN/EAN'}
                     link={'/input'}
                     background={'bg-primaryLight'}
-                    icon={<GiKeyboard className={ICONS_CLASSLIST} />}
+                    icon={ICON_CARD_INPUT}
                 />
                 <SectionCard
                     text={
@@ -35,7 +36,7 @@ function HomePage() {
                     buttonText={'Search for a book'}
                     link={'/search/form'}
                     background={'bg-primaryLight'}
-                    icon={<GiArchiveResearch className={ICONS_CLASSLIST} />}
+                    icon={ICON_CARD_SEARCH}
                 />
             </div>
         </>

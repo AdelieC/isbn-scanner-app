@@ -1,5 +1,5 @@
 //imports icons
-import { HiLightBulb, HiOutlineLightBulb } from 'react-icons/hi';
+import { HiLightBulb, HiOutlineCode, HiOutlineLightBulb } from 'react-icons/hi';
 import {
     MdHome,
     MdInfo,
@@ -56,3 +56,8 @@ export const ICON_HEART_EMPTY = <IoHeartOutline className={CLASSLIST_ICONS_IN_TE
 export const ICON_INFORMATIVE_MESSAGE = (
     <GoLightBulb className={CLASSLIST_ICONS_MODALS} />
 );
+export const ICON_WORK_IN_PROGRESS = <HiOutlineCode className={CLASSLIST_ICONS_MODALS} />;
+
+export const ICON_CARD_BARCODE = <BiBarcodeReader className={CLASSLIST_ICONS_MODALS} />;
+export const ICON_CARD_INPUT = <BsInputCursorText className={CLASSLIST_ICONS_MODALS} />;
+export const ICON_CARD_SEARCH = <BiSearchAlt2 className={CLASSLIST_ICONS_MODALS} />;

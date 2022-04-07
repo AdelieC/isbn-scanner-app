@@ -1,7 +1,7 @@
 //libraries
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import LinkButton from './LinkButton';
 //services
 
 //components
@@ -14,22 +14,21 @@ function SectionCard({ text, icon, background, link, buttonText }) {
         'items-center',
         'gap-4',
         'rounded-xl',
-        'p-8',
+        'p-4',
+        'sm:p-8',
         'text-secondaryDark',
         'shadow-xl'
     );
     return (
         <section className={sectionClasses + ' ' + background}>
             {icon}
-            <p className="text-primaryDark text-xl max-w-xs">{text}</p>
-            <Link
-                className={
-                    'px-3 py-2 font-heading rounded-lg shadow-lg bg-secondaryLight'
-                }
-                to={link}
-            >
-                {buttonText}
-            </Link>
+            <p className="text-primaryDark text-base sm:text-xl max-w-xs">{text}</p>
+            <LinkButton
+                link={link}
+                buttonText={buttonText}
+                textColor={'text-secondaryDark'}
+                background={'bg-secondaryLight'}
+            />
         </section>
     );
 }
