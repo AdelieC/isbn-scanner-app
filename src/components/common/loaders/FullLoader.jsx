@@ -1,7 +1,7 @@
 //libraries
 
 function FullLoader(props) {
-    return <div></div>;
+    return <div>...loading</div>;
 }
 
 FullLoader.propTypes = {};

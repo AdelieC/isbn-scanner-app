@@ -17,6 +17,7 @@ import SearchFormPage from './pages/SearchFormPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { useTranslation } from 'react-i18next';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -44,19 +45,26 @@ document
     );
 
 function App() {
+    const { t } = useTranslation('routes');
     return (
         <QueryClientProvider client={queryClient}>
             <StatusProvider>
                 <Routes>
                     <Route path="/" element={<BaseLayout />}>
                         <Route path="" element={<HomePage />} />
-                        <Route path="scan" element={<IsbnScannerPage />} />
-                        <Route path="input" element={<IsbnInputPage />} />
-                        <Route path="book/:isbn" element={<BookDetailsPage />} />
-                        <Route path="category/:category" element={<CategoryPage />} />
-                        <Route path="search/form" element={<SearchFormPage />} />
-                        <Route path="search/results" element={<SearchResultsPage />} />
-                        <Route path="about" element={<AboutPage />} />
+                        <Route path={t('scan-path')} element={<IsbnScannerPage />} />
+                        <Route path={t('input-path')} element={<IsbnInputPage />} />
+                        <Route
+                            path={t('book-path') + ':isbn'}
+                            element={<BookDetailsPage />}
+                        />
+                        <Route
+                            path={t('category-path') + ':category'}
+                            element={<CategoryPage />}
+                        />
+                        <Route path={t('search-path')} element={<SearchFormPage />} />
+                        <Route path={t('results-path')} element={<SearchResultsPage />} />
+                        <Route path={t('about-path')} element={<AboutPage />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Route>
                 </Routes>

@@ -5,6 +5,7 @@ import { createSearchParams, useNavigate, useOutletContext } from 'react-router-
 
 //services
 import { ICON_SEARCH_BUTTON } from '../services/globals/icons';
+import { useTranslation } from 'react-i18next';
 
 const ISBN_PLACEHOLDER = 'Ex : 0061478784';
 const AUTHOR_PLACEHOLDER = 'Ex : Wynne Jones';
@@ -13,6 +14,7 @@ const TITLE_PLACEHOLDER = 'Ex : Moving castle';
 const TITLE = 'Advanced search';
 
 function SearchFormPage() {
+    const { t } = useTranslation(['search-form']);
     const { setTitle } = useOutletContext();
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();

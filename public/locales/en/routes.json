@@ -1,0 +1,9 @@
+{
+  "scan-path": "scan",
+  "input-path": "input",
+  "book-path": "book/",
+  "category-path": "category/",
+  "search-path": "search/form",
+  "results-path": "search/results",
+  "about-path": "about"
+}
