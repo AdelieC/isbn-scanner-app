@@ -1,13 +1,14 @@
 //libraries
 
-//components
+//services
 import {
-    FaCreativeCommons,
-    FaCreativeCommonsBy,
-    FaCreativeCommonsNc,
-} from 'react-icons/fa';
+    ICON_LICENCE_BY,
+    ICON_LICENCE_COMMONS,
+    ICON_LICENCE_NC,
+} from '../../../services/globals/icons';
 
-const ICONS_CLASSLIST = 'h-4 w-4 md:h-6 md:w-6';
+//components
+
 const VERSION = process.env.REACT_APP_VERSION_NB;
 const YEAR = new Date().getFullYear();
 
@@ -22,9 +23,9 @@ function Footer() {
                 rel="license"
                 href="https://creativecommons.org/licenses/by-nc/4.0/"
             >
-                <FaCreativeCommons className={ICONS_CLASSLIST} />
-                <FaCreativeCommonsBy className={ICONS_CLASSLIST} />
-                <FaCreativeCommonsNc className={ICONS_CLASSLIST} />
+                {ICON_LICENCE_COMMONS}
+                {ICON_LICENCE_BY}
+                {ICON_LICENCE_NC}
             </a>
             <span className="hidden">
                 This work is licensed under a
@@ -35,7 +36,5 @@ function Footer() {
         </footer>
     );
 }
-
-Footer.propTypes = {};
 
 export default Footer;

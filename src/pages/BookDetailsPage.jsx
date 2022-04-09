@@ -7,8 +7,6 @@ import coverPlaceholder from '../assets/img/cover.svg';
 import RatingStars from '../components/reused/RatingStars';
 import DetailsRow from '../components/reused/DetailsRow';
 import RatingDetails from '../components/reused/RatingDetails';
-import { GoQuestion } from 'react-icons/go';
-import { RiShoppingCart2Line } from 'react-icons/ri';
 import { getAuthorFullName } from '../services/utils/BookDataFunctions';
 import Tag from '../components/reused/Tag';
 import ExternalLinkButton from '../components/reused/ExternalLinkButton';
@@ -19,6 +17,7 @@ import {
     CLASSLIST_ROUNDED_SECTION,
 } from '../services/globals/classlists';
 import { useTranslation } from 'react-i18next';
+import { ICON_QUESTION_MARK, ICON_SHOPPING } from '../services/globals/icons';
 
 const getCategoryKeyword = (category) => {
     const categoryArray = category.split('/');
@@ -86,19 +85,19 @@ function BookDetailsPage() {
                                 <span className="text-tertiaryDark text-xs">
                                     {t('price-new')}
                                 </span>
-                                {book?.priceNew || <GoQuestion className="" />}
+                                {book?.priceNew || ICON_QUESTION_MARK}
                             </p>
                             <p className="flex items-center gap-2 font-heading text-secondaryDark text-xl">
                                 <span className="text-tertiaryDark text-xs">
                                     {t('price-retail')}
                                 </span>
-                                {book?.priceRetail || <GoQuestion className="" />}
+                                {book?.priceRetail || ICON_QUESTION_MARK}
                             </p>
                             {book?.googlePlayLink && (
                                 <ExternalLinkButton
                                     link={book?.googlePlayLink}
                                     buttonText={t('Buy')}
-                                    icon={<RiShoppingCart2Line />}
+                                    icon={ICON_SHOPPING}
                                 />
                             )}
                         </div>

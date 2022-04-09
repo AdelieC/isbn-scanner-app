@@ -4,12 +4,12 @@
 
 //components
 
-import { GoQuestion } from 'react-icons/go';
 import PropTypes from 'prop-types';
+import { ICON_QUESTION_MARK } from '../../services/globals/icons';
 
 function DetailsRow({ description = null, value = '' }) {
     return (
-        <p className="text-sm flex flex-wrap items-center justify-start gap-2 sm:gap-4">
+        <p className="text-sm flex flex-wrap items-center justify-start gap-2 sm:gap-4 text-tertiaryDark">
             {description && (
                 <span className="">
                     <u>{description}</u> :
@@ -18,7 +18,7 @@ function DetailsRow({ description = null, value = '' }) {
             {value ? (
                 <span className="max-w-full text-justify">{value}</span>
             ) : (
-                <GoQuestion className="text-primaryDark" />
+                ICON_QUESTION_MARK
             )}
         </p>
     );

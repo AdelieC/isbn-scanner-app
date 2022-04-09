@@ -18,6 +18,7 @@ function StatusProvider({ children }) {
     const [error, setError] = useState(null);
     const isFetching = useIsFetching();
     const isMutating = useIsMutating();
+
     return (
         <StatusContext.Provider
             value={{
