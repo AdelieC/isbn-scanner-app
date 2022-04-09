@@ -1,0 +1,18 @@
+{
+  "paths": {
+    "scan": "scan",
+    "input": "input",
+    "book": "book/",
+    "category": "category/",
+    "search": "search/form",
+    "results": "search/results",
+    "about": "about"
+  },
+  "links": {
+    "home": "Home",
+    "scan": "Scan a barcode",
+    "input": "Enter an ISBN",
+    "search": "Search in books",
+    "about": "About us"
+  }
+}

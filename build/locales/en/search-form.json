@@ -1,0 +1,27 @@
+{
+  "isbn-input": {
+    "page-title": "ISBN input",
+    "h1": "Search by ISBN/EAN",
+    "label": "ISBN/EAN",
+    "placeholder": "Ex : 0061478784",
+    "required-message": "You can find the ISBN or EAN number at the back or the book.",
+    "invalid-message": "Please enter a valid number either 10 or 14 digits long.",
+    "no-result": "There was no book found with an ISBN matching ",
+    "results-will-appear-here": "Search results will appear here..."
+  },
+  "advanced": {
+    "page-title": "Advanced search",
+    "h1": "Advanced search",
+    "author": {
+      "label": "Author",
+      "invalid-message": "Please enter a valid name.",
+      "placeholder": "Ex : Wynne Jones"
+    },
+    "title": {
+      "label": "Title or keyword",
+      "invalid-message": "Please enter a valid title.",
+      "placeholder": "Ex : Moving castle"
+    }
+  },
+  "submit": "Search"
+}

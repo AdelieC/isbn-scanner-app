@@ -1,0 +1,22 @@
+{
+  "button-text": "Détails",
+  "title": "Détails",
+  "written-by": "Écrit par",
+  "published-on": "Publié le",
+  "editions": "Éditions",
+  "price-new": "Prix neuf",
+  "price-retail": "Prix occasion",
+  "buy": "Acheter",
+  "synopsis": "Synopsis",
+  "info": "Informations",
+  "rating": "Note Google",
+  "width": "Largeur",
+  "height": "Hauteur",
+  "thickness": "Épaisseur",
+  "genre": "Genre",
+  "lang": "Langue",
+  "nb-pages": "Nombre de pages",
+  "no-price": "Aucun prix disponible pour l'instant, désolé!",
+  "no-synopsis": "Aucun synopsis, désolé!",
+  "nb-ratings": "notes"
+}

@@ -1,0 +1,14 @@
+{
+  "scan-card": {
+    "text": "Obtiens des informations sur un livre en scannant son code barre!",
+    "button": "Scanne un livre"
+  },
+  "input-card": {
+    "text": "Ton livre n'a pas de code barre lisible?",
+    "button": "Saisie un ISBN"
+  },
+  "search-card": {
+    "text": "Recherche un livre par title, auteur, ISBN ou mot-clé.",
+    "button": "Recherche avancée"
+  }
+}

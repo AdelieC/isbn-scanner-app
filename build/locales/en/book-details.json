@@ -1,0 +1,22 @@
+{
+  "button-text": "Details",
+  "title": "Book details",
+  "written-by": "Written by",
+  "published-on": "Published on ",
+  "editions": "Editions",
+  "price-new": "Price new",
+  "price-retail": "Price retail",
+  "buy": "Buy",
+  "synopsis": "Synopsis",
+  "info": "Informations",
+  "rating": "Google rating",
+  "width": "Width",
+  "height": "Height",
+  "thickness": "Thickness",
+  "genre": "Genre",
+  "lang": "Language",
+  "nb-pages": "Number of pages",
+  "no-price": "No pricing data yet, sorry!",
+  "no-synopsis": "No synopsis, sorry!",
+  "nb-ratings": "ratings"
+}

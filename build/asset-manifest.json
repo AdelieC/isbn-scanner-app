@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c6247e3b.css",
+    "main.js": "/static/js/main.259bdc0c.js",
+    "static/media/CrimsonText-Roman.ttf": "/static/media/CrimsonText-Roman.378a7391c7dea08dd4bf.ttf",
+    "static/media/CrimsonText-Bold.ttf": "/static/media/CrimsonText-Bold.231d44deb64c94998a5d.ttf",
+    "static/media/UnicaOne-Regular.ttf": "/static/media/UnicaOne-Regular.9ac22d6db0b0b23d2d63.ttf",
+    "static/media/cover.svg": "/static/media/cover.ea6f39f273047259a72d7a07b161dd0f.svg",
+    "index.html": "/index.html",
+    "static/media/getFetch.cjs": "/static/media/getFetch.c780682470504fffbd04.cjs",
+    "main.c6247e3b.css.map": "/static/css/main.c6247e3b.css.map",
+    "main.259bdc0c.js.map": "/static/js/main.259bdc0c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c6247e3b.css",
+    "static/js/main.259bdc0c.js"
+  ]
+}

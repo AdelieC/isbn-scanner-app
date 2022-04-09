@@ -1,0 +1,18 @@
+{
+  "paths": {
+    "scan": "scan",
+    "input": "saisie",
+    "book": "livre/",
+    "category": "categorie/",
+    "search": "recherche/formulaire",
+    "results": "recherche/resultats",
+    "about": "a-propos"
+  },
+  "links": {
+    "home": "Accueil",
+    "scan": "Scanner un livre",
+    "input": "Saisir un ISBN",
+    "search": "Rechercher un livre",
+    "about": "À propos"
+  }
+}
