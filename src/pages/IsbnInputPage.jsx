@@ -24,7 +24,7 @@ function IsbnInputPage() {
     };
 
     useEffect(() => {
-        setTitle(t('isbn-input:title'));
+        setTitle(t('isbn-input.page-title'));
     }, []);
 
     useEffect(() => {
@@ -35,9 +35,9 @@ function IsbnInputPage() {
 
     return (
         <div className="sm:my-12 flex flex-col items-center grow gap-8 w-full sm:w-10/12 max-w-4xl bg-primaryLight sm:shadow-xl sm:rounded-xl p-8 sm:p-12">
-            <h2 className="text-secondaryDark text-2xl sm:text-4xl text-center font-heading">
+            <h1 className="text-secondaryDark text-2xl sm:text-4xl text-center font-heading">
                 {t('isbn-input:h1')}
-            </h2>
+            </h1>
             <form
                 className="flex flex-col sm:flex-row justify-center gap-2 items-center text-base sm:text-xl"
                 onSubmit={handleSubmit(onSubmit)}
@@ -48,10 +48,10 @@ function IsbnInputPage() {
                     placeholder={t('isbn-input.placeholder')}
                     name="isbn"
                     {...register('isbn', {
-                        required: t('required-message'),
+                        required: t('isbn-input.required-message'),
                         pattern: {
                             value: /^(97)?[\d\-? ?]{9,15}(\d|X)$/,
-                            message: t('isbn-input:invalid-message'),
+                            message: t('isbn-input.invalid-message'),
                         },
                     })}
                 />
@@ -60,19 +60,19 @@ function IsbnInputPage() {
                     type="submit"
                 >
                     {ICON_SEARCH_BUTTON}
-                    {t('isbn-input:submit')}
+                    {t('submit')}
                 </button>
             </form>
             {noResult ? (
                 <NoResultModal
                     callback={resetSearch}
-                    text={t('no-result') + getValues('isbn')}
+                    text={t('isbn-input.no-result') + getValues('isbn')}
                 />
             ) : book?.title ? (
                 <BookThumbnail book={book} />
             ) : (
                 <div className="text-center text-base sm:text-xl text-primaryDark font-heading my-auto">
-                    {t('results-will-appear-here')}
+                    {t('isbn-input.results-will-appear-here')}
                 </div>
             )}
         </div>

@@ -11,7 +11,7 @@
   },
   "advanced": {
     "page-title": "Advanced search",
-    "h1": "Search by ISBN/EAN",
+    "h1": "Advanced search",
     "author": {
       "label": "Author",
       "invalid-message": "Please enter a valid name.",
@@ -19,7 +19,7 @@
     },
     "title": {
       "label": "Title or keyword",
-      "invalid-message": "Please enter a valid name.",
+      "invalid-message": "Please enter a valid title.",
       "placeholder": "Ex : Moving castle"
     }
   },

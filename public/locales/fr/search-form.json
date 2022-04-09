@@ -1,7 +1,7 @@
 {
-  "isbn-input-title": "Saisie d'un ISBN",
-  "isbn-input-h1": "Rechercher par ISBN",
   "isbn-input": {
+    "page-title": "Saisie d'un ISBN",
+    "h1": "Rechercher par ISBN",
     "label": "ISBN/EAN",
     "placeholder": "Ex : 0061478784",
     "required-message": "Tu trouveras l'ISBN ou l'EAN de ton livre sur sa quatrième de couverture, sous le cade barre.",
@@ -9,5 +9,20 @@
     "submit": "Rechercher",
     "no-result": "Aucun livre n'a été trouvé pour l'ISBN ",
     "results-will-appear-here": "Le résultat de ta recherche apparaîtra ici..."
-  }
+  },
+  "advanced": {
+    "page-title": "Recherche avancée",
+    "h1": "Recherche avancée",
+    "author": {
+      "label": "Auteur",
+      "invalid-message": "Entre un nom valide.",
+      "placeholder": "Ex : Wynne Jones"
+    },
+    "title": {
+      "label": "Titre ou mot-clé",
+      "invalid-message": "Entre un titre valide",
+      "placeholder": "Ex : Moving castle"
+    }
+  },
+  "submit": "Rechercher"
 }
