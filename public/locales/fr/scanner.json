@@ -1,0 +1,7 @@
+{
+  "title": "Scanner un livre",
+  "no-camera-warning": "Tu n'as pas encore autorisé ISBN-scanner à accéder à ton appareil photo. Essaie de changer les autorisations dans les paramètres de ton navigateur? Si ça ne change rien, tente de vider le cache de ton navigateur.",
+  "no-result-part1": "Aucun livre avec l'ISBN ",
+  "no-result-part2": " n'a été trouvé dans nos bases de données.",
+  "book-thumbnail-button-text": "Scanne un autre livre"
+}
