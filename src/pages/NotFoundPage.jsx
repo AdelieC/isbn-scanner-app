@@ -1,12 +1,17 @@
-import { CLASSLIST_H1 } from '../services/globals/classlists';
-import { ICON_HOME_BUTTON, ICON_LOST } from '../services/globals/icons';
-import LinkButton from '../components/reused/LinkButton';
+//libraries
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+//services
+import { CLASSLIST_H1 } from '../services/globals/classlists';
+import { ICON_HOME_BUTTON, ICON_LOST } from '../services/globals/icons';
+
+//components
+import LinkButton from '../components/reused/LinkButton';
+
 const ISBN = '9782253161158';
 
-function NotFoundPage(props) {
+function NotFoundPage() {
     const { t } = useTranslation(['errors', 'routes']);
 
     return (
@@ -30,7 +35,5 @@ function NotFoundPage(props) {
         </div>
     );
 }
-
-NotFoundPage.propTypes = {};
 
 export default NotFoundPage;
