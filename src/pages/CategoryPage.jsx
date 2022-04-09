@@ -8,9 +8,9 @@ import useCategory from '../services/hooks/useCategory';
 //components
 import BookThumbnail from '../components/reused/BookThumbnail';
 import ActionButton from '../components/reused/ActionButton';
-import { BiAddToQueue } from 'react-icons/bi';
 import { CLASSLIST_H1 } from '../services/globals/classlists';
 import { useTranslation } from 'react-i18next';
+import { ICON_LOAD_MORE } from '../services/globals/icons';
 
 function CategoryPage() {
     const { t } = useTranslation('category');
@@ -39,7 +39,7 @@ function CategoryPage() {
             </ul>
             {hasNextPage && (
                 <ActionButton
-                    icon={<BiAddToQueue className="w-4 h-4" />}
+                    icon={ICON_LOAD_MORE}
                     action={getNextPage}
                     background={'bg-secondaryDark'}
                     text={t('load-more-button')}

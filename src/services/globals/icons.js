@@ -6,9 +6,9 @@ import {
     MdOutlineCameraswitch,
     MdOutlineKeyboardBackspace,
 } from 'react-icons/md';
-import { BiBarcodeReader, BiReset, BiSearchAlt2 } from 'react-icons/bi';
+import { BiAddToQueue, BiBarcodeReader, BiReset, BiSearchAlt2 } from 'react-icons/bi';
 import { BsEyeglasses, BsInputCursorText } from 'react-icons/bs';
-import { GoLightBulb } from 'react-icons/go';
+import { GoLightBulb, GoQuestion } from 'react-icons/go';
 import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
 
 //imports classLists
@@ -24,6 +24,8 @@ import {
     FaCreativeCommonsBy,
     FaCreativeCommonsNc,
 } from 'react-icons/fa';
+import { VscWarning } from 'react-icons/vsc';
+import { RiShoppingCart2Line } from 'react-icons/ri';
 
 /*************************
     STANDALONE ICONS
@@ -65,10 +67,14 @@ export const ICON_LICENCE_BY = (
 export const ICON_LICENCE_NC = (
     <FaCreativeCommonsNc className={CLASSLIST_ICONS_IN_TEXT} />
 );
+export const ICON_QUESTION_MARK = <GoQuestion className={CLASSLIST_ICONS_IN_TEXT} />;
+export const ICON_SHOPPING = <RiShoppingCart2Line className={CLASSLIST_ICONS_IN_TEXT} />;
+export const ICON_LOAD_MORE = <BiAddToQueue className={CLASSLIST_ICONS_IN_TEXT} />;
 
 /*************************
 			MODAL ICONS
  *************************/
+export const ICON_DEFAULT_ERROR = <VscWarning className={CLASSLIST_ICONS_MODALS} />;
 export const ICON_INFORMATIVE_MESSAGE = (
     <GoLightBulb className={CLASSLIST_ICONS_MODALS} />
 );

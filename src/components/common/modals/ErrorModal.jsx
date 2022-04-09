@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 //services
+import { useStatusContext } from '../../../services/providers/StatusProvider';
+import { ICON_DEFAULT_ERROR } from '../../../services/globals/icons';
+
 //components
 import BaseModal from './BaseModal';
-import { VscWarning } from 'react-icons/vsc';
-import { useStatusContext } from '../../../services/providers/StatusProvider';
 
 function ErrorModal({ error }) {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ function ErrorModal({ error }) {
         <BaseModal>
             <div className="bg-alertLight text-alertDark w-full h-full p-8 sm:p-16 rounded-xl shadow-xl flex flex-col justify-between items-center gap-4">
                 <h3 className="text-alertDark text-4xl font-heading">Uh oh...</h3>
-                {error?.icon || <VscWarning className="w-20 h-20" />}
+                {error?.icon || ICON_DEFAULT_ERROR}
                 <p>
                     {error?.message ||
                         "An error occurred. Try refreshing the page if you don't want to click on the button below."}
