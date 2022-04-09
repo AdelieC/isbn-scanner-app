@@ -21,6 +21,8 @@ const preferredCameraConstraints = {
     audio: false,
     video: {
         facingMode: 'environment',
+        height: 10000,
+        focusMode: 'continuous',
     },
 };
 
@@ -97,7 +99,6 @@ function useScan() {
     const { isOn: lightIsOn, toggle, setIsOn } = useToggle();
 
     const scan = async () => {
-        console.log('scan', cameraId, cameras, activeVideoTrack, hasLight);
         try {
             const resultSet = [];
             let config = null;
@@ -185,11 +186,13 @@ function useScan() {
 
     //when user clicks on change camera button, if change can be done
     const changeCamera = () => {
-        stopScan();
         const currentIndex = cameras.indexOf(cameraId);
         let newIndex = 0;
         if (currentIndex !== cameras.length - 1) newIndex = currentIndex + 1;
-        setCameraId(cameras[newIndex]);
+        const newId = cameras[newIndex];
+        stopScan();
+        setCameraId(newId);
+        scan();
     };
 
     useEffect(() => {
