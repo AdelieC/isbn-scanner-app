@@ -20,11 +20,11 @@ function useIsbn() {
     };
 
     const { noResult: noGoogleResult, book: googleBook } = useFetchGoogleBook({
-        isbn,
+        isbn: isbn && isbn.replaceAll(/[- ]/g, ''),
     });
 
     const { noResult: noOpenLibResult, book: openLibBook } = useFetchOpenLibraryBook({
-        isbn,
+        isbn: isbn && isbn.replaceAll(/[- ]/g, ''),
     });
 
     const getAggregatedBook = (book1, book2) => {
