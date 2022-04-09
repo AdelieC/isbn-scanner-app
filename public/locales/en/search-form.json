@@ -1,0 +1,13 @@
+{
+  "isbn-input-title": "ISBN input",
+  "isbn-input-h1": "Search by ISBN/EAN",
+  "isbn-input": {
+    "label": "ISBN/EAN",
+    "placeholder": "Ex : 0061478784",
+    "required-message": "You can find the ISBN or EAN number at the back or the book.",
+    "invalid-message": "Please enter a valid number either 10 or 14 digits long.",
+    "submit": "Search",
+    "no-result": "There was no book found with an ISBN matching ",
+    "results-will-appear-here": "Search results will appear here..."
+  }
+}

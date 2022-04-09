@@ -1,0 +1,13 @@
+{
+  "isbn-input-title": "Saisie d'un ISBN",
+  "isbn-input-h1": "Rechercher par ISBN",
+  "isbn-input": {
+    "label": "ISBN/EAN",
+    "placeholder": "Ex : 0061478784",
+    "required-message": "Tu trouveras l'ISBN ou l'EAN de ton livre sur sa quatrième de couverture, sous le cade barre.",
+    "invalid-message": "Entre un nombre de 10 ou 14 chiffres.",
+    "submit": "Rechercher",
+    "no-result": "Aucun livre n'a été trouvé pour l'ISBN ",
+    "results-will-appear-here": "Le résultat de ta recherche apparaîtra ici..."
+  }
+}
