@@ -15,7 +15,7 @@ function SearchFormPage() {
 
     const onSubmit = (data) => {
         navigate({
-            pathname: t('routes:paths.search-results'),
+            pathname: '/' + t('routes:paths.results'),
             search: `?${createSearchParams(data)}`,
         });
     };

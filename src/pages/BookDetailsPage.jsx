@@ -64,7 +64,7 @@ function BookDetailsPage() {
                 />
                 <div className="grow flex flex-col justify-between gap-2 self-stretch">
                     <p className="text-xl text-center sm:text-left sm:text-2xl md:text-3xl font-heading text-secondaryDark">
-                        <span className="text-base sm:text-lg">{t('written-by')}</span>{' '}
+                        <span className="text-base sm:text-lg">{t('written-by')} </span>
                         {book?.authors?.map((author, i) => {
                             return (
                                 <span key={author.lastName}>
@@ -75,10 +75,10 @@ function BookDetailsPage() {
                         })}
                     </p>
                     <p className="font-heading text-primaryDark text-sm">
-                        {t('published-on') + book?.publishedAt}
+                        {t('published-on') + ' ' + book?.publishedAt}
                     </p>
                     <p className="font-heading text-primaryDark text-sm">
-                        {t('editions') + book?.publisher}
+                        {t('editions') + ' ' + book?.publisher}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-between">
                         <div className="flex flex-col gap-2">
@@ -120,7 +120,7 @@ function BookDetailsPage() {
                         return (
                             <li key={category}>
                                 <Tag
-                                    link={t('routes:paths.category') + keyword}
+                                    link={'/' + t('routes:paths.category') + keyword}
                                     text={keyword}
                                     index={i}
                                 />

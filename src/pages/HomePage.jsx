@@ -13,7 +13,7 @@ function HomePage() {
     const { t } = useTranslation(['home']);
     return (
         <>
-            <div className="grow flex flex-wrap gap-12 justify-center items-center text-center w-full p-8 md:p-16">
+            <div className="grow flex flex-wrap flex-col sm:flex-row gap-12 sm:justify-center items-stretch sm:items-center text-center w-full p-8 md:p-16">
                 <SectionCard
                     text={t('scan-card.text')}
                     buttonText={t('scan-card.button')}

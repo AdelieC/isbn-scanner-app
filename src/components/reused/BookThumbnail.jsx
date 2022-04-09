@@ -1,23 +1,23 @@
 //libraries
-import coverPlaceholder from '../../assets/img/cover.svg';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+
+//services
+import { getAuthorFullName } from '../../services/utils/BookDataFunctions';
+import { ICON_VIEW_DETAILS } from '../../services/globals/icons';
+import { CLASSLIST_COVER_IMAGE } from '../../services/globals/classlists';
+import { getSnippet } from '../../services/utils/StringFunctions';
+import Book from '../../objects/Book';
+
+//components
 import DetailsRow from './DetailsRow';
 import LinkButton from './LinkButton';
 import RatingStars from './RatingStars';
 import RatingDetails from './RatingDetails';
-import { getAuthorFullName } from '../../services/utils/BookDataFunctions';
-import { ICON_VIEW_DETAILS } from '../../services/globals/icons';
-import PropTypes from 'prop-types';
-import { getSnippet } from '../../services/utils/StringFunctions';
-import Book from '../../objects/Book';
-import { CLASSLIST_COVER_IMAGE } from '../../services/globals/classlists';
-
-//services
-
-//components
-
-//icon globals
+import coverPlaceholder from '../../assets/img/cover.svg';
 
 function BookThumbnail({ book, optionalButton = null, passDataToDetailsPage = true }) {
+    const { t } = useTranslation('book-details');
     return (
         <div className="flex flex-col gap-4 sm:gap-8 justify-around items-center bg-secondaryLight rounded-xl shadow-xl p-4 sm:p-8 w-full max-w-3xl h-max">
             <div
@@ -40,8 +40,8 @@ function BookThumbnail({ book, optionalButton = null, passDataToDetailsPage = tr
                 )}
                 {optionalButton && optionalButton}
                 <LinkButton
-                    buttonText={'Details'}
-                    link={'/book/' + (book?.isbn || book?.ean)}
+                    buttonText={t('details')}
+                    link={'/' + t('routes:paths.book') + (book?.isbn || book?.ean)}
                     linkState={{ book: passDataToDetailsPage ? book : null }}
                     icon={ICON_VIEW_DETAILS}
                     background={'bg-secondaryDark'}
@@ -69,31 +69,32 @@ function BookThumbnail({ book, optionalButton = null, passDataToDetailsPage = tr
                             );
                         })}
                     </p>
-                    <DetailsRow description={'Published'} value={book?.publishedAt} />
-                    <DetailsRow description={'Publisher'} value={book?.publisher} />
+                    <DetailsRow
+                        description={t('published-on')}
+                        value={book?.publishedAt}
+                    />
+                    <DetailsRow description={t('editions')} value={book?.publisher} />
                     <DetailsRow description={'EAN'} value={book?.ean} />
                     <DetailsRow description={'ISBN'} value={book?.isbn} />
                     {book?.priceRetail || book?.priceNew ? (
                         <>
                             <DetailsRow
-                                description={'Price new'}
+                                description={t('price-new')}
                                 value={book?.priceRetail}
                             />
                             <DetailsRow
-                                description={'Price retail'}
+                                description={t('price-retail')}
                                 value={book?.priceNew}
                             />
                         </>
                     ) : (
-                        <p className="font-heading text-sm">
-                            No pricing data yet, sorry!
-                        </p>
+                        <p className="font-heading text-sm">{t('no-price')}</p>
                     )}
 
                     {book?.synopsis?.length > 0 ? (
                         <DetailsRow value={getSnippet(book.synopsis)} />
                     ) : (
-                        <p className="font-heading text-sm">No synopsis, sorry!</p>
+                        <p className="font-heading text-sm">{t('no-synopsis')}</p>
                     )}
                 </div>
             </div>

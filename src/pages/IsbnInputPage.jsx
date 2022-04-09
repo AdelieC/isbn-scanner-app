@@ -36,7 +36,7 @@ function IsbnInputPage() {
     return (
         <div className="sm:my-12 flex flex-col items-center grow gap-8 w-full sm:w-10/12 max-w-4xl bg-primaryLight sm:shadow-xl sm:rounded-xl p-8 sm:p-12">
             <h1 className="text-secondaryDark text-2xl sm:text-4xl text-center font-heading">
-                {t('isbn-input:h1')}
+                {t('isbn-input.h1')}
             </h1>
             <form
                 className="flex flex-col sm:flex-row justify-center gap-2 items-center text-base sm:text-xl"

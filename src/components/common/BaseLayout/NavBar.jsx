@@ -37,7 +37,7 @@ function NavBar() {
         },
         {
             link: t('paths.search', { ns: 'routes' }),
-            name: t('links.scan', { ns: 'routes' }),
+            name: t('links.search', { ns: 'routes' }),
             icon: ICON_SEARCH,
         },
         {
