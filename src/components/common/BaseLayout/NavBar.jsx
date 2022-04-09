@@ -15,6 +15,8 @@ import {
     ICON_SCANNER,
     ICON_SEARCH,
 } from '../../../services/globals/icons';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const NAVLINKS = [
     {
@@ -23,28 +25,29 @@ const NAVLINKS = [
         icon: ICON_HOME,
     },
     {
-        link: '/input',
+        link: i18next.t('routes:input-path'),
         name: 'Enter an ISBN',
         icon: ICON_INPUT,
     },
     {
-        link: '/scan',
+        link: i18next.t('routes:scan-path'),
         name: 'Scan a barcode',
         icon: ICON_SCANNER,
     },
     {
-        link: '/search/form',
+        link: i18next.t('routes:search-form'),
         name: 'Search in books',
         icon: ICON_SEARCH,
     },
     {
-        link: '/about',
+        link: i18next.t('routes:about'),
         name: 'About us',
         icon: ICON_INFO,
     },
 ];
 
 function NavBar() {
+    const { t } = useTranslation('header');
     const { isOn, toggle } = useToggle();
     return (
         <>
@@ -61,7 +64,7 @@ function NavBar() {
             >
                 <ul className="w-full h-full font-heading text-2xl sm:text-3xl flex flex-col text-center justify-between items-stretch">
                     <h2 className="text-5xl sm:text-6xl md:text-7xl text-secondaryDark">
-                        MENU
+                        {t('menu-title')}
                     </h2>
                     {NAVLINKS.map((link) => {
                         return (

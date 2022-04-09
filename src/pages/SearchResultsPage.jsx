@@ -1,12 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
 import { CLASSLIST_H1 } from '../services/globals/classlists';
 import WorkInProgress from '../components/reused/WorkInProgress';
-import { useTranslation } from 'react-i18next';
 
 SearchResultsPage.propTypes = {};
 
 function SearchResultsPage(props) {
-    const { t } = useTranslation(['search-results']);
     const [searchParams] = useSearchParams();
     const author = searchParams.get('author');
     const isbn = searchParams.get('isbn');

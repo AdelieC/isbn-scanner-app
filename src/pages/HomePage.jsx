@@ -1,7 +1,6 @@
 //libraries
-
+import { useTranslation } from 'react-i18next';
 //services
-
 //components
 import SectionCard from '../components/reused/SectionCard';
 import {
@@ -11,30 +10,28 @@ import {
 } from '../services/globals/icons';
 
 function HomePage() {
+    const { t } = useTranslation(['home']);
     return (
         <>
             <div className="grow flex flex-wrap gap-12 justify-center items-center text-center w-full p-8 md:p-16">
                 <SectionCard
-                    text={'Get instant data on a book by scanning its barcode!'}
-                    buttonText={'Scan a barcode'}
-                    link={'/scan'}
+                    text={t('scan-card.text')}
+                    buttonText={t('scan-card.button')}
+                    link={t('routes:scan-path')}
                     background={'bg-primaryLight'}
                     icon={ICON_CARD_BARCODE}
                 />
                 <SectionCard
-                    text={"Your book doesn't have a readable barcode?"}
-                    buttonText={'Enter an ISBN/EAN'}
-                    link={'/input'}
+                    text={t('input-card.text')}
+                    buttonText={t('input-card.button')}
+                    link={t('routes:input-path')}
                     background={'bg-primaryLight'}
                     icon={ICON_CARD_INPUT}
                 />
                 <SectionCard
-                    text={
-                        'Search for a book by title, author, publisher,\n' +
-                        '                    language etc...'
-                    }
-                    buttonText={'Search for a book'}
-                    link={'/search/form'}
+                    text={t('search-card.text')}
+                    buttonText={t('search-card.button')}
+                    link={t('routes:search-path')}
                     background={'bg-primaryLight'}
                     icon={ICON_CARD_SEARCH}
                 />

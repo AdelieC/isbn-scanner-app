@@ -1,4 +1,5 @@
 //libraries
+import { useTranslation } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -17,7 +18,6 @@ import SearchFormPage from './pages/SearchFormPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
-import { useTranslation } from 'react-i18next';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -45,7 +45,7 @@ document
     );
 
 function App() {
-    const { t } = useTranslation('routes');
+    const { t } = useTranslation(['routes']);
     return (
         <QueryClientProvider client={queryClient}>
             <StatusProvider>

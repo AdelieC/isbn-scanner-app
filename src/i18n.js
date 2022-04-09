@@ -7,25 +7,22 @@ import Backend from 'i18next-http-backend';
 // (tip move them in a JSON file and import them,
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const defaultOptions = {
+    preload: false,
     fallbackLng: 'en',
-    /*ns: [
-		'errors',
-		'routes',
-		'about',
-		'header',
-		'footer',
-		'home',
-		'scanner',
-		'search-form',
-		'search-results',
-	],*/
-    ns: ['routes'],
+    ns: [
+        'errors',
+        'routes',
+        //'about',
+        //'header',
+        //'footer',
+        'home',
+        //'scanner',
+        //'search-form',
+        //'search-results',
+    ],
     debug: true,
     interpolation: {
         escapeValue: false, // not needed for react!!
-    },
-    react: {
-        useSuspense: true,
     },
 };
 

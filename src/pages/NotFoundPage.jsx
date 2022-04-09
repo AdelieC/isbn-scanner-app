@@ -7,19 +7,18 @@ import { useTranslation } from 'react-i18next';
 const ISBN = '9782253161158';
 
 function NotFoundPage(props) {
-    const { t } = useTranslation(['errors']);
+    const { t } = useTranslation(['errors', 'routes']);
 
     return (
         <div className="p-8 sm:p-12 grow flex flex-col justify-around items-center text-primaryDark max-w-2xl text-center">
-            <h1 className={CLASSLIST_H1 + 'text-secondaryDark'}>You seem lost?</h1>
+            <h1 className={CLASSLIST_H1 + 'text-secondaryDark'}>{t('404.title')}</h1>
             {ICON_LOST}
             <p>
-                Don't panic! Unlike{' '}
-                <Link className="inline underline" to={'/book/' + ISBN}>
-                    Robinson Crusoé
-                </Link>{' '}
-                you're not alone, stranded on a deserted island. We'll bring you back home
-                in no time!
+                {t('404.text-part1')}
+                <Link className="inline underline" to={t('routes:book-path') + ISBN}>
+                    {t('404.book-title')}
+                </Link>
+                {t('404.text-part2')}
             </p>
             <LinkButton
                 link={'/'}
