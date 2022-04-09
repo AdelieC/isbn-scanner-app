@@ -17,21 +17,21 @@ function HomePage() {
                 <SectionCard
                     text={t('scan-card.text')}
                     buttonText={t('scan-card.button')}
-                    link={t('routes:scan-path')}
+                    link={t('routes:paths.scan')}
                     background={'bg-primaryLight'}
                     icon={ICON_CARD_BARCODE}
                 />
                 <SectionCard
                     text={t('input-card.text')}
                     buttonText={t('input-card.button')}
-                    link={t('routes:input-path')}
+                    link={t('routes:paths.input')}
                     background={'bg-primaryLight'}
                     icon={ICON_CARD_INPUT}
                 />
                 <SectionCard
                     text={t('search-card.text')}
                     buttonText={t('search-card.button')}
-                    link={t('routes:search-path')}
+                    link={t('routes:paths.search')}
                     background={'bg-primaryLight'}
                     icon={ICON_CARD_SEARCH}
                 />

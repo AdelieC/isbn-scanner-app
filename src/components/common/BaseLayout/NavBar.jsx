@@ -15,39 +15,37 @@ import {
     ICON_SCANNER,
     ICON_SEARCH,
 } from '../../../services/globals/icons';
-import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-
-const NAVLINKS = [
-    {
-        link: '/',
-        name: 'Home',
-        icon: ICON_HOME,
-    },
-    {
-        link: i18next.t('routes:input-path'),
-        name: 'Enter an ISBN',
-        icon: ICON_INPUT,
-    },
-    {
-        link: i18next.t('routes:scan-path'),
-        name: 'Scan a barcode',
-        icon: ICON_SCANNER,
-    },
-    {
-        link: i18next.t('routes:search-form'),
-        name: 'Search in books',
-        icon: ICON_SEARCH,
-    },
-    {
-        link: i18next.t('routes:about'),
-        name: 'About us',
-        icon: ICON_INFO,
-    },
-];
 
 function NavBar() {
     const { t } = useTranslation('header');
+    const NAVLINKS = [
+        {
+            link: '/',
+            name: t('links.home', { ns: 'routes' }),
+            icon: ICON_HOME,
+        },
+        {
+            link: t('paths.input', { ns: 'routes' }),
+            name: t('links.input', { ns: 'routes' }),
+            icon: ICON_INPUT,
+        },
+        {
+            link: t('paths.scan', { ns: 'routes' }),
+            name: t('links.scan', { ns: 'routes' }),
+            icon: ICON_SCANNER,
+        },
+        {
+            link: t('paths.search', { ns: 'routes' }),
+            name: t('links.scan', { ns: 'routes' }),
+            icon: ICON_SEARCH,
+        },
+        {
+            link: t('paths.about', { ns: 'routes' }),
+            name: t('links.about', { ns: 'routes' }),
+            icon: ICON_INFO,
+        },
+    ];
     const { isOn, toggle } = useToggle();
     return (
         <>

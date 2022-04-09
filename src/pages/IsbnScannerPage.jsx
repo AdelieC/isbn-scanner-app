@@ -9,46 +9,22 @@ import useIsbn from '../services/hooks/useIsbn';
 //components
 import Scanner from '../components/specific/IsbnScanner/Scanner';
 import BaseModal from '../components/common/modals/BaseModal';
-import BookThumbnail from '../components/reused/BookThumbnail';
 import IconButton from '../components/reused/IconButton';
 import NoResultModal from '../components/common/modals/NoResultModal';
-import ActionButton from '../components/reused/ActionButton';
 import {
     ICON_INFORMATIVE_MESSAGE,
     ICON_LIGHT_OFF,
     ICON_LIGHT_ON,
-    ICON_RETRY,
     ICON_RETURN_BUTTON,
     ICON_SWITCH_CAMERA,
 } from '../services/globals/icons';
-
-const TITLE = 'Scan an ISBN';
-const NO_CAMERA_TEXT =
-    'ISBN-scanner has not yet been granted permission to access your\n' +
-    "                    camera. Try going to your browser's settings and authorising\n" +
-    '                    ISBN-scanner to access your camera? \n' +
-    "                    If it doesn't change anything, try refreshing this page, or clearing\n" +
-    "                    your browser's cache.";
+import { useTranslation } from 'react-i18next';
+import ScannerBookThumbnail from '../components/specific/IsbnScanner/ScannerBookThumbnail';
 
 //render functions
-const renderScanBookResultThumbnail = (book, callback) => {
-    return (
-        <BookThumbnail
-            book={book}
-            optionalButton={
-                <ActionButton
-                    text={'Scan again'}
-                    action={callback}
-                    textColor={'text-successLight'}
-                    background={'bg-successDark'}
-                    icon={ICON_RETRY}
-                />
-            }
-        />
-    );
-};
 
 function IsbnScannerPage() {
+    const { t } = useTranslation('scanner');
     const { setTitle } = useOutletContext();
     const {
         stopScan,
@@ -73,7 +49,7 @@ function IsbnScannerPage() {
     }, [result]);
 
     useEffect(() => {
-        setTitle(TITLE);
+        setTitle(t('title'));
         return () => stopScan();
     }, []);
 
@@ -109,19 +85,21 @@ function IsbnScannerPage() {
             {noResult && (
                 <NoResultModal
                     callback={retry}
-                    text={'There was no book with ' + result + ' ISBN in our sources.'}
+                    text={t('no-result-part1') + result + t('no-result-part2')}
                 />
             )}
 
             {book?.title && (
-                <BaseModal>{renderScanBookResultThumbnail(book, retry)}</BaseModal>
+                <BaseModal>
+                    <ScannerBookThumbnail book={book} callback={retry} />
+                </BaseModal>
             )}
 
             {!noResult && !book.title && !isScanning && (
                 <>
                     {ICON_INFORMATIVE_MESSAGE}
                     <p className="text-tertiaryLight font-heading text-base sm:text-xl text-center p-8 sm:p-28 max-w-3xl">
-                        {NO_CAMERA_TEXT}
+                        {t('no-camera-warning')}
                     </p>
                 </>
             )}

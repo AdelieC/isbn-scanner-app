@@ -1,0 +1,7 @@
+{
+  "title": "Scan an ISBN",
+  "no-camera-warning": "ISBN-scanner has not yet been granted permission to access your camera. Try going to your browser's settings and authorising ISBN-scanner to access your camera? If it doesn't change anything, try refreshing this page, or clearing your browser's cache.",
+  "no-result-part1": "There was no book with ",
+  "no-result-part2": " ISBN in our sources.",
+  "book-thumbnail-button-text": "Scan again"
+}

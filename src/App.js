@@ -52,19 +52,22 @@ function App() {
                 <Routes>
                     <Route path="/" element={<BaseLayout />}>
                         <Route path="" element={<HomePage />} />
-                        <Route path={t('scan-path')} element={<IsbnScannerPage />} />
-                        <Route path={t('input-path')} element={<IsbnInputPage />} />
+                        <Route path={t('paths.scan')} element={<IsbnScannerPage />} />
+                        <Route path={t('paths.input')} element={<IsbnInputPage />} />
                         <Route
-                            path={t('book-path') + ':isbn'}
+                            path={t('paths.book') + ':isbn'}
                             element={<BookDetailsPage />}
                         />
                         <Route
-                            path={t('category-path') + ':category'}
+                            path={t('paths.category') + ':category'}
                             element={<CategoryPage />}
                         />
-                        <Route path={t('search-path')} element={<SearchFormPage />} />
-                        <Route path={t('results-path')} element={<SearchResultsPage />} />
-                        <Route path={t('about-path')} element={<AboutPage />} />
+                        <Route path={t('paths.search')} element={<SearchFormPage />} />
+                        <Route
+                            path={t('paths.results')}
+                            element={<SearchResultsPage />}
+                        />
+                        <Route path={t('paths.about')} element={<AboutPage />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Route>
                 </Routes>
