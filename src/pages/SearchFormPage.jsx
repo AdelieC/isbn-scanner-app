@@ -5,84 +5,82 @@ import { createSearchParams, useNavigate, useOutletContext } from 'react-router-
 
 //services
 import { ICON_SEARCH_BUTTON } from '../services/globals/icons';
-
-const ISBN_PLACEHOLDER = 'Ex : 0061478784';
-const AUTHOR_PLACEHOLDER = 'Ex : Wynne Jones';
-const TITLE_PLACEHOLDER = 'Ex : Moving castle';
-
-const TITLE = 'Advanced search';
+import { useTranslation } from 'react-i18next';
 
 function SearchFormPage() {
+    const { t } = useTranslation('search-form');
     const { setTitle } = useOutletContext();
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
         navigate({
-            pathname: '/search/results',
+            pathname: '/' + t('routes:paths.results'),
             search: `?${createSearchParams(data)}`,
         });
     };
 
     useEffect(() => {
-        setTitle(TITLE);
+        setTitle(t('advanced.page-title'));
     }, []);
 
     return (
         <div className="sm:my-12 flex flex-col items-center grow gap-4 w-full sm:w-10/12 max-w-4xl bg-primaryLight sm:shadow-xl sm:rounded-xl p-8 font-heading">
-            <h2 className="text-secondaryDark text-2xl sm:text-4xl text-center font-heading">
-                Search by ISBN/EAN
-            </h2>
+            <h1 className="text-secondaryDark text-2xl sm:text-4xl text-center font-heading">
+                {t('advanced.h1')}
+            </h1>
             <form
                 className="w-full flex flex-col justify-center gap-4 items-center text-base sm:text-xl max-w-2xl"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <div className="flex flex-col gap-2 items-start justify-between w-full">
-                    <label className="text-primaryDark">ISBN/EAN :</label>
+                    <label className="text-primaryDark">{t('isbn-input.label')} :</label>
                     <input
                         className="font-heading rounded-md shadow-md bg-secondaryLight w-full px-4 py-2"
                         type="text"
-                        placeholder={ISBN_PLACEHOLDER}
+                        placeholder={t('isbn-input.placeholder')}
                         name="isbn"
                         {...register('isbn', {
                             required: false,
                             pattern: {
                                 value: /^(97)?[\d\-? ?]{9,15}(\d|X)$/,
-                                message:
-                                    'Please enter a valid number either 10 or 14 digits long.',
+                                message: t('isbn-input:invalid-message'),
                             },
                         })}
                     />
                 </div>
                 <div className="flex flex-col gap-2 items-start justify-between w-full">
-                    <label className="text-primaryDark">Author :</label>
+                    <label className="text-primaryDark">
+                        {t('advanced.author.label')} :
+                    </label>
                     <input
                         className="font-heading rounded-md shadow-md bg-secondaryLight w-full px-4 py-2"
                         type="text"
-                        placeholder={AUTHOR_PLACEHOLDER}
+                        placeholder={t('advanced.author.placeholder')}
                         name="author"
                         {...register('author', {
                             required: false,
                             pattern: {
                                 value: /^\p{L}{3,}$/u,
-                                message: 'Please enter a valid name.',
+                                message: t('advanced.author.invalid-message'),
                             },
                         })}
                     />
                 </div>
                 <div className="flex flex-col gap-2 items-start justify-between w-full">
-                    <label className="text-primaryDark">Title :</label>
+                    <label className="text-primaryDark">
+                        {t('advanced.title.label')} :
+                    </label>
                     <input
                         className="font-heading rounded-md shadow-md bg-secondaryLight w-full px-4 py-2"
                         type="text"
-                        placeholder={TITLE_PLACEHOLDER}
+                        placeholder={t('advanced.title.placeholder')}
                         name="title"
                         {...register('title', {
                             required: false,
                             pattern: {
                                 value: /^\p{L}{3,}$/u,
-                                message: 'Please enter a valid title or part of a title.',
+                                message: t('advanced.title.invalid-message'),
                             },
                         })}
                     />
@@ -92,7 +90,7 @@ function SearchFormPage() {
                     type="submit"
                 >
                     {ICON_SEARCH_BUTTON}
-                    Search
+                    {t('submit')}
                 </button>
             </form>
         </div>

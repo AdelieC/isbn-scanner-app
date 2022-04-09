@@ -1,0 +1,14 @@
+{
+  "scan-card": {
+    "text": "Get instant data on a book by scanning its barcode!",
+    "button": "Scan a barcode"
+  },
+  "input-card": {
+    "text": "Your book doesn't have a readable barcode?",
+    "button": "Enter an ISBN/EAN"
+  },
+  "search-card": {
+    "text": "Search for a book by title, author, publisher, language etc...",
+    "button": "Search for a book"
+  }
+}

@@ -15,36 +15,37 @@ import {
     ICON_SCANNER,
     ICON_SEARCH,
 } from '../../../services/globals/icons';
-
-const NAVLINKS = [
-    {
-        link: '/',
-        name: 'Home',
-        icon: ICON_HOME,
-    },
-    {
-        link: '/input',
-        name: 'Enter an ISBN',
-        icon: ICON_INPUT,
-    },
-    {
-        link: '/scan',
-        name: 'Scan a barcode',
-        icon: ICON_SCANNER,
-    },
-    {
-        link: '/search/form',
-        name: 'Search in books',
-        icon: ICON_SEARCH,
-    },
-    {
-        link: '/about',
-        name: 'About us',
-        icon: ICON_INFO,
-    },
-];
+import { useTranslation } from 'react-i18next';
 
 function NavBar() {
+    const { t } = useTranslation('header');
+    const NAVLINKS = [
+        {
+            link: '/',
+            name: t('links.home', { ns: 'routes' }),
+            icon: ICON_HOME,
+        },
+        {
+            link: t('paths.input', { ns: 'routes' }),
+            name: t('links.input', { ns: 'routes' }),
+            icon: ICON_INPUT,
+        },
+        {
+            link: t('paths.scan', { ns: 'routes' }),
+            name: t('links.scan', { ns: 'routes' }),
+            icon: ICON_SCANNER,
+        },
+        {
+            link: t('paths.search', { ns: 'routes' }),
+            name: t('links.search', { ns: 'routes' }),
+            icon: ICON_SEARCH,
+        },
+        {
+            link: t('paths.about', { ns: 'routes' }),
+            name: t('links.about', { ns: 'routes' }),
+            icon: ICON_INFO,
+        },
+    ];
     const { isOn, toggle } = useToggle();
     return (
         <>
@@ -61,7 +62,7 @@ function NavBar() {
             >
                 <ul className="w-full h-full font-heading text-2xl sm:text-3xl flex flex-col text-center justify-between items-stretch">
                     <h2 className="text-5xl sm:text-6xl md:text-7xl text-secondaryDark">
-                        MENU
+                        {t('menu-title')}
                     </h2>
                     {NAVLINKS.map((link) => {
                         return (

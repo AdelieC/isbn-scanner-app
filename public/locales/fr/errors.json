@@ -1,0 +1,10 @@
+{
+  "404": {
+    "title": "Tu es perdu?",
+    "text-part1": "Pas de panique! Contrairement à ",
+    "book-title": "Robinson Crusoé",
+    "text-part2": " tu n'es pas livré à toi-même sur une île déserte. On te ramène à la civilisation tout de suite!"
+  },
+  "500": {
+  }
+}

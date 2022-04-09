@@ -9,6 +9,7 @@ import LinkButton from './LinkButton';
 function SectionCard({ text, icon, background, link, buttonText }) {
     const sectionClasses = classNames(
         'flex',
+        'sm:h-80',
         'flex-col',
         'justify-between',
         'items-center',

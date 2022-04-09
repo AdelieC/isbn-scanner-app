@@ -1,12 +1,17 @@
+import { Suspense } from 'react';
+import './i18n';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import FullLoader from './components/common/loaders/FullLoader';
 
 ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
+    <Suspense fallback={<FullLoader />}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Suspense>,
     document.getElementById('root')
 );
 
