@@ -1,13 +1,15 @@
 //libraries
 import { useTranslation } from 'react-i18next';
+
 //services
-//components
-import SectionCard from '../components/reused/SectionCard';
 import {
     ICON_CARD_BARCODE,
     ICON_CARD_INPUT,
     ICON_CARD_SEARCH,
 } from '../services/globals/icons';
+
+//components
+import SectionCard from '../components/reused/SectionCard';
 
 function HomePage() {
     const { t } = useTranslation(['home']);

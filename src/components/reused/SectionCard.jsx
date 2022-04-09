@@ -1,10 +1,10 @@
 //libraries
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import LinkButton from './LinkButton';
-//services
 
+//services
 //components
+import LinkButton from './LinkButton';
 
 function SectionCard({ text, icon, background, link, buttonText }) {
     const sectionClasses = classNames(

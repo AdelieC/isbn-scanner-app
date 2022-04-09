@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
 import './i18n';
 import * as ReactDOM from 'react-dom';
+import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
