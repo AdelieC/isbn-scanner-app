@@ -19,6 +19,11 @@ import {
 } from './classlists';
 import { IoHeartHalf, IoHeartOutline, IoHeartSharp } from 'react-icons/io5';
 import { GiIsland } from 'react-icons/gi';
+import {
+    FaCreativeCommons,
+    FaCreativeCommonsBy,
+    FaCreativeCommonsNc,
+} from 'react-icons/fa';
 
 /*************************
     STANDALONE ICONS
@@ -51,9 +56,18 @@ export const ICON_HEART_HALF = <IoHeartHalf className={CLASSLIST_ICONS_IN_TEXT} 
 export const ICON_HEART_FULL = <IoHeartSharp className={CLASSLIST_ICONS_IN_TEXT} />;
 export const ICON_HEART_EMPTY = <IoHeartOutline className={CLASSLIST_ICONS_IN_TEXT} />;
 export const ICON_HOME_BUTTON = <MdHome className={CLASSLIST_ICONS_IN_TEXT} />;
+export const ICON_LICENCE_COMMONS = (
+    <FaCreativeCommons className={CLASSLIST_ICONS_IN_TEXT} />
+);
+export const ICON_LICENCE_BY = (
+    <FaCreativeCommonsBy className={CLASSLIST_ICONS_IN_TEXT} />
+);
+export const ICON_LICENCE_NC = (
+    <FaCreativeCommonsNc className={CLASSLIST_ICONS_IN_TEXT} />
+);
 
 /*************************
-        MODAL ICONS
+			MODAL ICONS
  *************************/
 export const ICON_INFORMATIVE_MESSAGE = (
     <GoLightBulb className={CLASSLIST_ICONS_MODALS} />
