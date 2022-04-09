@@ -2,23 +2,45 @@
 <html lang="en" class="light">
 <head>
     <meta charset="utf-8"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="application-name" content="ISBN-scanner"/>
+    <meta name="apple-mobile-web-app-title" content="ISBN-scanner"/>
+    <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+    />
+    <meta name="msapplication-navbutton-color" content="#AC7B84"/>
+    <meta name="msapplication-starturl" content="/"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+    />
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled"/>
     <link rel="icon" href="%PUBLIC_URL%/favicon.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="theme-color" content="#000000"/>
+    <meta name="theme-color" content="#AC7B84"/>
     <meta
             name="description"
-            content="Web site created using create-react-app"
+            lang="en"
+            content="ISBN-scanner is a PWA allowing users to scan an isbn barcode to get data on a book."
+    />
+    <meta
+            name="description"
+            lang="fr"
+            content="ISBN-scanner est une PWA qui permet de scanner le code barre d'un livre pour récupérer ses infos."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
     <!--
-      manifest.json provides metadata used when your web app is installed on a
+      manifest-en.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
-    <title>Isbn Scanner</title>
+    <link lang="en" rel="manifest" href="%PUBLIC_URL%/manifest-en.json"/>
+    <link lang="fr" rel="manifest" href="%PUBLIC_URL%/manifest-fr.json"/>
+    <title>Isbn-Scanner</title>
 </head>
 <body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
+<noscript lang="en">You need to enable JavaScript to run this app.</noscript>
+<noscript lang="fr">Vous avez besoin de javascript pour naviguer sur cette app...</noscript>
 <div id="root" class="grow flex flex-col items-center"></div>
 </body>
 </html>

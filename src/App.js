@@ -18,6 +18,7 @@ import SearchFormPage from './pages/SearchFormPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { useEffect } from 'react';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -45,7 +46,10 @@ document
     );
 
 function App() {
-    const { t } = useTranslation(['routes']);
+    const { t, i18n } = useTranslation(['routes']);
+    useEffect(() => {
+        i18n && (document.documentElement.lang = i18n.resolvedLanguage);
+    }, [i18n]);
     return (
         <QueryClientProvider client={queryClient}>
             <StatusProvider>
