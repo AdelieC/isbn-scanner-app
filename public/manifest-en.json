@@ -1,7 +1,7 @@
 {
   "short_name": "ISBN-scanner",
   "name": "ISBN-scanner",
-  "description": "Progressive web app to get books data from them barcode, or search for books by keyword and authors.",
+  "description": "ISBN-scanner is a progressive web application allowing you to scan an ISBN barcode to get data on a book. You can also search for a book by author, or title.",
   "icons": [
     {
       "src": "./icons/icon-72x72.png",
@@ -59,7 +59,7 @@
   "orientation": "portrait",
   "permissions": {
     "video-capture": {
-      "description": "Your permission is required for isbn-scanner to use your camera."
+      "description": "Your permission is required for ISBN-scanner to use your camera."
     }
   }
 }

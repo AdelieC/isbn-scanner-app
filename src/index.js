@@ -7,18 +7,16 @@ import App from './App';
 import FullLoader from './components/common/loaders/FullLoader';
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js').then(
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/serviceWorker.js').then(
             function (registration) {
-                // Registration was successful
-                console.log(
+                console.debug(
                     'ServiceWorker registration successful with scope: ',
                     registration.scope
                 );
             },
-            function (err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
+            (err) => {
+                console.debug('ServiceWorker registration failed: ', err);
             }
         );
     });
