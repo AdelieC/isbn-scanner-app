@@ -1,9 +1,9 @@
 //libraries
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { CLASSLIST_BASE_BUTTON } from '../../services/globals/classlists';
 
 //services
+import { CLASSLIST_BASE_BUTTON } from '../../services/globals/classlists';
 
 //components
 

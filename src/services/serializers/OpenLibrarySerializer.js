@@ -39,7 +39,6 @@ const addCategories = (book, categories) => {
         const formattedCategories = categories.forEach((category) =>
             formatCategory(category)
         );
-        console.log(formattedCategories);
         book.categories = [...book.categories, ...formattedCategories];
     }
 };

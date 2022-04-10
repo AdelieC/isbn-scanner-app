@@ -56,6 +56,7 @@ function IsbnInputPage() {
                         },
                     })}
                 />
+
                 <SubmitButton icon={ICON_SEARCH_BUTTON} text={t('submit')} />
             </form>
             {noResult ? (
