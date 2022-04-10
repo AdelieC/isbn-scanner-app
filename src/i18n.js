@@ -14,7 +14,6 @@ const defaultOptions = {
         'routes',
         'about',
         'header',
-        'footer',
         'home',
         'scanner',
         'search-form',

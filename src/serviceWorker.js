@@ -69,6 +69,15 @@ self.addEventListener('message', (event) => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
         self.skipWaiting();
     }
+    event.waitUntil(
+        caches.keys().then(function (cacheNames) {
+            return Promise.all(
+                cacheNames.map(function (cacheName) {
+                    return caches.delete(cacheName);
+                })
+            );
+        })
+    );
 });
 
 // Any other custom service worker logic can go here.
