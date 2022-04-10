@@ -1,5 +1,7 @@
 {
   "page-title": "Résultats",
   "h1": "Résultats pour",
-  "empty-field": "champs de recherche vide"
+  "empty-field": "champs de recherche vide",
+  "author": "Auteur",
+  "title": "Titre"
 }

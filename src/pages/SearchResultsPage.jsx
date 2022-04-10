@@ -25,9 +25,13 @@ function SearchResultsPage() {
         <div className="grow flex flex-col gap-4 p-4 sm:p-8">
             <h1 className={CLASSLIST_H1 + 'text-secondaryDark'}>{t('h1')}</h1>
             <ul className="font-heading text-base text-primaryDark list-disc">
-                <li>Author = {author || t('empty-field')}</li>
+                <li>
+                    {t('author')} = {author || t('empty-field')}
+                </li>
                 <li>ISBN = {isbn || t('empty-field')}</li>
-                <li>Title = {title || t('empty-field')}</li>
+                <li>
+                    {t('title')} = {title || t('empty-field')}
+                </li>
             </ul>
             <WorkInProgress />
         </div>

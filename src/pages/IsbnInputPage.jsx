@@ -11,6 +11,7 @@ import { ICON_SEARCH_BUTTON } from '../services/globals/icons';
 //components
 import BookThumbnail from '../components/reused/BookThumbnail';
 import NoResultModal from '../components/common/modals/NoResultModal';
+import SubmitButton from '../components/reused/SubmitButton';
 
 function IsbnInputPage() {
     const { t } = useTranslation('search-form');
@@ -55,13 +56,7 @@ function IsbnInputPage() {
                         },
                     })}
                 />
-                <button
-                    className="flex gap-2 justify-center items-center px-4 py-2 font-heading rounded-lg shadow-lg text-successLight bg-primaryDark"
-                    type="submit"
-                >
-                    {ICON_SEARCH_BUTTON}
-                    {t('submit')}
-                </button>
+                <SubmitButton icon={ICON_SEARCH_BUTTON} text={t('submit')} />
             </form>
             {noResult ? (
                 <NoResultModal

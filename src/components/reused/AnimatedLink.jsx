@@ -8,7 +8,7 @@ const AnimatedLink = ({ to, name, icon }) => {
     const linkClasses = classNames(
         'w-full',
         'block',
-        'p-4',
+        'p-3',
         'flex',
         'items-center',
         'justify-center',
@@ -17,6 +17,12 @@ const AnimatedLink = ({ to, name, icon }) => {
         'text-xl',
         'sm:text-2xl',
         'md:text-3xl',
+        'relative',
+        'hover:scale-125',
+        'hover:dropShadow',
+        'active:animate-ping',
+        'transition-all',
+        'duration-100',
         {
             'bg-secondaryLight': match,
             'text-secondaryDark': match,
@@ -25,7 +31,7 @@ const AnimatedLink = ({ to, name, icon }) => {
     return (
         <Link to={to} className={linkClasses}>
             {icon}
-            {name}
+            <span className="relative pt-4 pb-3">{name}</span>
         </Link>
     );
 };

@@ -5,7 +5,7 @@
   },
   "input-card": {
     "text": "Ton livre n'a pas de code barre lisible?",
-    "button": "Saisie un ISBN"
+    "button": "Saisis un ISBN"
   },
   "search-card": {
     "text": "Recherche un livre par title, auteur, ISBN ou mot-clé.",

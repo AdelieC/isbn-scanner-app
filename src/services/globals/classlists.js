@@ -5,7 +5,7 @@ export const CLASSLIST_ICONS_MODALS = 'text-4xl sm:text-7xl';
 
 //BUTTONS
 export const CLASSLIST_BASE_BUTTON =
-    'flex items-center justify-center gap-2 px-4 py-2 font-heading text-base sm:text-xl rounded-lg shadow-lg ';
+    'active:animate-wiggle flex gap-2 items-center justify-center px-4 py-2 font-heading text-base sm:text-xl rounded-lg shadow-lg ';
 
 //TITLES
 export const CLASSLIST_H1 =

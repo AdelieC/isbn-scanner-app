@@ -9,7 +9,9 @@ function IconButton({ callback, icon, color }) {
     return (
         <button
             onClick={callback}
-            className={'dropShadow z-10 ' + (color || 'text-secondaryDark')}
+            className={
+                'active:animate-spin dropShadow z-10 ' + (color || 'text-secondaryDark')
+            }
         >
             {icon}
         </button>

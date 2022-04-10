@@ -1,21 +1,25 @@
 @keyframes slide-left {
     100% {
         left: 0;
+        opacity: 1;
     }
 }
 
 @keyframes slide-right {
     100% {
         right: -105%;
+        opacity: 0;
     }
 }
 
 ._animate-slide-left {
     left: 105%;
+    opacity: 0;
     animation: 0.3s forwards ease-out slide-left;
 }
 
 ._animate-slide-right {
     right: 0;
+    opacity: 1;
     animation: 0.3s forwards ease-out slide-right;
 }

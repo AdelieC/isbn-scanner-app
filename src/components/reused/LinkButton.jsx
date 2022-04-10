@@ -1,6 +1,7 @@
 //libraries
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { CLASSLIST_BASE_BUTTON } from '../../services/globals/classlists';
 
 //services
 
@@ -16,12 +17,7 @@ function LinkButton({
 }) {
     return (
         <Link
-            className={
-                'flex items-center justify-center gap-2 px-4 py-2 font-heading text-base sm:text-xl rounded-lg shadow-lg ' +
-                background +
-                ' ' +
-                textColor
-            }
+            className={CLASSLIST_BASE_BUTTON + background + ' ' + textColor}
             to={link}
             state={linkState}
         >

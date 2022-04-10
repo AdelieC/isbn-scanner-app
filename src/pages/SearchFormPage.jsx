@@ -6,6 +6,7 @@ import { createSearchParams, useNavigate, useOutletContext } from 'react-router-
 //services
 import { ICON_SEARCH_BUTTON } from '../services/globals/icons';
 import { useTranslation } from 'react-i18next';
+import SubmitButton from '../components/reused/SubmitButton';
 
 function SearchFormPage() {
     const { t } = useTranslation('search-form');
@@ -14,6 +15,7 @@ function SearchFormPage() {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
+        if (!Object.values(data).some((value) => value !== '')) return;
         navigate({
             pathname: '/' + t('routes:paths.results'),
             search: `?${createSearchParams(data)}`,
@@ -44,7 +46,7 @@ function SearchFormPage() {
                             required: false,
                             pattern: {
                                 value: /^(97)?[\d\-? ?]{9,15}(\d|X)$/,
-                                message: t('isbn-input:invalid-message'),
+                                message: t('isbn-input.invalid-message'),
                             },
                         })}
                     />
@@ -85,13 +87,7 @@ function SearchFormPage() {
                         })}
                     />
                 </div>
-                <button
-                    className="flex gap-2 justify-center items-center px-4 py-2 font-heading rounded-lg shadow-lg text-successLight bg-primaryDark mt-4"
-                    type="submit"
-                >
-                    {ICON_SEARCH_BUTTON}
-                    {t('submit')}
-                </button>
+                <SubmitButton icon={ICON_SEARCH_BUTTON} text={t('submit')} />
             </form>
         </div>
     );

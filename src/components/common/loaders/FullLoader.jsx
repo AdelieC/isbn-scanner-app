@@ -2,8 +2,8 @@
 
 function FullLoader() {
     return (
-        <div className="fixed top-0 left-0 flex flex-col justify-center items-center h-screen w-screen bg-primaryDark text-primaryLight p-8">
-            <div className="animate-pulse w-3/4 sm:w-1/2">
+        <div className="animate-fade-in fixed top-0 left-0 flex flex-col justify-center items-center h-screen w-screen bg-primaryDark text-primaryLight p-8">
+            <div className="animate-pulse w-1/3 sm:w-1/4 xl:w-1/5">
                 <svg
                     className="fill-current"
                     width="100%"

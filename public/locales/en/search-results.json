@@ -1,5 +1,7 @@
 {
   "page-title": "Search results",
   "h1": "Results for",
-  "empty-field": "empty"
+  "empty-field": "empty",
+  "author": "Author",
+  "title": "Title"
 }
