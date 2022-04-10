@@ -5,11 +5,12 @@ import NavBar from './NavBar';
 import './Header.css';
 import PropTypes from 'prop-types';
 import { CLASSLIST_H1 } from '../../../services/globals/classlists';
+import { Link } from 'react-router-dom';
 
 function Header({ title }) {
     return (
         <header className="fixed z-50 top-0 left-0 w-full flex items-center justify-between gap-4 shadow-xl py-4 px-4 sm:py-8 sm:px-10 bg-primaryDark text-primaryLight">
-            <div id="logo" className="h-12 sm:h-16">
+            <Link to={'/'} id="logo" className="h-12 sm:h-16">
                 <svg
                     className="fill-current"
                     height="100%"
@@ -55,9 +56,9 @@ function Header({ title }) {
                         />
                     </g>
                 </svg>
-            </div>
+            </Link>
             <h1 id="title" className={CLASSLIST_H1 + 'hidden sm:block'}>
-                {title || 'ISBN Scanner'}
+                {title || 'ISBN-scanner'}
             </h1>
             <NavBar />
         </header>
