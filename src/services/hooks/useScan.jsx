@@ -196,8 +196,7 @@ function useScan() {
     const changeCamera = () => {
         const currentIndex = cameraList.indexOf(cameraId);
         let newIndex = 0;
-        if (currentIndex !== cameraList.length - 2) newIndex = currentIndex + 1;
-        else newIndex = 0;
+        if (currentIndex < cameraList.length - 1) newIndex = currentIndex + 1;
         const newId = cameraList[newIndex];
         stopScan();
         setCameraId(newId);
