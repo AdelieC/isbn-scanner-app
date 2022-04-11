@@ -2,14 +2,20 @@ import PropTypes from 'prop-types';
 import { CLASSLIST_BASE_BUTTON } from '../../services/globals/classlists';
 
 function ActionButton({ action, text, icon, background, textColor }) {
+    const handleClick = (e) => {
+        e.target.disabled = true;
+        action();
+        e.target.disable = false;
+    };
+
     return (
         <button
-            onClick={action}
+            onClick={handleClick}
             className={
                 CLASSLIST_BASE_BUTTON +
                 (background || 'bg-primaryDark') +
                 ' ' +
-                (textColor || 'text-secondaryDark')
+                (textColor || 'text-secondaryLight')
             }
         >
             {icon}

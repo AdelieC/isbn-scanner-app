@@ -6,9 +6,15 @@ import PropTypes from 'prop-types';
 //components
 
 function IconButton({ callback, icon, color }) {
+    const handleClick = (e) => {
+        e.target.disabled = true;
+        callback();
+        e.target.disable = false;
+    };
+
     return (
         <button
-            onClick={callback}
+            onClick={handleClick}
             className={
                 'active:animate-spin dropShadow z-10 ' + (color || 'text-secondaryDark')
             }
