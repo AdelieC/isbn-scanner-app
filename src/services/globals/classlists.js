@@ -1,6 +1,6 @@
 //ICONS
 export const CLASSLIST_ICONS_IN_TEXT = 'text-base sm:text-xl';
-export const STANDALONE_ICONS_CLASSLIST = 'text-2xl sm:text-4xl xl:text-5xl';
+export const STANDALONE_ICONS_CLASSLIST = 'text-3xl sm:text-4xl xl:text-5xl';
 export const CLASSLIST_ICONS_MODALS = 'text-4xl sm:text-7xl';
 
 //BUTTONS
