@@ -1,23 +1,28 @@
 //libraries
-
 import { useLocation, useOutletContext, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+//services
 import useIsbn from '../services/hooks/useIsbn';
-import coverPlaceholder from '../assets/img/cover.svg';
-import RatingStars from '../components/reused/RatingStars';
-import DetailsRow from '../components/reused/DetailsRow';
-import RatingDetails from '../components/reused/RatingDetails';
-import { getAuthorFullName } from '../services/utils/BookDataFunctions';
-import Tag from '../components/reused/Tag';
-import ExternalLinkButton from '../components/reused/ExternalLinkButton';
 import {
     CLASSLIST_COVER_IMAGE,
     CLASSLIST_H1,
     CLASSLIST_H3,
     CLASSLIST_ROUNDED_SECTION,
 } from '../services/globals/classlists';
-import { useTranslation } from 'react-i18next';
 import { ICON_QUESTION_MARK, ICON_SHOPPING } from '../services/globals/icons';
+import { getAuthorFullName } from '../services/utils/BookDataFunctions';
+
+//components
+import RatingStars from '../components/reused/RatingStars';
+import DetailsRow from '../components/reused/DetailsRow';
+import RatingDetails from '../components/reused/RatingDetails';
+import Tag from '../components/reused/Tag';
+import ExternalLinkButton from '../components/reused/ExternalLinkButton';
+
+//assets
+import coverPlaceholder from '../assets/img/cover.svg';
 
 const getCategoryKeyword = (category) => {
     const categoryArray = category.split('/');

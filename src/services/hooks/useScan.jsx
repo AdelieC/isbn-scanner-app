@@ -6,9 +6,7 @@ import { useEffect, useState } from 'react';
 import useToggle from './useToggle';
 import AppError from '../status/AppError';
 import { getMostRepeatedValueInArr } from '../utils/ArrayFunctions';
-
-//components
-import { BiSad } from 'react-icons/bi';
+import { ICON_SAD_FACE } from '../globals/icons';
 
 //number of scanned barcode needed to get a reliable sample
 const SAMPLE_NEEDED = 15;
@@ -30,7 +28,7 @@ const preferredCameraConstraints = {
 const SCAN_ERROR = new AppError(
     'Cannot access your device camera, for some reason. Please make sure you have a camera, and you gave your browser access to it.',
     'Back',
-    <BiSad className="w-20 h-20" />
+    ICON_SAD_FACE
 );
 
 //quagga init config
@@ -91,7 +89,7 @@ const getBestSuitedCameraId = () => {
 
 function useScan() {
     const [cameraId, setCameraId] = useState('');
-    const [cameras, setCameras] = useState([]);
+    const [cameraList, setCameraList] = useState([]);
     const [activeVideoTrack, setActiveVideoTrack] = useState(null);
     const [isScanning, setIsScanning] = useState(false);
     const [result, setResult] = useState(null);
@@ -102,6 +100,8 @@ function useScan() {
         try {
             const resultSet = [];
             let config = null;
+
+            //setting config with current cameraId
             if (cameraId) {
                 config = computeCameraConfig(cameraId);
             } else {
@@ -109,7 +109,12 @@ function useScan() {
                 setCameraId(initialCameraId);
                 config = computeCameraConfig(initialCameraId);
             }
+
+            //setting camera list if it's not set
+            if (!cameraList?.length) await setAvailableCameraList();
             setIsScanning(true);
+
+            //initializing quagga
             await Quagga.init(config, function (err) {
                 if (err) {
                     console.error(err);
@@ -117,10 +122,11 @@ function useScan() {
                     throw SCAN_ERROR;
                 } else {
                     Quagga.start();
-                    setAllCamerasAccessibleToQuagga();
                     handleCurrentVideoTrackSpecificities();
                 }
             });
+
+            //processing results
             Quagga.onDetected((res) => handleResult(res.codeResult.code, resultSet));
         } catch (e) {
             console.error("Scanner won't work.", e);
@@ -128,10 +134,13 @@ function useScan() {
         }
     };
 
-    const setAllCamerasAccessibleToQuagga = () => {
-        Quagga.CameraAccess.enumerateVideoDevices().then((res) => {
-            if (res?.length) setCameras(res.map((device) => device.deviceId));
-        });
+    const setAvailableCameraList = async () => {
+        let cameras = null;
+        if (navigator.mediaDevices) {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            cameras = devices.filter((device) => device.kind === 'videoinput');
+            setCameraList(cameras.map((camera) => camera.deviceId));
+        }
     };
 
     //set active track and determine if it has a light
@@ -167,7 +176,6 @@ function useScan() {
     const stopScan = () => {
         if (lightIsOn) setIsOn(false);
         setCameraId('');
-        setCameras([]);
         setActiveVideoTrack(null);
         setIsScanning(false);
         Quagga.offDetected(handleResult);
@@ -186,10 +194,10 @@ function useScan() {
 
     //when user clicks on change camera button, if change can be done
     const changeCamera = () => {
-        const currentIndex = cameras.indexOf(cameraId);
+        const currentIndex = cameraList.indexOf(cameraId);
         let newIndex = 0;
-        if (currentIndex !== cameras.length - 1) newIndex = currentIndex + 1;
-        const newId = cameras[newIndex];
+        if (currentIndex !== cameraList.length - 1) newIndex = currentIndex + 1;
+        const newId = cameraList[newIndex];
         stopScan();
         setCameraId(newId);
         scan();
@@ -202,6 +210,10 @@ function useScan() {
         };
     }, []);
 
+    const resetResult = () => {
+        setResult(null);
+    };
+
     return {
         scan,
         stopScan,
@@ -210,11 +222,10 @@ function useScan() {
         switchLight,
         changeCamera,
         result,
-        cameras,
+        resetResult,
+        cameraList,
         hasLight,
     };
 }
-
-useScan.propTypes = {};
 
 export default useScan;

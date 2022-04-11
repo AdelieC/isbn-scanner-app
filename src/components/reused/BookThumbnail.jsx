@@ -40,7 +40,7 @@ function BookThumbnail({ book, optionalButton = null, passDataToDetailsPage = tr
                 )}
                 {optionalButton && optionalButton}
                 <LinkButton
-                    buttonText={t('details')}
+                    buttonText={t('button-text')}
                     link={'/' + t('routes:paths.book') + (book?.isbn || book?.ean)}
                     linkState={{ book: passDataToDetailsPage ? book : null }}
                     icon={ICON_VIEW_DETAILS}

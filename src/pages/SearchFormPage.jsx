@@ -2,10 +2,12 @@
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import { createSearchParams, useNavigate, useOutletContext } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 //services
 import { ICON_SEARCH_BUTTON } from '../services/globals/icons';
-import { useTranslation } from 'react-i18next';
+
+//components
 import SubmitButton from '../components/reused/SubmitButton';
 
 function SearchFormPage() {

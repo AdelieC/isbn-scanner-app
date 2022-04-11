@@ -1,16 +1,16 @@
 //libraries
 import { useOutletContext, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 //services
 import useCategory from '../services/hooks/useCategory';
+import { CLASSLIST_H1 } from '../services/globals/classlists';
+import { ICON_LOAD_MORE } from '../services/globals/icons';
 
 //components
 import BookThumbnail from '../components/reused/BookThumbnail';
 import ActionButton from '../components/reused/ActionButton';
-import { CLASSLIST_H1 } from '../services/globals/classlists';
-import { useTranslation } from 'react-i18next';
-import { ICON_LOAD_MORE } from '../services/globals/icons';
 
 function CategoryPage() {
     const { t } = useTranslation('category');

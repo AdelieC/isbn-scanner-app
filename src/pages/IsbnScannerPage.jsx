@@ -1,16 +1,11 @@
 //libraries
 import { useEffect } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 //services
 import useScan from '../services/hooks/useScan';
 import useIsbn from '../services/hooks/useIsbn';
-
-//components
-import Scanner from '../components/specific/IsbnScanner/Scanner';
-import BaseModal from '../components/common/modals/BaseModal';
-import IconButton from '../components/reused/IconButton';
-import NoResultModal from '../components/common/modals/NoResultModal';
 import {
     ICON_INFORMATIVE_MESSAGE,
     ICON_LIGHT_OFF,
@@ -18,10 +13,13 @@ import {
     ICON_RETURN_BUTTON,
     ICON_SWITCH_CAMERA,
 } from '../services/globals/icons';
-import { useTranslation } from 'react-i18next';
-import ScannerBookThumbnail from '../components/specific/IsbnScanner/ScannerBookThumbnail';
 
-//render functions
+//components
+import Scanner from '../components/specific/IsbnScanner/Scanner';
+import BaseModal from '../components/common/modals/BaseModal';
+import IconButton from '../components/reused/IconButton';
+import NoResultModal from '../components/common/modals/NoResultModal';
+import ScannerBookThumbnail from '../components/specific/IsbnScanner/ScannerBookThumbnail';
 
 function IsbnScannerPage() {
     const { t } = useTranslation('scanner');
@@ -33,20 +31,27 @@ function IsbnScannerPage() {
         switchLight,
         changeCamera,
         result,
-        cameras,
+        cameraList,
         hasLight,
         scan,
+        resetResult: resetScanResult,
     } = useScan();
     const { book, setIsbn, reset: resetIsbnResult, noResult } = useIsbn();
 
     const retry = () => {
+        resetScanResult();
         resetIsbnResult();
         scan();
     };
 
     useEffect(() => {
+        console.log('result', result);
         if (result) setIsbn(result);
     }, [result]);
+
+    useEffect(() => {
+        console.log('book', Boolean(book.title));
+    }, [book]);
 
     useEffect(() => {
         setTitle(t('title'));
@@ -69,7 +74,7 @@ function IsbnScannerPage() {
                                     icon={lightIsOn ? ICON_LIGHT_ON : ICON_LIGHT_OFF}
                                 />
                             )}
-                            {cameras.length > 1 && (
+                            {cameraList.length > 1 && (
                                 <IconButton
                                     callback={changeCamera}
                                     color={'text-primaryLight'}

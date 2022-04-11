@@ -6,7 +6,13 @@ import {
     MdOutlineCameraswitch,
     MdOutlineKeyboardBackspace,
 } from 'react-icons/md';
-import { BiAddToQueue, BiBarcodeReader, BiReset, BiSearchAlt2 } from 'react-icons/bi';
+import {
+    BiAddToQueue,
+    BiBarcodeReader,
+    BiReset,
+    BiSad,
+    BiSearchAlt2,
+} from 'react-icons/bi';
 import { BsEyeglasses, BsInputCursorText } from 'react-icons/bs';
 import { GoLightBulb, GoQuestion } from 'react-icons/go';
 import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
@@ -84,3 +90,4 @@ export const ICON_CARD_BARCODE = <BiBarcodeReader className={CLASSLIST_ICONS_MOD
 export const ICON_CARD_INPUT = <BsInputCursorText className={CLASSLIST_ICONS_MODALS} />;
 export const ICON_CARD_SEARCH = <BiSearchAlt2 className={CLASSLIST_ICONS_MODALS} />;
 export const ICON_LOST = <GiIsland className={CLASSLIST_ICONS_MODALS} />;
+export const ICON_SAD_FACE = <BiSad className={CLASSLIST_ICONS_MODALS} />;
