@@ -62,7 +62,7 @@ function BookThumbnail({ book, optionalButton = null, passDataToDetailsPage = tr
                         <span className="text-sm mr-2">Written by</span>
                         {book?.authors?.map((author, i) => {
                             return (
-                                <span key={author.fullName}>
+                                <span key={author.firstName}>
                                     {getAuthorFullName(author) +
                                         (i < book.authors.length - 1 ? ', ' : '')}
                                 </span>

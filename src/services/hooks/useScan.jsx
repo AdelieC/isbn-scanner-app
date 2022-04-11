@@ -134,6 +134,7 @@ function useScan() {
         }
     };
 
+    //getting all camera devices in navigator to change camera later
     const setAvailableCameraList = async () => {
         let cameras = null;
         if (navigator.mediaDevices) {
