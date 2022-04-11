@@ -39,19 +39,14 @@ function IsbnScannerPage() {
     const { book, setIsbn, reset: resetIsbnResult, noResult } = useIsbn();
 
     const retry = () => {
-        resetScanResult();
         resetIsbnResult();
+        resetScanResult();
         scan();
     };
 
     useEffect(() => {
-        console.log('result', result);
         if (result) setIsbn(result);
     }, [result]);
-
-    useEffect(() => {
-        console.log('book', Boolean(book.title));
-    }, [book]);
 
     useEffect(() => {
         setTitle(t('title'));
